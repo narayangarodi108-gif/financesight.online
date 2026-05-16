@@ -306,3 +306,17 @@
             const title = document.getElementById('nodeTitle').value;
             const text = document.getElementById('nodeExcerpt').value;
             if(!title || !text) { alert('Required fields 
+                                        const container = document.getElementById('customDispatchTarget');
+            const card = document.createElement('div');
+            card.style.cssText = "background:rgba(255,255,255,0.02); border:1px solid var(--border-line); padding:15px; border-radius:6px; margin-top:12px;";
+            const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }).toUpperCase();
+
+            card.innerHTML = `<span style="font-size:0.65rem; color:#3B82F6; font-weight:700; display:block; margin-bottom:4px;">${tag || 'SYSTEM NOTE'}</span><h4 style="font-size:1rem; color:#FFF; margin-bottom:4px;">${title}</h4><p style="color:#94A3B8; font-size:0.85rem; margin-bottom:6px;">${text}</p><div style="font-size:0.65rem; color:rgba(255,255,255,0.25); font-weight:600;">PRANAV • REQ • ${date}</div>`;
+            container.insertBefore(card, container.firstChild);
+            
+            localStorage.setItem('dispatchNodes', container.innerHTML);
+            document.getElementById('nodeTag').value = ''; document.getElementById('nodeTitle').value = ''; document.getElementById('nodeExcerpt').value = '';
+        }
+    </script>
+</body>
+</html>
