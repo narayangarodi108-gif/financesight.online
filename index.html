@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financesight | US Macro Intelligence Terminal</title>
+    <title>Financesight | Professional US Equity Intelligence Terminal</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +39,7 @@
             padding-bottom: 100px;
         }
 
-        /* TOP LIVE US TICKER RIBBON */
+        /* LIVE HIGH-FREQUENCY TICKER BAR */
         .ticker-wrap {
             width: 100%;
             background: rgba(3, 7, 18, 0.85);
@@ -51,7 +51,7 @@
             z-index: 1000;
         }
 
-        /* Header Section */
+        /* Branding Header */
         header {
             max-width: 1400px;
             margin: 0 auto;
@@ -78,11 +78,11 @@
             font-weight: 600;
         }
 
-        /* Navigation Menu Tabs */
+        /* Terminal System Navigation Tabs */
         .nav-container {
             display: flex;
             justify-content: center;
-            gap: 16px;
+            gap: 12px;
             margin-top: 35px;
             padding-bottom: 20px;
             border-bottom: 1px solid var(--border-line);
@@ -91,13 +91,13 @@
         .nav-tab {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            padding: 10px 26px;
+            padding: 10px 24px;
             border-radius: 6px;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             border: 1px solid transparent;
         }
 
@@ -108,21 +108,21 @@
             background: rgba(16, 185, 129, 0.04);
         }
 
-        .tab-panel { display: none; animation: panelFade 0.45s ease; }
+        .tab-panel { display: none; animation: panelFade 0.4s ease; }
         .tab-panel.active-panel { display: block; }
-        @keyframes panelFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes panelFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* MULTI-DASHBOARD US MATRIX SCALER */
+        /* MULTI-COLUMN TERMINAL WORKSPACE GRID */
         .terminal-grid {
             max-width: 1400px;
             margin: 40px auto;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 2.1fr 1fr;
             gap: 25px;
         }
 
-        @media (max-width: 1050px) {
+        @media (max-width: 1100px) {
             .terminal-grid { grid-template-columns: 1fr; }
         }
 
@@ -145,13 +145,13 @@
             font-weight: 700;
         }
 
-        /* Form Controls layout overrides */
+        /* Dispatch Intelligence Box Layout Form Controls */
         .control-sidebar { background: rgba(17, 24, 39, 0.25); border: 1px solid var(--border-line); padding: 30px; border-radius: 8px; height: fit-content; margin-bottom: 25px; }
         .sidebar-heading { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; padding-bottom: 12px; border-bottom: 1px solid var(--border-line); font-weight: 700; }
         .terminal-field { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.5); border: 1px solid var(--border-line); border-radius: 6px; color: white; margin-bottom: 16px; font-size: 0.85rem; outline: none; }
         .terminal-btn { background: var(--text-main); color: var(--bg-base); font-weight: 700; text-transform: uppercase; padding: 15px; border: none; border-radius: 6px; width: 100%; cursor: pointer; }
 
-        /* Corporate Info Pages Layout Framework */
+        /* Generic Corporate Modules */
         .corporate-block { max-width: 800px; margin: 60px auto; background: var(--bg-surface); border: 1px solid var(--border-line); padding: 50px; border-radius: 8px; }
         .corporate-block h2 { font-family: 'Cinzel', serif; font-size: 2.2rem; margin-bottom: 20px; }
         .corporate-block p { color: var(--text-muted); }
@@ -183,12 +183,12 @@
 
     <header>
         <div class="logo">FINANCESIGHT</div>
-        <p>US Macro Intelligence Terminal</p>
+        <p>Professional US Equity Intelligence Terminal</p>
         
         <div class="nav-container">
-            <a href="#" class="nav-tab active" onclick="executeTabShift(event, 'home-panel')">Terminal</a>
-            <a href="#" class="nav-tab" onclick="executeTabShift(event, 'about-panel')">System</a>
-            <a href="#" class="nav-tab" onclick="executeTabShift(event, 'contact-panel')">Operations</a>
+            <a href="#" class="nav-tab active" onclick="executeTabShift(event, 'home-panel')">Equity Screener Matrix</a>
+            <a href="#" class="nav-tab" onclick="executeTabShift(event, 'about-panel')">System Architecture</a>
+            <a href="#" class="nav-tab" onclick="executeTabShift(event, 'contact-panel')">Operations Desk</a>
         </div>
     </header>
 
@@ -197,17 +197,21 @@
             
             <div>
                 <div class="widget-panel-card">
-                    <div class="panel-heading-title">Fortune 500 Real-Time Equity Screener Matrix</div>
-                    <div style="height: 500px; width: 100%;">
+                    <div class="panel-heading-title">Institutional Equity Analyzer (Fortune 500, Mega Caps, & Technical Indicators)</div>
+                    <div style="height: 650px; width: 100%;">
                         <div class="tradingview-widget-container" style="height:100%;width:100%">
                             <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
                             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
                             {
-                            "width": "100%", "height": "100%",
+                            "width": "100%",
+                            "height": "100%",
                             "defaultColumn": "overview",
                             "defaultScreen": "most_capitalized",
                             "market": "america",
-                            "showToolbar": true, "colorTheme": "dark", "isTransparent": true, "locale": "en"
+                            "showToolbar": true,
+                            "colorTheme": "dark",
+                            "isTransparent": true,
+                            "locale": "en"
                             }
                             </script>
                         </div>
@@ -215,8 +219,8 @@
                 </div>
 
                 <div class="widget-panel-card">
-                    <div class="panel-heading-title">Top 100 Institutional Exchange Traded Funds (ETFs) Watch</div>
-                    <div style="height: 450px; width: 100%;">
+                    <div class="panel-heading-title">Core ETF Sectors Valuation Tracker</div>
+                    <div style="height: 380px; width: 100%;">
                         <div class="tradingview-widget-container" style="height:100%;width:100%">
                             <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
                             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
@@ -225,15 +229,13 @@
                             "width": "100%", "height": "100%", "locale": "en",
                             "tabs": [
                                 {
-                                "title": "Core US ETFs",
+                                "title": "Mega Cap Trackers",
                                 "symbols": [
-                                    { "s": "AMEX:SPY", "title": "SPDR S&P 500 ETF" },
-                                    { "s": "NASDAQ:QQQ", "title": "Invesco QQQ (Nasdaq)" },
-                                    { "s": "AMEX:IWM", "title": "iShares Russell 2000" },
-                                    { "s": "AMEX:DIA", "title": "SPDR Dow Jones Industrial" },
-                                    { "s": "AMEX:VTI", "title": "Vanguard Total Stock Market" },
-                                    { "s": "AMEX:XLK", "title": "Technology Select Sector" },
-                                    { "s": "AMEX:XLF", "title": "Financial Select Sector" }
+                                    { "s": "AMEX:SPY", "title": "S&P 500 ETF (SPY)" },
+                                    { "s": "NASDAQ:QQQ", "title": "Invesco QQQ (Nasdaq 100)" },
+                                    { "s": "AMEX:XLK", "title": "Technology Sector Select" },
+                                    { "s": "AMEX:XLF", "title": "Financial Sector Select" },
+                                    { "s": "AMEX:XLY", "title": "Consumer Discretionary Select" }
                                 ]
                                 }
                             ]
@@ -246,8 +248,8 @@
 
             <div>
                 <div class="widget-panel-card">
-                    <div class="panel-heading-title">Live Wall Street Intelligence Feed (Real-Time Wire)</div>
-                    <div style="height: 600px; width: 100%;">
+                    <div class="panel-heading-title">Live Wall Street News Wire (Business Houses & Media Feed)</div>
+                    <div style="height: 650px; width: 100%;">
                         <div class="tradingview-widget-container" style="height:100%;width:100%">
                             <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
                             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
@@ -267,9 +269,9 @@
                 <aside class="control-sidebar">
                     <h3 class="sidebar-heading">Terminal Dispatch Center</h3>
                     <div class="publish-container">
-                        <input type="text" class="terminal-field" id="inputTag" placeholder="Scope Tag (e.g., Fed Rates)">
-                        <input type="text" class="terminal-field" id="inputTitle" placeholder="Summary Analysis Title Brief">
-                        <textarea class="terminal-field" id="inputExcerpt" rows="5" placeholder="Input structural analysis execution briefs..."></textarea>
+                        <input type="text" class="terminal-field" id="inputTag" placeholder="Analysis Scope Tag (e.g., Goldman Target)">
+                        <input type="text" class="terminal-field" id="inputTitle" placeholder="Summary Target Headline">
+                        <textarea class="terminal-field" id="inputExcerpt" rows="5" placeholder="Input specific brokerage valuation updates or target briefs..."></textarea>
                         <button class="terminal-btn" onclick="executePublish()">Deploy Insight Node</button>
                     </div>
                     
