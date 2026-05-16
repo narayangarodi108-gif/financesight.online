@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financesight | US Equity Research Terminal</title>
     
+    <title>Financesight | Professional US Equity Intelligence Terminal</title>
+    <meta name="description" content="Financesight.online is an independent, high-performance equity research terminal and stock screening engine tracking US Fortune 500 companies, live consensus brokerage targets, and Wall Street news wires.">
+    <meta name="keywords" content="Financesight, Financesight online, stock screener, US equity research terminal, Fortune 500 screening, S&P 500 tracker, live Wall Street news, brokerage ratings, day trading tools, Pranav">
+    <meta name="author" content="Pranav">
+    <link rel="canonical" href="https://financesight.online" />
+
+    <meta property="og:title" content="Financesight | US Equity Research Terminal">
+    <meta property="og:description" content="Run live technical indicator scans and verify institutional consensus brokerage ratings across all US Mega-Caps instantly.">
+    <meta property="og:url" content="https://financesight.online">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,24 +57,27 @@
             display: flex; justify-content: space-between; align-items: center;
         }
 
-        .brand-logo { font-size: 1.5rem; font-weight: 700; color: white; }
+        .brand-logo { font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
         .brand-logo span { color: var(--accent-green); }
 
         .search-box-container { max-width: 800px; margin: 15px auto; padding: 0 20px; position: relative; }
         .screener-search {
             width: 100%; padding: 16px 20px 16px 50px; background: var(--bg-surface);
             border: 1px solid var(--border-line); border-radius: 8px; color: white; font-size: 1rem; outline: none;
+            transition: border-color 0.2s;
         }
+        .screener-search:focus { border-color: var(--accent-blue); }
         .search-icon { position: absolute; left: 35px; top: 18px; color: var(--text-muted); }
 
-        .app-panel { display: none; max-width: 800px; margin: 0 auto; padding: 15px 20px; animation: appViewShift 0.25s ease-out; }
+        /* MULTI-PAGE CONTAINER DISPLAYS */
+        .app-panel { display: none; max-width: 800px; margin: 0 auto; padding: 15px 20px; animation: appViewShift 0.2s ease-out; }
         .app-panel.active-panel { display: block; }
         @keyframes appViewShift { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
         .data-card { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
         .card-header-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 15px; font-weight: 700; }
 
-        /* BROKERAGE METRICS STRUCTURE */
+        /* BROKERAGE DATA SUMMARY LAYOUT */
         .brokerage-header-block { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--border-line); margin-bottom: 15px; }
         .stock-ticker-badge { background: var(--bg-input); padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; color: var(--accent-green); }
         .metrics-summary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
@@ -74,7 +88,7 @@
         .rating-hold { color: #F59E0B; }
         .rating-sell { color: var(--accent-red); }
 
-        /* SCREENER.IN STYLE INTERNAL TAB BAR NAVIGATION */
+        /* SUB-TAB SELECTORS INSIDE TERMINAL VIEW */
         .internal-tab-bar {
             display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px;
             margin-bottom: 15px; border-bottom: 1px solid var(--border-line);
@@ -87,10 +101,10 @@
             background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);
         }
 
-        .sub-panel-view { display: none; height: 400px; width: 100%; border-radius: 6px; overflow: hidden; }
+        .sub-panel-view { display: none; height: 420px; width: 100%; border-radius: 6px; overflow: hidden; }
         .sub-panel-view.active-sub-panel { display: block; }
 
-        /* MOBILE BOTTOM SYSTEM NAVIGATION BAR */
+        /* FIXED APP BOTTOM NAVIGATION FOOTER ELEMENT */
         .bottom-nav-bar {
             position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #0B0F19;
             border-top: 1px solid var(--border-line); display: flex; justify-content: space-around; align-items: center; z-index: 2000;
@@ -117,13 +131,13 @@
     </div>
 
     <header>
-        <div class="brand-logo">financesight<span>.il</span></div>
+        <a href="#" class="brand-logo" onclick="appRoute('feed-panel', 'btn-feed')">financesight<span>.il</span></a>
         <div style="font-size: 0.8rem; font-weight: 600; color: var(--accent-green);">US Terminal v2.6</div>
     </header>
 
     <div class="search-box-container">
         <span class="search-icon">🔍</span>
-        <input type="text" class="screener-search" id="terminalCompanySearch" placeholder="Search for a US stock (e.g., Apple, Tesla, Nvidia)..." onkeyup="filterOrLoadCompanyInfo()">
+        <input type="text" class="screener-search" id="terminalCompanySearch" placeholder="Search ticker name (e.g., apple, tesla, nvidia)..." onkeyup="filterOrLoadCompanyInfo()">
     </div>
 
     <div id="feed-panel" class="app-panel active-panel">
@@ -141,7 +155,7 @@
 
     <div id="screens-panel" class="app-panel">
         <div class="data-card" style="padding:0; overflow:hidden;">
-            <div class="card-header-title" style="padding: 15px 20px 0 20px; margin: 0;">Screener.in Style Analytics Table</div>
+            <div class="card-header-title" style="padding: 15px 20px 0 20px; margin: 0;">Screener Core Filtering Database</div>
             <div style="height: 650px; width: 100%;">
                 <div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
@@ -166,7 +180,7 @@
                 <div class="metric-data-node"><label>Brokerage Rating</label><p class="rating-buy" id="reportRating">STRONG BUY</p></div>
                 <div class="metric-data-node"><label>Average Target Price</label><p id="reportTarget">$215.50</p></div>
                 <div class="metric-data-node"><label>Accumulation Zone</label><p style="color: #3B82F6;" id="reportZone">$170 - $185</p></div>
-                <div class="metric-data-node"><label>Valuation Take</label><p style="font-size: 0.85rem; font-weight: 500; color: var(--text-muted);" id="reportTake">Undervalued tracking layout metrics profiles.</p></div>
+                <div class="metric-data-node"><label>Valuation Take</label><p style="font-size: 0.85rem; font-weight: 500; color: var(--text-muted);" id="reportTake">Strong system operational metrics observed on target asset.</p></div>
             </div>
 
             <div class="internal-tab-bar">
@@ -176,28 +190,17 @@
                 <button class="internal-tab" onclick="switchSubPanel(event, 'sub-profile')">Profile Info</button>
             </div>
 
-            <div id="sub-chart" class="sub-panel-view active-sub-panel">
-                <div class="tradingview-widget-container" style="height:100%;width:100%"><div id="tv-mini-chart" style="height:100%;width:100%"></div></div>
-            </div>
-
-            <div id="sub-financials" class="sub-panel-view">
-                <div class="tradingview-widget-container" style="height:100%;width:100%"><div id="tv-financials-container" style="height:100%;width:100%"></div></div>
-            </div>
-
-            <div id="sub-peers" class="sub-panel-view">
-                <div class="tradingview-widget-container" style="height:100%;width:100%"><div id="tv-peers-container" style="height:100%;width:100%"></div></div>
-            </div>
-
-            <div id="sub-profile" class="sub-panel-view">
-                <div class="tradingview-widget-container" style="height:100%;width:100%"><div id="tv-profile-container" style="height:100%;width:100%"></div></div>
-            </div>
+            <div id="sub-chart" class="sub-panel-view active-sub-panel"></div>
+            <div id="sub-financials" class="sub-panel-view"></div>
+            <div id="sub-peers" class="sub-panel-view"></div>
+            <div id="sub-profile" class="sub-panel-view"></div>
         </div>
 
         <div class="data-card">
             <div class="card-header-title">Private Dispatch Hub</div>
             <input type="text" class="terminal-field" id="nodeTag" placeholder="Scope Tag (e.g., Morgan Stanley)">
             <input type="text" class="terminal-field" id="nodeTitle" placeholder="Company Headline">
-            <textarea class="terminal-field" id="nodeExcerpt" rows="4" placeholder="Input specific research annotations..."></textarea>
+            <textarea class="terminal-field" id="nodeExcerpt" rows="4" placeholder="Input analytical target briefs..."></textarea>
             <button class="terminal-btn" onclick="submitCustomNode()">Deploy Dispatch Node</button>
             <div id="customDispatchTarget" style="margin-top: 15px;"></div>
         </div>
@@ -205,9 +208,9 @@
 
     <div id="account-panel" class="app-panel">
         <div class="data-card">
-            <h3 style="margin-bottom: 10px; font-size: 1.4rem;">System Architecture</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Financesight is a high-performance quantitative analytics terminal platform engine tracking structural asset configurations and macroeconomic indicators.</p>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">Founded and built in 2026 by <strong>Pranav</strong>.</p>
+            <h1 style="font-size: 1.5rem; margin-bottom: 10px;">System Architecture</h1>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Financesight is an advanced, mobile-first quantitative analytics terminal engine tracking macroeconomic parameters and US equity cross-border data configurations.</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Founded, built, and optimized in 2026 by <strong>Pranav</strong>.</p>
             <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-line); font-size: 0.8rem; color: var(--accent-blue);">Operational Contact Desk: desk@financesight.online</div>
         </div>
     </div>
@@ -227,9 +230,8 @@
         </button>
     </div>
 
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <script>
-        // 1. SYSTEM VIEW SPA ROUTER
+        // 1. DYNAMIC NAVIGATION PANEL ROUTER
         function appRoute(panelId, buttonId) {
             const panels = document.getElementsByClassName('app-panel');
             for (let panel of panels) { panel.classList.remove('active-panel'); }
@@ -241,40 +243,26 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 2. INTERNAL REPORT DATA DICTIONARY
+        // 2. EQUITIES REPORT DB INDEX
         const equityDatabase = {
-            "apple": { name: "Apple Inc.", ticker: "NASDAQ:AAPL", rating: "STRONG BUY", target: "$228.00", zone: "$175 - $190", take: "Excellent ecosystem retention profile strategy rules." },
-            "tesla": { name: "Tesla Inc.", ticker: "NASDAQ:TSLA", rating: "NEUTRAL", target: "$195.00", zone: "$150 - $168", take: "High margin tracking variants. Autopilot updates key catalyst." },
-            "nvidia": { name: "NVIDIA Corp.", ticker: "NASDAQ:NVDA", rating: "STRONG BUY", target: "$1,150.00", zone: "$820 - $890", take: "Computing market dominance vectors scaling up." },
-            "microsoft": { name: "Microsoft Corp.", ticker: "NASDAQ:MSFT", rating: "BUY", target: "$465.00", zone: "$390 - $415", take: "Enterprise segment safety metrics holding baseline profiles." }
+            "apple": { name: "Apple Inc.", ticker: "NASDAQ:AAPL", rating: "STRONG BUY", target: "$228.00", zone: "$175 - $190", take: "Solid services sector traction observed. Capital returns framework protecting downside risks." },
+            "tesla": { name: "Tesla Inc.", ticker: "NASDAQ:TSLA", rating: "NEUTRAL", target: "$195.00", zone: "$150 - $168", take: "High auto margin volatility. Full Self-Driving and AI expansion remains core pricing driver." },
+            "nvidia": { name: "NVIDIA Corp.", ticker: "NASDAQ:NVDA", rating: "STRONG BUY", target: "$1,150.00", zone: "$820 - $890", take: "Complete hardware layer dominance. Next-gen architectural pipeline demand scaling heavily." },
+            "microsoft": { name: "Microsoft Corp.", ticker: "NASDAQ:MSFT", rating: "BUY", target: "$465.00", zone: "$390 - $415", take: "Robust enterprise software monetization. Cloud platform visibility remains clear." }
         };
 
-        // 3. FINANCIAL PANEL EMBED ENGINE (REPLICATING THE SCREENER APPS)
-        let currentTicker = "NASDAQ:AAPL";
-
+        // 3. IFRAME WIDGET RENDERING FLOW
         function renderFinancialWidgets(targetTicker) {
-            // Chart Widget Node
-            new TradingView.widget({
-                "width": "100%", "height": "100%", "symbol": targetTicker,
-                "interval": "D", "timezone": "Etc/UTC", "theme": "dark", "style": "3",
-                "locale": "en", "enable_publishing": false, "hide_top_toolbar": true,
-                "container_id": "tv-mini-chart"
-            });
-
-            // Financial Statements Widget Node
-            document.getElementById('tv-financials-container').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-financials/?symbol=${targetTicker}&style=dark&locale=en" style="width:100%; height:100%; border:none;"></iframe>`;
-            
-            // Peer Valuation Matrix Widget Node
-            document.getElementById('tv-peers-container').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-symbol-profile/?symbol=${targetTicker}&style=dark&locale=en" style="width:100%; height:100%; border:none;"></iframe>`;
-            
-            // Shareholder Profile Info Widget Node
-            document.getElementById('tv-profile-container').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-technical-analysis/?symbol=${targetTicker}&style=dark&locale=en&interval=1D" style="width:100%; height:100%; border:none;"></iframe>`;
+            document.getElementById('sub-chart').innerHTML = `<iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_chart&symbol=${targetTicker}&interval=D&theme=dark" style="width:100%; height:100%; border:none;"></iframe>`;
+            document.getElementById('sub-financials').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-financials/?symbol=${targetTicker}&style=dark&locale=en" style="width:100%; height:100%; border:none;"></iframe>`;
+            document.getElementById('sub-peers').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-symbol-profile/?symbol=${targetTicker}&style=dark&locale=en" style="width:100%; height:100%; border:none;"></iframe>`;
+            document.getElementById('sub-profile').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-technical-analysis/?symbol=${targetTicker}&style=dark&locale=en&interval=1D" style="width:100%; height:100%; border:none;"></iframe>`;
         }
 
-        // Run primary build arrays immediately on target loading execution bounds
-        renderFinancialWidgets(currentTicker);
+        // Initialize with core baseline entity
+        renderFinancialWidgets("NASDAQ:AAPL");
 
-        // 4. SCREENER COMPONENT RUNTIME INTERFACE EXECUTION FILTER
+        // 4. SCREEN SEARCH ENGINE MATCH PIPELINE
         function filterOrLoadCompanyInfo() {
             const query = document.getElementById('terminalCompanySearch').value.toLowerCase().trim();
             if (equityDatabase[query]) {
@@ -295,7 +283,7 @@
             }
         }
 
-        // 5. INTERNAL ROW TAB BAR SWITCH METRICS
+        // 5. INTERNAL SUB-TAB VIEW SHIFTS
         function switchSubPanel(event, subPanelId) {
             const tabs = document.getElementsByClassName('internal-tab');
             for(let tab of tabs) { tab.classList.remove('active-sub-tab'); }
@@ -306,14 +294,15 @@
             document.getElementById(subPanelId).classList.add('active-sub-panel');
         }
 
-        // 6. CUSTOM NODE INJECTION INFRASTRUCTURE
+        // 6. PERSISTENT DISPATCH HUB CONTROLLER WITH LOCALSTORAGE
+        function loadSavedNodes() {
+            const saved = localStorage.getItem('dispatchNodes');
+            if (saved) { document.getElementById('customDispatchTarget').innerHTML = saved; }
+        }
+        window.onload = loadSavedNodes;
+
         function submitCustomNode() {
             const tag = document.getElementById('nodeTag').value;
             const title = document.getElementById('nodeTitle').value;
             const text = document.getElementById('nodeExcerpt').value;
-            if(!title || !text) { alert('Parameters missing.'); return; }
-
-            const container = document.getElementById('customDispatchTarget');
-            const card = document.createElement('div');
-            card.style.cssText = "background:rgba(255,255,255,0.02); border:1px solid var(--border-line); padding:15px; border-radius:6px; margin-top:12px;";
-            const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numer
+            if(!title || !text) { alert('Required fields 
