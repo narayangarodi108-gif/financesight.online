@@ -6,7 +6,7 @@
     
     <title>Financesight | Institutional US Equity Research Terminal</title>
     <meta name="description" content="Financesight.online is an advanced, multi-page US equity research terminal tracking live Wall Street broker targets, automated financial screeners, and real-time market quotes.">
-    <meta name="keywords" content="Financesight, Financesight online, stock screener, US equity terminal, Wall Street targets, live market news, brokerage ratings, Pranav, AI trading assistant">
+    <meta name="keywords" content="Financesight, Financesight online, stock screener, US equity terminal, Wall Street targets, live market news, brokerage ratings, Pranav, AI stock chatbot">
     <meta name="author" content="Pranav">
     <link rel="canonical" href="https://financesight.online" />
 
@@ -57,7 +57,6 @@
         .screener-search:focus { border-color: var(--active-glow); box-shadow: 0 0 20px rgba(168, 85, 247, 0.15); }
         .search-icon { position: absolute; left: 35px; top: 18px; color: var(--text-muted); }
         
-        /* PREMIUM VISUAL HERO BANNER WITH ENTRY ANIMATION */
         .hero-visual-card {
             width: 100%; height: 140px; border-radius: 12px; margin-bottom: 20px;
             background-image: linear-gradient(to bottom, rgba(2, 4, 10, 0.1), rgba(13, 17, 23, 0.95)), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80');
@@ -67,7 +66,6 @@
         }
         .hero-badge-overlay { background: rgba(168, 85, 247, 0.2); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(168, 85, 247, 0.4); padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: #E9D5FF; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* MULTI-PAGE SYSTEM INTERFACE PANEL SLIDES MOTION PHYSICS */
         .app-panel { display: none; max-width: 800px; margin: 0 auto; padding: 15px 20px; }
         .app-panel.active-panel { 
             display: block; 
@@ -100,7 +98,6 @@
             border: 1px solid var(--border-line); background: rgba(255,255,255,0.01); margin-bottom: 20px;
         }
 
-        /* PERSONALIZED AI INTELLIGENCE NODE CONSOLE MODULE */
         .ai-assistant-card {
             background: linear-gradient(135deg, rgba(6, 182, 212, 0.03) 0%, rgba(168, 85, 247, 0.03) 100%);
             border: 1px solid rgba(168, 85, 247, 0.15) !important;
@@ -119,20 +116,55 @@
         .sub-panel-view { display: none; height: 450px; width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-line); }
         .sub-panel-view.active-sub-panel { display: block; }
         
+        /* ==================================================== */
+        /* 🛠️ GLOWING FLOATING NATIVE AI CHATBOT SYSTEM MODULES */
+        /* ==================================================== */
+        .ai-chat-trigger-bubble {
+            position: fixed; bottom: 95px; right: 20px; width: 55px; height: 55px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 24px rgba(168, 85, 247, 0.4); z-index: 3000; cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .ai-chat-trigger-bubble:active { transform: scale(0.9); }
+        .ai-chat-trigger-bubble svg { width: 24px; height: 24px; fill: white; }
+
+        .ai-chatbot-window {
+            position: fixed; bottom: 90px; right: 20px; width: calc(100% - 40px); max-width: 400px;
+            height: 480px; background: #0b0f17; border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.7); z-index: 3100;
+            display: none; flex-direction: column; overflow: hidden;
+            animation: chatBoxPhysics 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes chatBoxPhysics { 0% { opacity: 0; transform: translateY(40px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        
+        .chat-window-header { background: var(--bg-surface); padding: 14px 18px; border-bottom: 1px solid var(--border-line); display: flex; justify-content: space-between; align-items: center; }
+        .chat-window-title { font-size: 0.95rem; font-weight: 700; display: flex; align-items: center; gap: 8px; color: white; }
+        .chat-close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; }
+        
+        .chat-messages-container { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #070a0f; }
+        .chat-bubble { max-width: 82%; padding: 10px 14px; border-radius: 12px; font-size: 0.88rem; line-height: 1.45; word-wrap: break-word; }
+        .chat-bubble.user-bubble { background: var(--bg-input); color: white; align-self: flex-end; border-bottom-right-radius: 2px; border: 1px solid var(--border-line); }
+        .chat-bubble.ai-bubble { background: rgba(6, 182, 212, 0.05); color: #E2E8F0; align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid rgba(6, 182, 212, 0.15); }
+        
+        .chat-input-row { padding: 12px; background: var(--bg-surface); border-top: 1px solid var(--border-line); display: flex; gap: 8px; align-items: center; }
+        .chat-input-field { flex: 1; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; padding: 12px; color: white; font-size: 0.88rem; outline: none; }
+        .chat-input-field:focus { border-color: var(--accent-cyan); }
+        .chat-send-btn { background: var(--accent-cyan); border: none; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; }
+        /* ==================================================== */
+
         .bottom-nav-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 75px; background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--border-line); display: flex; justify-content: space-around; align-items: center; z-index: 2000; box-shadow: 0 -10px 30px rgba(0,0,0,0.5); }
-        .nav-item-button { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; width: 25%; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
-        .nav-item-button svg { margin-bottom: 6px; width: 20px; height: 20px; fill: currentColor; opacity: 0.6; transition: transform 0.2s ease; }
+        .nav-item-button { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; width: 25%; transition: all 0.25s ease; }
+        .nav-item-button svg { margin-bottom: 6px; width: 20px; height: 20px; fill: currentColor; opacity: 0.6; }
         
         .nav-item-button.active-feed { color: var(--accent-purple); filter: drop-shadow(0 0 8px rgba(168,85,247,0.3)); }
         .nav-item-button.active-screens { color: var(--accent-cyan); filter: drop-shadow(0 0 8px rgba(6,182,212,0.3)); }
         .nav-item-button.active-brokerage { color: var(--accent-green); filter: drop-shadow(0 0 8px rgba(16,185,129,0.3)); }
         .nav-item-button.active-account { color: var(--accent-gold); filter: drop-shadow(0 0 8px rgba(245,158,11,0.3)); }
-        .nav-item-button[class*="active-"] svg { opacity: 1; transform: translateY(-3px) scale(1.05); }
+        .nav-item-button[class*="active-"] svg { opacity: 1; transform: translateY(-2px); }
 
-        .terminal-field { width: 100%; padding: 14px; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; color: white; margin-bottom: 12px; outline: none; font-size: 0.9rem; transition: border-color 0.2s; }
-        .terminal-field:focus { border-color: var(--active-glow); }
-        .terminal-btn { background: var(--text-main); color: var(--bg-base); font-weight: 700; text-transform: uppercase; padding: 14px; border: none; border-radius: 8px; width: 100%; cursor: pointer; transition: all 0.2s; }
-        .terminal-btn:active { transform: scale(0.98); }
+        .terminal-field { width: 100%; padding: 14px; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; color: white; margin-bottom: 12px; outline: none; font-size: 0.9rem; }
+        .terminal-btn { background: var(--text-main); color: var(--bg-base); font-weight: 700; text-transform: uppercase; padding: 14px; border: none; border-radius: 8px; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -154,6 +186,27 @@
         <span class="search-icon">🔍</span>
         <input type="text" class="search-input screener-search" id="terminalCompanySearch" placeholder="Type company ticker (e.g., AAPL, TSLA, NVDA, MSFT)..." onkeyup="handleSearchInput(event)">
     </div>
+
+    <div class="ai-chat-trigger-bubble" id="chatBubbleNode" onclick="toggleChatbotConsole(true)">
+        <svg viewBox="0 0 24 24"><path d="M12 2c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l2.79-2.79C9.93 18.78 10.93 19 12 19c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1-8h2v2h-2zm0 4h2v2h-2z"/></svg>
+    </div>
+
+    <div class="ai-chatbot-window" id="aiChatbotConsoleWindow">
+        <div class="chat-window-header">
+            <div class="chat-window-title"><span class="ai-pulse-indicator"></span>SightBot AI Analyst</div>
+            <button class="chat-close-btn" onclick="toggleChatbotConsole(false)">✕</button>
+        </div>
+        <div class="chat-messages-container" id="chatMessageFlowBox">
+            <div class="chat-bubble ai-bubble">Greetings Pranav. I am your specialized neural market copilot. Type an equity ticker name or financial question to execute real-time technical analysis screens.</div>
+        </div>
+        <div class="chat-input-row">
+            <input type="text" class="chat-input-field" id="chatbotUserTextInput" placeholder="Ask about Nvidia, Apple, valuations..." onkeypress="handleChatEnterKey(event)">
+            <button class="chat-send-btn" onclick="executeChatbotLogic()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </div>
+    </div>
+
 
     <div id="feed-panel" class="app-panel active-panel">
         <div class="hero-visual-card"><div class="hero-badge-overlay">Live Institutional Workspace</div></div>
@@ -186,7 +239,7 @@
         </div>
 
         <div class="data-card" style="padding: 0; overflow: hidden;">
-            <div class="card-glow-indicator"></div>
+            <div class="card-glow-indicator" style="background: var(--accent-purple);"></div>
             <div class="card-header-title" style="padding: 20px 22px 0 22px; margin: 0;">Global Economic Macro Calendar</div>
             <div style="height: 340px; width: 100%;">
                 <div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget"></div>
@@ -213,13 +266,12 @@
     </div>
 
     <div id="brokerage-panel" class="app-panel">
-        
         <div class="data-card ai-assistant-card">
             <div class="card-glow-indicator" style="background: var(--accent-cyan);"></div>
             <div class="card-header-title" style="color: var(--accent-cyan);"><span class="ai-pulse-indicator"></span>Financesight AI Terminal Copilot</div>
             <div id="aiReportOutputArea" style="font-size: 0.95rem; line-height: 1.6; font-weight: 500; color: #E2E8F0;">
-                Initializing natural language market models... Type an asset ticker to stream our localized neural quantitative brief.
-</div>
+                Initializing natural language market models... Type an asset ticker inside the search box to stream our localized quantitative brief.
+            </div>
         </div>
 
         <div class="data-card">
@@ -277,8 +329,10 @@
         <button class="nav-item-button" id="btn-screens" onclick="appRoute('screens-panel', 'btn-screens', 'cyan')">
             <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>Screens
         </button>
-        <button class="nav-item-button"
-            id="btn-account" onclick="appRoute('account-panel', 'btn-account', 'gold')">
+        <button class="nav-item-button" id="btn-brokerage" onclick="appRoute('brokerage-panel', 'btn-brokerage', 'green')">
+            <svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>Brokerages
+        </button>
+        <button class="nav-item-button" id="btn-account" onclick="appRoute('account-panel', 'btn-account', 'gold')">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>Account
         </button>
     </div>
@@ -300,7 +354,65 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // LOCALIZED INTELLIGENT EXPERT RULES SYSTEM (YOUR PERSONALIZED AI CO-PILOT AGENT)
+        // ==================================================== 
+        // 🛠️ CHATBOT INTERACTIVE NLP PARSING ENGINE RULES
+        // ====================================================
+        function toggleChatbotConsole(shouldShow) {
+            const win = document.getElementById('aiChatbotConsoleWindow');
+            const bubble = document.getElementById('chatBubbleNode');
+            if(shouldShow) {
+                win.style.display = 'flex'; bubble.style.display = 'none';
+            } else {
+                win.style.display = 'none'; bubble.style.display = 'flex';
+            }
+        }
+
+        function handleChatEnterKey(e) { if(e.key === 'Enter') executeChatbotLogic(); }
+
+        function executeChatbotLogic() {
+            const inputField = document.getElementById('chatbotUserTextInput');
+            const text = inputField.value.trim();
+            if(!text) return;
+
+            // Append User Chat Row
+            const msgBox = document.getElementById('chatMessageFlowBox');
+            const userBubble = document.createElement('div');
+            userBubble.className = "chat-bubble user-bubble";
+            userBubble.innerText = text;
+            msgBox.appendChild(userBubble);
+            inputField.value = ""; // reset
+
+            // Auto Scroll Chat
+            msgBox.scrollTop = msgBox.scrollHeight;
+
+            // Trigger Mock-Delay for Neural Response
+            setTimeout(() => {
+                const aiBubble = document.createElement('div');
+                aiBubble.className = "chat-bubble ai-bubble";
+                
+                // Conversational Parser Mapping
+                const query = text.toLowerCase();
+                let reply = "I am processing your structural query. For explicit asset targets or P&L balance records, use our global search row above to load real-time network charts.";
+                
+                if(query.includes("nvidia") || query.includes("nvda")) {
+                    reply = "<strong>SightBot Alert: NVDA</strong><br>NVIDIA signals strong long-term momentum. Post-split liquidity flows are robust. Enterprise AI spending remains a massive catalyst protecting structural support levels.";
+                } else if(query.includes("apple") || query.includes("aapl")) {
+                    reply = "<strong>SightBot Alert: AAPL</strong><br>Apple metrics show high ecosystem resilience. Profit margins are supported by steady services growth, balancing out short-term hardware cycles.";
+                } else if(query.includes("tesla") || query.includes("tsla")) {
+                    reply = "<strong>SightBot Alert: TSLA</strong><br>Tesla registers high short-term beta volatility. While automotive margins face localized head-winds, valuation models are highly linked to autonomous software and AI data configurations.";
+                } else if(query.includes("pranav")) {
+                    reply = "Pranav is the Chief Software Architect behind the core Financesight terminal ecosystem built right here in 2026.";
+                } else if(query.includes("hello") || query.includes("hi")) {
+                    reply = "Hello. Input any mega-cap stock ticker (e.g., Nvidia, Tesla, Microsoft) to pull a live quantitative research briefing.";
+                }
+                
+                aiBubble.innerHTML = reply;
+                msgBox.appendChild(aiBubble);
+                msgBox.scrollTop = msgBox.scrollHeight;
+            }, 600);
+        }
+        // ====================================================
+
         function triggerAIAnalyticalBrief(tickerKey) {
             const outputBox = document.getElementById('aiReportOutputArea');
             outputBox.innerHTML = "🤖 <em>Financesight AI is processing high-frequency data structures...</em>";
@@ -312,9 +424,9 @@
                 "MSFT": "<strong>AI Research Brief: MSFT</strong><br>Stable risk-adjusted return validation. Enterprise software pricing leverage is successfully absorbing infrastructure costs. Azure cloud scaling parameters show steady institutional recurring revenue configuration pipelines."
             };
 
-       setTimeout(() => {
+            setTimeout(() => {
                 outputBox.innerHTML = aiKnowledgeMatrix[tickerKey.toUpperCase()] || `<strong>AI Research Brief: ${tickerKey.toUpperCase()}</strong><br>Analyzing custom ticker parameters... Financial data streams show stable baseline indicators. Run the live chart indicator panel or check sector capital matrix modules below to confirm specific resistance points.`;
-            }, 800);
+            }, 600);
         }
 
         function renderFinancialWidgets(rawTicker) {
@@ -331,7 +443,6 @@
             document.getElementById('reportCompName').innerText = activeTickerName + " Corporation";
             document.getElementById('reportCompTicker').innerText = activeTickerName;
 
-            // Fire AI Copilot Brain Analysis Node instantly
             triggerAIAnalyticalBrief(activeTickerName);
 
             document.getElementById('liveQuoteWidgetMount').innerHTML = "";
@@ -343,7 +454,7 @@
             document.getElementById('consensusAnalystMount').innerHTML = "";
             const analysisScript = document.createElement('script');
             analysisScript.type = "text/javascript"; analysisScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js"; analysisScript.async = true;
-            analysisScript.innerHTML = JSON.stringify({ "interval": "1M", "width": "100%", "isTransparent": true, "height": "100%", "symbol": symbolString, "showIntervalTabs": true, "displayMode": "single", "locale": "en", "colorTheme": "dark" });
+            analysisScript.innerHTML = JSON.stringify({ "interval": "1M", "width": "100%", "isTransparent": true, "height": "100%", "symbol": symbolString, "showIntervalTabs": true, "displayMode": "regular", "locale": "en", "colorTheme": "dark" });
             document.getElementById('consensusAnalystMount').appendChild(analysisScript);
 
             new TradingView.widget({
@@ -372,16 +483,14 @@
             document.getElementById('profile-mount').appendChild(fundamentalScript);
         }
 
-        // Initialize defaults securely
-        renderFinancialWidgets("NASDAQ:AAPL");
-
         function handleSearchInput(event) {
             const rawValue = document.getElementById('terminalCompanySearch').value;
             if (rawValue.length >= 3) {
                 appRoute('brokerage-panel', 'btn-brokerage', 'green');
                 renderFinancialWidgets(rawValue);
             }
-        } 
+        }
+
         function switchSubPanel(e, id) {
             for(let t of document.getElementsByClassName('internal-tab')) t.classList.remove('active-sub-tab');
             for(let p of document.getElementsByClassName('sub-panel-view')) p.classList.remove('active-sub-panel');
