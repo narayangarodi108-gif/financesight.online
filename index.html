@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Financesight | Professional US Equity Intelligence Terminal</title>
-    <meta name="description" content="Financesight.online is an independent, high-performance equity research terminal and stock screening engine tracking US Fortune 500 companies, live consensus brokerage targets, and Wall Street news wires.">
-    <meta name="keywords" content="Financesight, Financesight online, stock screener, US equity research terminal, Fortune 500 screening, S&P 500 tracker, live Wall Street news, brokerage ratings, day trading tools, Pranav">
+    <meta name="description" content="Financesight.online is an advanced, independent US equity research terminal and stock screening engine tracking Fortune 500 tech metrics, live brokerage ratings, and Wall Street news wires.">
+    <meta name="keywords" content="Financesight, Financesight online, stock screener, US equity terminal, Fortune 500 screening, S&P 500 analytics, live Wall Street news, brokerage ratings, day trading tools, Pranav">
     <meta name="author" content="Pranav">
     <link rel="canonical" href="https://financesight.online" />
 
@@ -14,70 +14,30 @@
     <meta property="og:description" content="Run live technical indicator scans and verify institutional consensus brokerage ratings across all US Mega-Caps instantly.">
     <meta property="og:url" content="https://financesight.online">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-base: #060913;
-            --bg-surface: #111827;
-            --bg-input: #1f2937;
-            --accent-green: #10B981;
-            --accent-red: #EF4444;
-            --accent-blue: #3B82F6;
-            --text-main: #F9FAFB;
-            --text-muted: #9CA3AF;
-            --border-line: rgba(255, 255, 255, 0.05);
+            --bg-base: #060913; --bg-surface: #111827; --bg-input: #1f2937;
+            --accent-green: #10B981; --accent-red: #EF4444; --accent-blue: #3B82F6;
+            --text-main: #F9FAFB; --text-muted: #9CA3AF; --border-line: rgba(255, 255, 255, 0.05);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-base);
-            color: var(--text-main);
-            line-height: 1.5;
-            padding-bottom: 90px;
-        }
-
-        .ticker-wrap {
-            width: 100%; background: #030712; border-bottom: 1px solid var(--border-line);
-            position: sticky; top: 0; z-index: 1000;
-        }
-
-        header {
-            max-width: 800px; margin: 0 auto; padding: 25px 20px 10px 20px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.5; padding-bottom: 90px; }
+        .ticker-wrap { width: 100%; background: #030712; border-bottom: 1px solid var(--border-line); position: sticky; top: 0; z-index: 1000; }
+        header { max-width: 800px; margin: 0 auto; padding: 25px 20px 10px 20px; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo { font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; }
         .brand-logo span { color: var(--accent-green); }
-
         .search-box-container { max-width: 800px; margin: 15px auto; padding: 0 20px; position: relative; }
-        .screener-search {
-            width: 100%; padding: 16px 20px 16px 50px; background: var(--bg-surface);
-            border: 1px solid var(--border-line); border-radius: 8px; color: white; font-size: 1rem; outline: none;
-            transition: border-color 0.2s;
-        }
-        .screener-search:focus { border-color: var(--accent-blue); }
+        .screener-search { width: 100%; padding: 16px 20px 16px 50px; background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 8px; color: white; font-size: 1rem; outline: none; }
         .search-icon { position: absolute; left: 35px; top: 18px; color: var(--text-muted); }
-
-        /* MULTI-PAGE CONTAINER DISPLAYS */
-        .app-panel { display: none; max-width: 800px; margin: 0 auto; padding: 15px 20px; animation: appViewShift 0.2s ease-out; }
+        .app-panel { display: none; max-width: 800px; margin: 0 auto; padding: 15px 20px; }
         .app-panel.active-panel { display: block; }
-        @keyframes appViewShift { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
         .data-card { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
         .card-header-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 15px; font-weight: 700; }
-
-        /* BROKERAGE DATA SUMMARY LAYOUT */
         .brokerage-header-block { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--border-line); margin-bottom: 15px; }
         .stock-ticker-badge { background: var(--bg-input); padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; color: var(--accent-green); }
         .metrics-summary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
@@ -86,36 +46,15 @@
         .metric-data-node p { font-size: 1.2rem; font-weight: 700; }
         .rating-buy { color: var(--accent-green); }
         .rating-hold { color: #F59E0B; }
-        .rating-sell { color: var(--accent-red); }
-
-        /* SUB-TAB SELECTORS INSIDE TERMINAL VIEW */
-        .internal-tab-bar {
-            display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px;
-            margin-bottom: 15px; border-bottom: 1px solid var(--border-line);
-        }
-        .internal-tab {
-            background: none; border: none; color: var(--text-muted); font-size: 0.82rem;
-            font-weight: 600; padding: 6px 14px; border-radius: 20px; cursor: pointer; white-space: nowrap;
-        }
-        .internal-tab.active-sub-tab {
-            background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);
-        }
-
+        .internal-tab-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px; border-bottom: 1px solid var(--border-line); }
+        .internal-tab { background: none; border: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; cursor: pointer; }
+        .internal-tab.active-sub-tab { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
         .sub-panel-view { display: none; height: 420px; width: 100%; border-radius: 6px; overflow: hidden; }
         .sub-panel-view.active-sub-panel { display: block; }
-
-        /* FIXED APP BOTTOM NAVIGATION FOOTER ELEMENT */
-        .bottom-nav-bar {
-            position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #0B0F19;
-            border-top: 1px solid var(--border-line); display: flex; justify-content: space-around; align-items: center; z-index: 2000;
-        }
-        .nav-item-button {
-            background: none; border: none; color: var(--text-muted); display: flex;
-            flex-direction: column; align-items: center; font-size: 0.72rem; font-weight: 600; cursor: pointer; width: 25%;
-        }
+        .bottom-nav-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #0B0F19; border-top: 1px solid var(--border-line); display: flex; justify-content: space-around; align-items: center; z-index: 2000; }
+        .nav-item-button { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.72rem; font-weight: 600; cursor: pointer; width: 25%; }
         .nav-item-button.active-nav-item { color: var(--accent-blue); }
         .nav-item-button svg { margin-bottom: 4px; width: 22px; height: 22px; fill: currentColor; }
-
         .terminal-field { width: 100%; padding: 12px; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 6px; color: white; margin-bottom: 12px; outline: none; }
         .terminal-btn { background: var(--accent-blue); color: white; font-weight: 700; padding: 12px; border: none; border-radius: 6px; width: 100%; cursor: pointer; }
     </style>
@@ -125,7 +64,7 @@
     <div class="ticker-wrap">
         <div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-            { "symbols": [ { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" }, { "proName": "FOREXCOM:NSXUSD", "title": "NASDAQ 100" } ], "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "en" }
+            { "symbols": [ { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" }, { "proName": "FOREXCOM:NSXUSD", "title": "NASDAQ 100" } ], "colorTheme": "dark", "isTransparent": true, "locale": "en" }
             </script>
         </div>
     </div>
@@ -180,7 +119,7 @@
                 <div class="metric-data-node"><label>Brokerage Rating</label><p class="rating-buy" id="reportRating">STRONG BUY</p></div>
                 <div class="metric-data-node"><label>Average Target Price</label><p id="reportTarget">$215.50</p></div>
                 <div class="metric-data-node"><label>Accumulation Zone</label><p style="color: #3B82F6;" id="reportZone">$170 - $185</p></div>
-                <div class="metric-data-node"><label>Valuation Take</label><p style="font-size: 0.85rem; font-weight: 500; color: var(--text-muted);" id="reportTake">Strong system operational metrics observed on target asset.</p></div>
+                <div class="metric-data-node"><label>Valuation Take</label><p style="font-size: 0.85rem; font-weight: 500; color: var(--text-muted);" id="reportTake">Solid enterprise segment protection baselines validated.</p></div>
             </div>
 
             <div class="internal-tab-bar">
@@ -209,8 +148,8 @@
     <div id="account-panel" class="app-panel">
         <div class="data-card">
             <h1 style="font-size: 1.5rem; margin-bottom: 10px;">System Architecture</h1>
-            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Financesight is an advanced, mobile-first quantitative analytics terminal engine tracking macroeconomic parameters and US equity cross-border data configurations.</p>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">Founded, built, and optimized in 2026 by <strong>Pranav</strong>.</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Financesight is an advanced quantitative analytics terminal platform engine tracking corporate configurations and macroeconomic asset indicators.</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Founded and built in 2026 by <strong>Pranav</strong>.</p>
             <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-line); font-size: 0.8rem; color: var(--accent-blue);">Operational Contact Desk: desk@financesight.online</div>
         </div>
     </div>
@@ -230,91 +169,64 @@
         </button>
     </div>
 
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <script>
-        // 1. DYNAMIC NAVIGATION PANEL ROUTER
-        function appRoute(panelId, buttonId) {
-            const panels = document.getElementsByClassName('app-panel');
-            for (let panel of panels) { panel.classList.remove('active-panel'); }
-            const navButtons = document.getElementsByClassName('nav-item-button');
-            for (let btn of navButtons) { btn.classList.remove('active-nav-item'); }
-
-            document.getElementById(panelId).classList.add('active-panel');
-            document.getElementById(buttonId).classList.add('active-nav-item');
+        function appRoute(pId, bId) {
+            for (let p of document.getElementsByClassName('app-panel')) p.classList.remove('active-panel');
+            for (let b of document.getElementsByClassName('nav-item-button')) b.classList.remove('active-nav-item');
+            document.getElementById(pId).classList.add('active-panel');
+            document.getElementById(bId).classList.add('active-nav-item');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 2. EQUITIES REPORT DB INDEX
         const equityDatabase = {
-            "apple": { name: "Apple Inc.", ticker: "NASDAQ:AAPL", rating: "STRONG BUY", target: "$228.00", zone: "$175 - $190", take: "Solid services sector traction observed. Capital returns framework protecting downside risks." },
-            "tesla": { name: "Tesla Inc.", ticker: "NASDAQ:TSLA", rating: "NEUTRAL", target: "$195.00", zone: "$150 - $168", take: "High auto margin volatility. Full Self-Driving and AI expansion remains core pricing driver." },
-            "nvidia": { name: "NVIDIA Corp.", ticker: "NASDAQ:NVDA", rating: "STRONG BUY", target: "$1,150.00", zone: "$820 - $890", take: "Complete hardware layer dominance. Next-gen architectural pipeline demand scaling heavily." },
-            "microsoft": { name: "Microsoft Corp.", ticker: "NASDAQ:MSFT", rating: "BUY", target: "$465.00", zone: "$390 - $415", take: "Robust enterprise software monetization. Cloud platform visibility remains clear." }
+            "apple": { name: "Apple Inc.", ticker: "NASDAQ:AAPL", rating: "STRONG BUY", target: "$228.00", zone: "$175 - $190", take: "Excellent ecosystem metrics stability." },
+            "tesla": { name: "Tesla Inc.", ticker: "NASDAQ:TSLA", rating: "NEUTRAL", target: "$195.00", zone: "$150 - $168", take: "High auto matrix volatility margins." },
+            "nvidia": { name: "NVIDIA Corp.", ticker: "NASDAQ:NVDA", rating: "STRONG BUY", target: "$1,150.00", zone: "$820 - $890", take: "Hardware layout demand remains vertically supreme." },
+            "microsoft": { name: "Microsoft Corp.", ticker: "NASDAQ:MSFT", rating: "BUY", target: "$465.00", zone: "$390 - $415", take: "Clear visibility on enterprise cloud margins." }
         };
 
-        // 3. IFRAME WIDGET RENDERING FLOW
-        function renderFinancialWidgets(targetTicker) {
-            document.getElementById('sub-chart').innerHTML = `<iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_chart&symbol=${targetTicker}&interval=D&theme=dark" style="width:100%; height:100%; border:none;"></iframe>`;
-            document.getElementById('sub-financials').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-financials/?symbol=${targetTicker}&style=dark&locale=en" style="width:100%; height:100%; border:none;"></iframe>`;
-            document.getElementById('sub-peers').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-symbol-profile/?symbol=${targetTicker}&style=dark&locale=en" style="width:100%; height:100%; border:none;"></iframe>`;
-            document.getElementById('sub-profile').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-technical-analysis/?symbol=${targetTicker}&style=dark&locale=en&interval=1D" style="width:100%; height:100%; border:none;"></iframe>`;
+        function renderFinancialWidgets(ticker) {
+            document.getElementById('sub-chart').innerHTML = `<iframe src="https://s.tradingview.com/widgetembed/?symbol=${ticker}&interval=D&theme=dark" style="width:100%; height:100%; border:none;"></iframe>`;
+            document.getElementById('sub-financials').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-financials/?symbol=${ticker}&style=dark&locale=en" style="width:100%; height:100%; border:none;"></iframe>`;
+            document.getElementById('sub-peers').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-symbol-profile/?symbol=${ticker}&style=dark&locale=en" style="width:100%; height:100%; border:none;"></iframe>`;
+            document.getElementById('sub-profile').innerHTML = `<iframe src="https://s.tradingview.com/embed-widget-technical-analysis/?symbol=${ticker}&style=dark&locale=en&interval=1D" style="width:100%; height:100%; border:none;"></iframe>`;
         }
-
-        // Initialize with core baseline entity
         renderFinancialWidgets("NASDAQ:AAPL");
 
-        // 4. SCREEN SEARCH ENGINE MATCH PIPELINE
         function filterOrLoadCompanyInfo() {
-            const query = document.getElementById('terminalCompanySearch').value.toLowerCase().trim();
-            if (equityDatabase[query]) {
-                const stock = equityDatabase[query];
-                appRoute('brokerage-panel', 'btn-brokerage');
-                
-                document.getElementById('reportCompName').innerText = stock.name;
-                document.getElementById('reportCompTicker').innerText = stock.ticker.split(':')[1];
-                document.getElementById('reportRating').innerText = stock.rating;
-                document.getElementById('reportTarget').innerText = stock.target;
-                document.getElementById('reportZone').innerText = stock.zone;
-                document.getElementById('reportTake').innerText = stock.take;
-
-                const rateNode = document.getElementById('reportRating');
-                rateNode.className = stock.rating.includes("BUY") ? "rating-buy" : (stock.rating.includes("SELL") ? "rating-sell" : "rating-hold");
-
-                renderFinancialWidgets(stock.ticker);
+            const q = document.getElementById('terminalCompanySearch').value.toLowerCase().trim();
+            if (equityDatabase[q]) {
+                const s = equityDatabase[q]; appRoute('brokerage-panel', 'btn-brokerage');
+                document.getElementById('reportCompName').innerText = s.name;
+                document.getElementById('reportCompTicker').innerText = s.ticker.split(':')[1];
+                document.getElementById('reportRating').innerText = s.rating;
+                document.getElementById('reportTarget').innerText = s.target;
+                document.getElementById('reportZone').innerText = s.zone;
+                document.getElementById('reportTake').innerText = s.take;
+                document.getElementById('reportRating').className = s.rating.includes("BUY") ? "rating-buy" : "rating-hold";
+                renderFinancialWidgets(s.ticker);
             }
         }
 
-        // 5. INTERNAL SUB-TAB VIEW SHIFTS
-        function switchSubPanel(event, subPanelId) {
-            const tabs = document.getElementsByClassName('internal-tab');
-            for(let tab of tabs) { tab.classList.remove('active-sub-tab'); }
-            const subPanels = document.getElementsByClassName('sub-panel-view');
-            for(let p of subPanels) { p.classList.remove('active-sub-panel'); }
-
-            event.currentTarget.classList.add('active-sub-tab');
-            document.getElementById(subPanelId).classList.add('active-sub-panel');
+        function switchSubPanel(e, id) {
+            for(let t of document.getElementsByClassName('internal-tab')) t.classList.remove('active-sub-tab');
+            for(let p of document.getElementsByClassName('sub-panel-view')) p.classList.remove('active-sub-panel');
+            e.currentTarget.classList.add('active-sub-tab'); document.getElementById(id).classList.add('active-sub-panel');
         }
 
-        // 6. PERSISTENT DISPATCH HUB CONTROLLER WITH LOCALSTORAGE
-        function loadSavedNodes() {
+        window.onload = function() {
             const saved = localStorage.getItem('dispatchNodes');
-            if (saved) { document.getElementById('customDispatchTarget').innerHTML = saved; }
+            if (saved) document.getElementById('customDispatchTarget').innerHTML = saved;
         }
-        window.onload = loadSavedNodes;
 
         function submitCustomNode() {
-            const tag = document.getElementById('nodeTag').value;
-            const title = document.getElementById('nodeTitle').value;
-            const text = document.getElementById('nodeExcerpt').value;
-            if(!title || !text) { alert('Required fields 
-                                        const container = document.getElementById('customDispatchTarget');
-            const card = document.createElement('div');
+            const tg = document.getElementById('nodeTag').value, tl = document.getElementById('nodeTitle').value, tx = document.getElementById('nodeExcerpt').value;
+            if(!tl || !tx) return alert('Headline required.');
+            const container = document.getElementById('customDispatchTarget'), card = document.createElement('div');
             card.style.cssText = "background:rgba(255,255,255,0.02); border:1px solid var(--border-line); padding:15px; border-radius:6px; margin-top:12px;";
-            const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }).toUpperCase();
-
-            card.innerHTML = `<span style="font-size:0.65rem; color:#3B82F6; font-weight:700; display:block; margin-bottom:4px;">${tag || 'SYSTEM NOTE'}</span><h4 style="font-size:1rem; color:#FFF; margin-bottom:4px;">${title}</h4><p style="color:#94A3B8; font-size:0.85rem; margin-bottom:6px;">${text}</p><div style="font-size:0.65rem; color:rgba(255,255,255,0.25); font-weight:600;">PRANAV • REQ • ${date}</div>`;
-            container.insertBefore(card, container.firstChild);
-            
-            localStorage.setItem('dispatchNodes', container.innerHTML);
+            card.innerHTML = `<span style="font-size:0.65rem; color:#3B82F6; font-weight:700; display:block; margin-bottom:4px;">${tg || 'NOTE'}</span><h4 style="font-size:1rem; color:#FFF; margin-bottom:4px;">${tl}</h4><p style="color:#94A3B8; font-size:0.85rem; margin-bottom:6px;">${tx}</p><div style="font-size:0.65rem; color:rgba(255,255,255,0.25); font-weight:600;">PRANAV • REQ</div>`;
+            container.insertBefore(card, container.firstChild); localStorage.setItem('dispatchNodes', container.innerHTML);
             document.getElementById('nodeTag').value = ''; document.getElementById('nodeTitle').value = ''; document.getElementById('nodeExcerpt').value = '';
         }
     </script>
