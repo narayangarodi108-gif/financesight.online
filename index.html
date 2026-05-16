@@ -15,7 +15,6 @@
             --bg-surface: rgba(17, 24, 39, 0.55);
             --bg-card-hover: rgba(31, 41, 55, 0.45);
             --emerald-glow: #10B981;
-            --crimson-glow: #EF4444;
             --text-main: #F9FAFB;
             --text-muted: #9CA3AF;
             --border-line: rgba(255, 255, 255, 0.04);
@@ -31,7 +30,6 @@
 
         body {
             background-color: var(--bg-base);
-            /* Subtle layout grid matrix */
             background-image: 
                 radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 0),
                 linear-gradient(var(--border-line) 1px, transparent 1px);
@@ -41,7 +39,7 @@
             padding-bottom: 100px;
         }
 
-        /* 1. TOP LIVE TICKER RIBBON CONTROL */
+        /* TOP LIVE TICKER RIBBON CONTROL */
         .ticker-wrap {
             width: 100%;
             background: rgba(3, 7, 18, 0.85);
@@ -53,7 +51,7 @@
             z-index: 1000;
         }
 
-        /* Brand Typography & Header Section */
+        /* Header Section */
         header {
             max-width: 1200px;
             margin: 0 auto;
@@ -69,7 +67,6 @@
             background: linear-gradient(180deg, #FFFFFF 20%, #9CA3AF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 10px rgba(255,255,255,0.03));
         }
 
         header p {
@@ -81,7 +78,7 @@
             font-weight: 600;
         }
 
-        /* Premium Minimalist Tabs Bar */
+        /* Navigation Menu Tabs */
         .nav-container {
             display: flex;
             justify-content: center;
@@ -102,7 +99,6 @@
             border-radius: 6px;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid transparent;
-            background: rgba(255, 255, 255, 0.01);
         }
 
         .nav-tab:hover { 
@@ -115,14 +111,13 @@
             color: var(--emerald-glow);
             border-color: rgba(16, 185, 129, 0.25);
             background: rgba(16, 185, 129, 0.04);
-            box-shadow: inset 0 0 12px rgba(16, 185, 129, 0.05);
         }
 
         .tab-panel { display: none; animation: panelFade 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
         .tab-panel.active-panel { display: block; }
         @keyframes panelFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 2. LIVE DASHBOARD SYSTEM WIDGETS */
+        /* MULTI-DASHBOARD GRID SYSTEM */
         .indices-container {
             max-width: 1200px;
             margin: 40px auto 15px auto;
@@ -138,81 +133,58 @@
             font-weight: 700;
         }
 
-        .indices-grid {
+        .market-dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1.2fr 1fr;
             gap: 20px;
+            margin-bottom: 30px;
         }
 
-        @media (max-width: 900px) {
-            .indices-grid { grid-template-columns: 1fr; }
+        @media (max-width: 950px) {
+            .market-dashboard-grid { grid-template-columns: 1fr; }
         }
 
-        .index-widget-card {
+        .large-widget-card {
             background: var(--bg-surface);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-line);
             border-radius: 8px;
-            height: 185px;
+            height: 440px;
             overflow: hidden;
-            transition: border-color 0.3s ease;
-        }
-        
-        .index-widget-card:hover {
-            border-color: var(--border-highlight);
         }
 
         /* Search Infrastructure */
-        .search-wrapper { max-width: 650px; margin: 40px auto; padding: 0 20px; }
+        .search-wrapper { max-width: 650px; margin: 20px auto 40px auto; padding: 0 20px; }
         .search-input {
             width: 100%; padding: 16px 24px; background: var(--bg-surface);
             border: 1px solid var(--border-line); border-radius: 8px; color: white;
             font-size: 0.95rem; outline: none; transition: all 0.3s ease;
         }
-        .search-input:focus { 
-            border-color: rgba(16, 185, 129, 0.3); 
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.05);
-        }
+        .search-input:focus { border-color: rgba(16, 185, 129, 0.3); }
 
-        /* Content Interface Workspace Splitting Layout Grid */
+        /* Workspace Grid Splitter */
         .workspace-grid {
             max-width: 1200px; margin: 0 auto; padding: 0 20px;
             display: grid; grid-template-columns: 2.3fr 1fr; gap: 35px;
         }
         @media (max-width: 950px) { .workspace-grid { grid-template-columns: 1fr; } }
 
-        /* Premium Article Cards */
         .intel-card {
-            background: var(--bg-surface); 
-            border: 1px solid var(--border-line);
-            border-radius: 8px; 
-            padding: 35px; 
-            margin-bottom: 25px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .intel-card:hover {
-            background: var(--bg-card-hover);
-            border-color: var(--border-highlight);
-            transform: translateY(-1px);
+            background: var(--bg-surface); border: 1px solid var(--border-line);
+            border-radius: 8px; padding: 35px; margin-bottom: 25px;
         }
         .intel-tag { font-size: 0.7rem; text-transform: uppercase; color: var(--emerald-glow); font-weight: 700; letter-spacing: 2px; margin-bottom: 14px; display: inline-block; }
-        .intel-title { font-size: 1.6rem; font-weight: 600; margin-bottom: 14px; letter-spacing: -0.3px; }
-        .intel-excerpt { color: var(--text-muted); font-size: 0.98rem; margin-bottom: 20px; font-weight: 400; }
-        .intel-meta { font-size: 0.75rem; color: rgba(255, 255, 255, 0.25); font-weight: 500; }
+        .intel-title { font-size: 1.6rem; font-weight: 600; margin-bottom: 14px; }
+        .intel-excerpt { color: var(--text-muted); font-size: 0.98rem; margin-bottom: 20px; }
+        .intel-meta { font-size: 0.75rem; color: rgba(255, 255, 255, 0.25); }
 
-        /* Dynamic Control Sidebar Form */
         .control-sidebar { background: rgba(17, 24, 39, 0.25); border: 1px solid var(--border-line); padding: 30px; border-radius: 8px; height: fit-content; }
         .sidebar-heading { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; padding-bottom: 12px; border-bottom: 1px solid var(--border-line); font-weight: 700; }
-        .terminal-field { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.5); border: 1px solid var(--border-line); border-radius: 6px; color: white; margin-bottom: 16px; font-size: 0.85rem; outline: none; transition: border-color 0.3s; }
-        .terminal-field:focus { border-color: var(--border-highlight); }
-        .terminal-btn { background: var(--text-main); color: var(--bg-base); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; padding: 15px; border: none; border-radius: 6px; width: 100%; cursor: pointer; transition: all 0.2s ease; }
-        .terminal-btn:hover { background: #FFFFFF; transform: translateY(-1px); }
+        .terminal-field { width: 100%; padding: 14px; background: rgba(3, 7, 18, 0.5); border: 1px solid var(--border-line); border-radius: 6px; color: white; margin-bottom: 16px; font-size: 0.85rem; outline: none; }
+        .terminal-btn { background: var(--text-main); color: var(--bg-base); font-weight: 700; text-transform: uppercase; padding: 15px; border: none; border-radius: 6px; width: 100%; cursor: pointer; }
 
-        /* Static Page Components Wrapper info pages */
         .corporate-block { max-width: 800px; margin: 60px auto; background: var(--bg-surface); border: 1px solid var(--border-line); padding: 50px; border-radius: 8px; }
-        .corporate-block h2 { font-family: 'Cinzel', serif; font-size: 2.2rem; margin-bottom: 20px; font-weight: 700; }
-        .corporate-block p { color: var(--text-muted); font-size: 1.05rem; }
+        .corporate-block h2 { font-family: 'Cinzel', serif; font-size: 2.2rem; margin-bottom: 20px; }
+        .corporate-block p { color: var(--text-muted); }
     </style>
 </head>
 <body>
@@ -220,24 +192,22 @@
     <div class="ticker-wrap">
         <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
             {
             "symbols": [
-                { "proName": "NSE:NIFTY", "title": "NIFTY 50" },
-                { "proName": "NSE:BANKNIFTY", "title": "NIFTY BANK" },
-                { "proName": "NSE:CNXIT", "title": "NIFTY IT" },
-                { "proName": "NSE:RELIANCE", "title": "RELIANCE" },
-                { "proName": "BSE:SENSEX", "title": "SENSEX" }
+                { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500 Index" },
+                { "proName": "FOREXCOM:NSXUSD", "title": "NASDAQ 100" },
+                { "proName": "FX_IDC:INRUSD", "title": "INR / USD Rate" },
+                { "proName": "INDEX:DXY", "title": "US Dollar Index" }
             ],
-            "showSymbolLogo": true,
             "colorTheme": "dark",
             "isTransparent": true,
-            "displayMode": "adaptive",
+            "showSymbolLogo": true,
             "locale": "en"
             }
             </script>
         </div>
-        </div>
+    </div>
 
     <header>
         <div class="logo">FINANCESIGHT</div>
@@ -253,51 +223,58 @@
     <div id="home-panel" class="tab-panel active-panel">
         
         <div class="indices-container">
-            <div class="indices-title">Live NSE Indices Market Watch</div>
-            <div class="indices-grid">
+            <div class="market-dashboard-grid">
                 
-                <div class="index-widget-card">
-                    <div class="tradingview-widget-container">
-                        <div class="tradingview-widget-container__widget"></div>
-                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                        {
-                        "symbol": "NSE:NIFTY",
-                        "width": "100%", "height": "100%",
-                        "locale": "en", "dateRange": "1D",
-                        "colorTheme": "dark", "isTransparent": true,
-                        "autosize": true, "largeChartUrl": ""
-                        }
-                        </script>
+                <div>
+                    <div class="indices-title">Live Indian Market Matrix</div>
+                    <div class="large-widget-card" style="height:400px;">
+                        <div class="tradingview-widget-container" style="height:100%;width:100%">
+                            <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js" async>
+                            {
+                            "colorTheme": "dark",
+                            "dateRange": "1D",
+                            "exchange": "NSE",
+                            "showSymbolLogo": true,
+                            "isTransparent": true,
+                            "width": "100%",
+                            "height": "100%",
+                            "locale": "en"
+                            }
+                            </script>
+                        </div>
                     </div>
                 </div>
 
-                <div class="index-widget-card">
-                    <div class="tradingview-widget-container">
-                        <div class="tradingview-widget-container__widget"></div>
-                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                        {
-                        "symbol": "NSE:BANKNIFTY",
-                        "width": "100%", "height": "100%",
-                        "locale": "en", "dateRange": "1D",
-                        "colorTheme": "dark", "isTransparent": true,
-                        "autosize": true, "largeChartUrl": ""
-                        }
-                        </script>
-                    </div>
-                </div>
-
-                <div class="index-widget-card">
-                    <div class="tradingview-widget-container">
-                        <div class="tradingview-widget-container__widget"></div>
-                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                        {
-                        "symbol": "NSE:CNXIT",
-                        "width": "100%", "height": "100%",
-                        "locale": "en", "dateRange": "1D",
-                        "colorTheme": "dark", "isTransparent": true,
-                        "autosize": true, "largeChartUrl": ""
-                        }
-                        </script>
+                <div>
+                    <div class="indices-title">Global Macro Indices Desk</div>
+                    <div class="large-widget-card" style="height:400px;">
+                        <div class="tradingview-widget-container" style="height:100%;width:100%">
+                            <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                            {
+                            "colorTheme": "dark",
+                            "dateRange": "1D",
+                            "showSymbolLogo": true,
+                            "isTransparent": true,
+                            "width": "100%",
+                            "height": "100%",
+                            "locale": "en",
+                            "tabs": [
+                                {
+                                "title": "Global Indices",
+                                "symbols": [
+                                    { "s": "FOREXCOM:SPXUSD", "title": "S&P 500 (US)" },
+                                    { "s": "FOREXCOM:NSXUSD", "title": "NASDAQ 100" },
+                                    { "s": "INDEX:DEU40", "title": "DAX 40 (Germany)" },
+                                    { "s": "INDEX:UK100", "title": "FTSE 100 (UK)" },
+                                    { "s": "INDEX:NKY", "title": "NIKKEI 225 (Japan)" }
+                                ]
+                                }
+                            ]
+                            }
+                            </script>
+                        </div>
                     </div>
                 </div>
 
@@ -305,7 +282,7 @@
         </div>
 
         <div class="search-wrapper">
-            <input type="text" class="search-input" id="searchTerminal" placeholder="Filter dynamic intelligence stream by keyword or tag..." onkeyup="runStreamFilter()">
+            <input type="text" class="search-input" id="searchTerminal" placeholder="Filter intelligence stream by keyword or tag..." onkeyup="runStreamFilter()">
         </div>
 
         <div class="workspace-grid">
@@ -346,7 +323,6 @@
     </div>
 
     <script>
-        // High-Performance Layout Tab Switch Controller Routing Routine
         function executeTabShift(event, chosenPanelId) {
             event.preventDefault();
             const activeLinks = document.getElementsByClassName('nav-tab');
@@ -357,7 +333,6 @@
             document.getElementById(chosenPanelId).classList.add('active-panel');
         }
 
-        // Live Publishing Terminal Form Data Injector Pipeline Engine
         function executePublish() {
             const tagInput = document.getElementById('inputTag').value;
             const titleInput = document.getElementById('inputTitle').value;
@@ -385,7 +360,6 @@
             document.getElementById('inputExcerpt').value = '';
         }
 
-        // Live Keyword Evaluator Stream Card Filters Function Matcher
         function runStreamFilter() {
             const queryValue = document.getElementById('searchTerminal').value.toLowerCase();
             const cardsArray = document.getElementsByClassName('intel-card');
