@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financesight | Financial Insights & Market Analysis</title>
+    <style>
+        /* --- DESIGN VARIABLES & CORE STYLING --- */
+        :root {
+            --bg-main: #0b0f19;         /* Premium deep navy/slate background */
+            --bg-card: #141b2d;         /* Elevated surface color for article cards */
+            --border-line: #222f47;     /* Clean divider line borders */
+            --text-primary: #f8fafc;    /* Crisp off-white reading text */
+            --text-secondary: #94a3b8;  /* Muted grey for descriptions and metadata */
+            --accent-green: #10b981;    /* Emerald green symbolizing market growth */
+            --accent-hover: #059669;    /* Darker emerald for interactive hover states */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-line);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            letter-spacing: -0.5px;
+        }
+
+        /* --- HERO BANNER & SEARCH --- */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 14px 20px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-line);
+            border-radius: 30px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar:focus {
+            border-color: var(--accent-green);
+        }
+
+        /* --- ARTICLE GRID CONTENT --- */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .grid-header {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grid-header::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background-color: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .article-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-line);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-green);
+        }
+
+        .tag {
+            color: var(--accent-green);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .excerpt {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .meta-info {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-line);
+            padding-top: 15px;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-line);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        /* --- MOBILE LAYOUT OPTIMIZATIONS --- */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            header { justify-content: center; }
+            .articles-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo">Financesight</div>
+    </header>
+
+    <!-- Main Hero Banner with Dynamic Filter Input -->
+    <section class="hero">
+        <h1>Financesight</h1>
+        <p>Strategic macro insights, equity trends, and geopolitical perspectives shaping global markets.</p>
+        
+        <div class="search-container">
+            <input type="text" id="articleSearch" class="search-bar" placeholder="Search insights and articles...">
+        </div>
+    </section>
+
+    <!-- Main Content Stream Area -->
+    <main class="content-wrapper">
+        <h2 class="grid-header">Latest Insights</h2>
+        
+        <div class="articles-grid" id="articlesGrid">
+            
+            <!-- Article Card 1 -->
+            <article class="article-card" data-tags="macro strategy economics energy">
+                <div>
+                    <div class="tag">Macro Strategy</div>
+                    <h3 class="article-title">Analyzing Global Supply Chains & Energy Volatility</h3>
+                    <p class="excerpt">A comprehensive look at changing global corridors, their structural impact on resource transit, and downstream equity evaluations.</p>
+                </div>
+                <div class="meta-info">May 16, 2026 • 6 min read</div>
+            </article>
+
+            <!-- Article Card 2 -->
+            <article class="article-card" data-tags="equities stocks long-term wealth compounding">
+                <div>
+                    <div class="tag">Equities</div>
+                    <h3 class="article-title">The Foundations of Compound Corporate Wealth</h3>
+                    <p class="excerpt">Deconstructing business fundamental health, free cash flow conversion rates, and the mechanics of competitive economic moats.</p>
+                </div>
+                <div class="meta-info">May 12, 2026 • 5 min read</div>
+            </article>
+
+            <!-- Article Card 3 -->
+            <article class="article-card" data-tags="infrastructure technology data centers nvidia capital">
+                <div>
+                    <div class="tag">Tech Infrastructure</div>
+                    <h3 class="article-title">The Data Infrastructure Capital Supercycle</h3>
+                    <p class="excerpt">Evaluating structural growth vectors within compute capacity real estate, grid energy constraints, and specialized hardware demands.</p>
+                </div>
+                <div class="meta-info">May 08, 2026 • 8 min read</div>
+            </article>
+
+            <!-- Empty State Container -->
+            <div class="no-results" id="noResultsMessage">No insights match your query.</div>
+
+        </div>
+    </main>
+
+    <!-- Footer Area -->
+    <footer>
+        <p>&copy; 2026 Financesight. Analytical rights reserved.</p>
+    </footer>
+
+    <!-- --- JAVASCRIPT SEARCH ENGINE LAYER --- -->
+    <script>
+        // Store element lookups securely
+        const searchInput = document.getElementById('articleSearch');
+        const cards = document.querySelectorAll('.article-card');
+        const noResults = document.getElementById('noResultsMessage');
+
+        // Add keystroke input event listener for immediate execution
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                // Read text metrics inside the card component boundaries
+                const titleText = card.querySelector('.article-title').innerText.toLowerCase();
+                const excerptText = card.querySelector('.excerpt').innerText.toLowerCase();
+                const trackingTags = card.getAttribute('data-tags').toLowerCase();
+
+                // Logical evaluation: Match title, text content, or hidden taxonomy tags
+                if (titleText.includes(query) || excerptText.includes(query) || trackingTags.includes(query)) {
+                    card.style.display = "flex";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            // Handle the UI fallback condition if everything is filtered out
+            if (visibleCount === 0) {
+                noResults.style.display = "block";
+            } else {
+                noResults.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
