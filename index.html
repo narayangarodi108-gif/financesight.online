@@ -3,22 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>FinanceSight | Institutional US Equity Research Terminal & Quant Suite</title>
     <meta name="description" content="FinanceSight.online is an advanced, multi-page financial intelligence workspace tracking Wall Street broker targets, native investment calculators, and real-time equity diagnostics.">
     <meta name="keywords" content="FinanceSight, stock screener, US equity terminal, Wall Street targets, SIP calculator, EMI calculator, FIRE planner, Pranav, AI stock chatbot, pranav.ai">
     <meta name="author" content="Pranav">
     <link rel="canonical" href="https://financesight.online" />
-
-    <meta property="og:title" content="FinanceSight | Institutional US Equity Research Terminal">
+    <meta property="og:title" content="FinanceSight | US Equity Research Terminal">
     <meta property="og:description" content="Verify real-time institutional broker targets, financial wellness indicators, and interactive calculation engines natively.">
     <meta property="og:url" content="https://financesight.online">
     <meta property="og:type" content="website">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --bg-base: #010409;        /* Deep Obsidian Void Black Canvas */
@@ -34,468 +30,61 @@
             --border-line: rgba(255, 255, 255, 0.05);
             --active-glow: #34D399;
         }
-
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body { 
-            background-color: var(--bg-base); 
-            color: var(--text-main); 
-            line-height: 1.5; 
-            padding-bottom: 95px; 
-            user-select: none;
-        }
-
-        /* Institutional Real-Time Ticker Frame Tape */
-        .ticker-wrap { 
-            width: 100%; 
-            background: #010409; 
-            border-bottom: 1px solid var(--border-line); 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-        }
-
-        header { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 30px 20px 10px 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-
-        .brand-logo { 
-            font-size: 1.4rem; 
-            font-weight: 800; 
-            color: white; 
-            text-decoration: none; 
-            letter-spacing: -0.5px; 
-            text-transform: lowercase;
-        }
-
-        .brand-logo span { 
-            color: var(--accent-green); 
-            text-shadow: 0 0 15px var(--accent-green); 
-        }
-
-        .terminal-badge { 
-            background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid var(--border-line); 
-            padding: 4px 10px; 
-            border-radius: 20px; 
-            font-size: 0.72rem; 
-            font-weight: 700; 
-            color: var(--text-muted); 
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .search-box-container { 
-            max-width: 800px; 
-            margin: 15px auto; 
-            padding: 0 20px; 
-            position: relative; 
-        }
-
-        .screener-search { 
-            width: 100%; 
-            padding: 16px 20px 16px 50px; 
-            background: var(--bg-surface); 
-            border: 1px solid var(--border-line); 
-            border-radius: 12px; 
-            color: white; 
-            font-size: 1rem; 
-            outline: none; 
-            transition: all 0.3s ease; 
-        }
-
-        .screener-search:focus { 
-            border-color: var(--accent-green); 
-            box-shadow: 0 0 20px rgba(52, 211, 153, 0.15); 
-        }
-
-        .search-icon { 
-            position: absolute; 
-            left: 35px; 
-            top: 18px; 
-            color: var(--text-muted); 
-        }
-
-        .app-panel { 
-            display: none; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 15px 20px; 
-        }
-
-        .app-panel.active-panel { 
-            display: block; 
-            animation: panelEntrance 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-        }
-
-        @keyframes panelEntrance { 
-            0% { opacity: 0; transform: translateY(12px); } 
-            100% { opacity: 1; transform: translateY(0); } 
-        }
-        0.6); 
-            position: relative; 
-            overflow: hidden; 
-        }
-
-        .card-header-title { 
-            font-size: 0.75rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px; 
-            color: var(--text-muted); 
-            margin-bottom: 14px; 
-            font-weight: 700; 
-        }
-
-        .company-profile-banner { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding-bottom: 15px; 
-            border-bottom: 1px solid var(--border-line); 
-            margin-bottom: 20px; 
-            gap: 15px; 
-        }
-
-        .live-ticker-mount-point { 
-            width: 100%; 
-            max-width: 450px; 
-            height: 50px; 
-            overflow: hidden; 
-        }
-
-        /* Micro Vector Speedometer Dial Framework CSS */
-        .consensus-engine-mount { 
-            width: 100%; 
-            height: 220px; 
-            border-radius: 10px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative; 
-            background: rgba(255, 255, 255, 0.01); 
-            border: 1px solid var(--border-line); 
-            margin-bottom: 20px; 
-        }
-
-        .speedo-gauge-canvas-wrapper { 
-            width: 260px; 
-            height: 140px; 
-            position: relative; 
-        }
-
-        .gauge-label-track { 
-            position: absolute; 
-            bottom: 0; 
-            width: 100%; 
-            display: flex; 
-            justify-content: space-between; 
-            padding: 0 25px; 
-            font-size: 0.75rem; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-        }
-
-        .ai-assistant-card { 
-            background: linear-gradient(135deg, rgba(34, 211, 238, 0.02) 0%, rgba(52, 211, 153, 0.02) 100%); 
-            border: 1px solid rgba(52, 211, 153, 0.15) !important; 
-        }
-
-        .ai-pulse-indicator { 
-            width: 8px; 
-            height: 8px; 
-            background: var(--accent-cyan); 
-            border-radius: 50%; 
-            display: inline-block; 
-            margin-right: 6px; 
-            box-shadow: 0 0 10px var(--accent-cyan); 
-            animation: pulseGlow 1.5s infinite alternate; 
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+        body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.5; padding-bottom: 95px; user-select: none; }
+        .ticker-wrap { width: 100%; background: #010409; border-bottom: 1px solid var(--border-line); position: sticky; top: 0; z-index: 1000; }
+        header { max-width: 800px; margin: 0 auto; padding: 30px 20px 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo { font-size: 1.4rem; font-weight: 800; color: white; text-decoration: none; letter-spacing: -0.5px; text-transform: lowercase; }
+        .brand-logo span { color: var(--accent-green); text-shadow: 0 0 15px var(--accent-green); }
+        .terminal-badge { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-line); padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .search-box-container { max-width: 800px; margin: 15px auto; padding: 0 20px; position: relative; }
+        .screener-search { width: 100%; padding: 16px 20px 16px 50px; background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 12px; color: white; font-size: 1rem; outline: none; transition: all 0.3s ease; }
+        .screener-search:focus { border-color: var(--accent-green); box-shadow: 0 0 20px rgba(52, 211, 153, 0.15); }
+        .search-icon { position: absolute; left: 35px; top: 18px; color: var(--text-muted); }
+        .app-panel { display: none; max-width: 800px; margin: 0 auto; padding: 15px 20px; }
+        .app-panel.active-panel { display: block; animation: panelEntrance 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes panelEntrance { 0% { opacity: 0; transform: translateY(12px); } 100% { opacity: 1; transform: translateY(0); } }
+                .data-card { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 14px; padding: 22px; margin-bottom: 20px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6); position: relative; overflow: hidden; }
+        .card-header-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 14px; font-weight: 700; }
+        .company-profile-banner { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--border-line); margin-bottom: 20px; gap: 15px; }
+        .live-ticker-mount-point { width: 100%; max-width: 450px; height: 50px; overflow: hidden; }
+        .consensus-engine-mount { width: 100%; height: 220px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; background: rgba(255,255,255,0.01); border: 1px solid var(--border-line); margin-bottom: 20px; }
+        .speedo-gauge-canvas-wrapper { width: 260px; height: 140px; position: relative; }
+        .gauge-label-track { position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 25px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .ai-assistant-card { background: linear-gradient(135deg, rgba(34, 211, 238, 0.02) 0%, rgba(52, 211, 153, 0.02) 100%); border: 1px solid rgba(52, 211, 153, 0.15) !important; }
+        .ai-pulse-indicator { width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; display: inline-block; margin-right: 6px; box-shadow: 0 0 10px var(--accent-cyan); animation: pulseGlow 1.5s infinite alternate; }
         @keyframes pulseGlow { 0% { opacity: 0.4; } 100% { opacity: 1; } }
-
-        .internal-tab-bar { 
-            display: flex; 
-            gap: 8px; 
-            overflow-x: auto; 
-            padding-bottom: 10px; 
-            margin-bottom: 15px; 
-            border-bottom: 1px solid var(--border-line); 
-            -webkit-overflow-scrolling: touch;
-        }
-
+        .internal-tab-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px; border-bottom: 1px solid var(--border-line); -webkit-overflow-scrolling: touch; }
         .internal-tab-bar::-webkit-scrollbar { display: none; }
-
-        .internal-tab { 
-            background: none; 
-            border: none; 
-            color: var(--text-muted); 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-            padding: 8px 16px; 
-            border-radius: 20px; 
-            cursor: pointer; 
-            white-space: nowrap; 
-            transition: all 0.2s ease; 
-        }
-
-        .internal-tab.active-sub-tab { 
-            background: rgba(34, 211, 238, 0.08); 
-            color: var(--accent-cyan); 
-            border: 1px solid rgba(34, 211, 238, 0.15); 
-        }
-
-        .sub-panel-view { 
-            display: none; 
-            min-height: 250px; 
-            width: 100%; 
-            border-radius: 10px; 
-            overflow: hidden; 
-            border: 1px solid var(--border-line); 
-            background: rgba(255, 255, 255, 0.01); 
-        }
-
-        .sub-panel-view.active-sub-panel { 
-            display: block; 
-            animation: subPanelFade 0.3s ease-out; 
-        }
-
+        .internal-tab { background: none; border: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 700; padding: 8px 16px; border-radius: 20px; cursor: pointer; white-space: nowrap; transition: all 0.2s ease; }
+        .internal-tab.active-sub-tab { background: rgba(34, 211, 238, 0.08); color: var(--accent-cyan); border: 1px solid rgba(34, 211, 238, 0.15); }
+        .sub-panel-view { display: none; min-height: 250px; width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-line); background: rgba(255, 255, 255, 0.01); }
+        .sub-panel-view.active-sub-panel { display: block; animation: subPanelFade 0.3s ease-out; }
         @keyframes subPanelFade { from { opacity: 0; } to { opacity: 1; } }
-
-        /* Algorithmic Calculator Input Row Modules CSS */
-        .calc-input-group { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 6px; 
-            margin-bottom: 14px; 
-        }
-
-        .calc-input-label { 
-            font-size: 0.72rem; 
-            font-weight: 700; 
-            color: var(--text-muted); 
-            text-transform: uppercase; 
-            letter-spacing: 0.5px;
-        }
-               .calc-input-box { 
-            width: 100%; 
-            padding: 14px; 
-            background: var(--bg-input); 
-            border: 1px solid var(--border-line); 
-            border-radius: 8px; 
-            color: white; 
-            outline: none; 
-            font-size: 0.95rem; 
-            transition: border-color 0.2s;
-        }
-
-        .calc-input-box:focus { 
-            border-color: var(--accent-cyan); 
-        }
-
-        .calc-metric-output-row { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 12px; 
-            margin-top: 15px; 
-        }
-
-        .calc-output-card { 
-            padding: 14px; 
-            border-radius: 8px; 
-            background: rgba(255, 255, 255, 0.01); 
-            border: 1px solid var(--border-line); 
-        }
-
-        /* Modular Floating pranav.ai Interface HUD */
-        .ai-chat-trigger-bubble { 
-            position: fixed; 
-            bottom: 105px; 
-            right: 20px; 
-            width: 56px; 
-            height: 56px; 
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green)); 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            box-shadow: 0 8px 24px rgba(52, 211, 153, 0.3); 
-            z-index: 3000; 
-            cursor: pointer; 
-            animation: floatBubble 3s ease-in-out infinite alternate; 
-        }
-
+        .calc-input-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+        .calc-input-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .calc-input-box { width: 100%; padding: 14px; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; color: white; outline: none; font-size: 0.95rem; transition: border-color 0.2s; }
+        .calc-input-box:focus { border-color: var(--accent-cyan); }
+        .calc-metric-output-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
+        .calc-output-card { padding: 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.01); border: 1px solid var(--border-line); }
+        .ai-chat-trigger-bubble { position: fixed; bottom: 105px; right: 20px; width: 56px; height: 56px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(52, 211, 153, 0.3); z-index: 3000; cursor: pointer; animation: floatBubble 3s ease-in-out infinite alternate; }
         @keyframes floatBubble { 0% { transform: translateY(0); } 100% { transform: translateY(-5px); } }
         .ai-chat-trigger-bubble svg { width: 24px; height: 24px; fill: white; }
-
-        .ai-chatbot-window { 
-            position: fixed; 
-            bottom: 100px; 
-            right: 20px; 
-            width: calc(100% - 40px); 
-            max-width: 400px; 
-            height: 460px; 
-            background: #0b0f17; 
-            border: 1px solid rgba(34, 211, 238, 0.15); 
-            border-radius: 16px; 
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); 
-            z-index: 3100; 
-            display: none; 
-            flex-direction: column; 
-            overflow: hidden; 
-            animation: chatBoxPhysics 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); 
-        }
-
+        .ai-chatbot-window { position: fixed; bottom: 100px; right: 20px; width: calc(100% - 40px); max-width: 400px; height: 460px; background: #0b0f17; border: 1px solid rgba(34, 211, 238, 0.15); border-radius: 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); z-index: 3100; display: none; flex-direction: column; overflow: hidden; animation: chatBoxPhysics 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
         @keyframes chatBoxPhysics { 0% { opacity: 0; transform: translateY(30px) scale(0.97); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
-        
-        .chat-window-header { 
-            background: var(--bg-surface); 
-            padding: 14px 18px; 
-            border-bottom: 1px solid var(--border-line); 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-
-        .chat-window-title { 
-            font-size: 0.95rem; 
-            font-weight: 700; 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            color: white; 
-        }
-
-        .chat-close-btn { 
-            background: none; 
-            border: none; 
-            color: var(--text-muted); 
-            font-size: 1.2rem; 
-            cursor: pointer; 
-        }
-
-        .chat-messages-container { 
-            flex: 1; 
-            padding: 15px; 
-            overflow-y: auto; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 12px; 
-            background: #070a0f; 
-        }
-
-        .chat-bubble { 
-            max-width: 82%; 
-            padding: 10px 14px; 
-            border-radius: 12px; 
-            font-size: 0.88rem; 
-            line-height: 1.45; 
-            word-wrap: break-word; 
-        }
-
-        .chat-bubble.user-bubble { 
-            background: var(--bg-input); 
-            color: white; 
-            align-self: flex-end; 
-            border-bottom-right-radius: 2px; 
-            border: 1px solid var(--border-line); 
-        }
-
-        .chat-bubble.ai-bubble { 
-            background: rgba(6, 182, 212, 0.03); 
-            color: #E2E8F0; 
-            align-self: flex-start; 
-            border-bottom-left-radius: 2px; 
-            border: 1px solid rgba(6, 182, 212, 0.12); 
-        }
-
-        .chat-input-row { 
-            padding: 12px; 
-            background: var(--bg-surface); 
-            border-top: 1px solid var(--border-line); 
-            display: flex; 
-            gap: 8px; 
-            align-items: center; 
-        }
-
-        .chat-input-field { 
-            flex: 1; 
-            background: var(--bg-input); 
-            border: 1px solid var(--border-line); 
-            border-radius: 8px; 
-            padding: 12px; 
-            color: white; 
-            font-size: 0.88rem; 
-            outline: none; 
-        }
-
-        .chat-send-btn { 
-            background: var(--accent-green); 
-            border: none; 
-            width: 40px; 
-            height: 40px; 
-            border-radius: 8px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            cursor: pointer; 
-            color: white; 
-        }
-
-        /* Premium Navigation Anchor Bar Template Blueprint */
-        .bottom-nav-bar { 
-            position: fixed; 
-            bottom: 0; 
-            left: 0; 
-            right: 0; 
-            height: 80px; 
-            background: rgba(13, 17, 23, 0.95); 
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid var(--border-line); 
-            display: flex; 
-            justify-content: space-around; 
-            align-items: center; 
-            z-index: 2000; 
-        }
-
-        .nav-item-button { 
-            background: none; 
-            border: none; 
-            color: var(--text-muted); 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            font-size: 0.72rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 0.5px; 
-            cursor: pointer; 
-            width: 25%; 
-            transition: all 0.2s ease; 
-        }
-
-        .nav-item-button svg { 
-            margin-bottom: 6px; 
-            width: 20px; 
-            height: 20px; 
-            fill: currentColor; 
-            opacity: 0.6; 
-            transition: transform 0.2s;
-        }
-
+        .chat-window-header { background: var(--bg-surface); padding: 14px 18px; border-bottom: 1px solid var(--border-line); display: flex; justify-content: space-between; align-items: center; }
+        .chat-window-title { font-size: 0.95rem; font-weight: 700; display: flex; align-items: center; gap: 8px; color: white; }
+        .chat-close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; }
+        .chat-messages-container { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #070a0f; }
+        .chat-bubble { max-width: 82%; padding: 10px 14px; border-radius: 12px; font-size: 0.88rem; line-height: 1.45; word-wrap: break-word; }
+        .chat-bubble.user-bubble { background: var(--bg-input); color: white; align-self: flex-end; border-bottom-right-radius: 2px; border: 1px solid var(--border-line); }
+        .chat-bubble.ai-bubble { background: rgba(6, 182, 212, 0.03); color: #E2E8F0; align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid rgba(6, 182, 212, 0.12); }
+        .chat-input-row { padding: 12px; background: var(--bg-surface); border-top: 1px solid var(--border-line); display: flex; gap: 8px; align-items: center; }
+        .chat-input-field { flex: 1; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; padding: 12px; color: white; font-size: 0.88rem; outline: none; }
+        .chat-send-btn { background: var(--accent-green); border: none; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; }
+        .bottom-nav-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 80px; background: rgba(13, 17, 23, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--border-line); display: flex; justify-content: space-around; align-items: center; z-index: 2000; }
+        .nav-item-button { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; width: 25%; transition: all 0.2s ease; }
+        .nav-item-button svg { margin-bottom: 6px; width: 20px; height: 20px; fill: currentColor; opacity: 0.6; transition: transform 0.2s; }
         .nav-item-button.active-feed { color: var(--accent-purple); }
         .nav-item-button.active-screens { color: var(--accent-cyan); }
         .nav-item-button.active-brokerage { color: var(--accent-green); }
@@ -506,40 +95,17 @@
 <body>
         <div class="ticker-wrap">
         <div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-            { "symbols": [ { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" }, { "proName": "FOREXCOM:NSXUSD", "title": "NASDAQ 100" } ], "colorTheme": "dark", "isTransparent": true, "locale": "en" }
-            </script>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>{ "symbols": [ { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" }, { "proName": "FOREXCOM:NSXUSD", "title": "NASDAQ 100" } ], "colorTheme": "dark", "isTransparent": true, "locale": "en" }</script>
         </div>
     </div>
-
     <header>
         <a href="#" class="brand-logo" id="logoText" onclick="appRoute('feed-panel', 'btn-feed', 'purple')">financeSight<span>.online</span></a>
         <div class="terminal-badge">US Engine v2.6</div>
     </header>
-
     <div class="search-box-container">
         <span class="search-icon">🔍</span>
         <input type="text" class="search-input screener-search" id="terminalCompanySearch" placeholder="Type company ticker (e.g., AAPL, TSLA, NVDA)..." onkeyup="handleSearchInput(event)">
     </div>
-
-    <div class="ai-chat-trigger-bubble" id="chatBubbleNode" onclick="toggleChatbotConsole(true)">
-        <svg viewBox="0 0 24 24"><path d="M12 2c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l2.79-2.79C9.93 18.78 10.93 19 12 19c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1-8h2v2h-2zm0 4h2v2h-2z"/></svg>
-    </div>
-
-    <div class="ai-chatbot-window" id="aiChatbotConsoleWindow">
-        <div class="chat-window-header">
-            <div class="chat-window-title"><span class="ai-pulse-indicator"></span>pranav.ai Terminal</div>
-            <button class="chat-close-btn" onclick="toggleChatbotConsole(false)">✕</button>
-        </div>
-        <div class="chat-messages-container" id="chatMessageFlowBox">
-            <div class="chat-bubble ai-bubble">Greetings. I am <strong>pranav.ai</strong>. Enter any equity ticker asset or operational calculation question to execute diagnostic index scans.</div>
-        </div>
-        <div class="chat-input-row">
-            <input type="text" class="chat-input-field" id="chatbotUserTextInput" placeholder="Ask pranav.ai about variables, models..." onkeypress="handleChatEnterKey(event)">
-            <button class="chat-send-btn" onclick="executeChatbotLogic()">🚀</button>
-        </div>
-    </div>
-
     <div id="feed-panel" class="app-panel active-panel">
         <div class="hero-visual-card"><div class="hero-badge-overlay">Live Institutional Workspace</div></div>
         <div class="data-card" style="padding: 0; overflow: hidden;">
@@ -566,7 +132,6 @@
             </div>
         </div>
     </div>
-
     <div id="screens-panel" class="app-panel">
         <div class="data-card" style="padding:0; overflow:hidden;">
             <div style="height: 640px; width: 100%;">
@@ -576,29 +141,24 @@
             </div>
         </div>
     </div>
-
     <div id="brokerage-panel" class="app-panel">
         <div class="data-card ai-assistant-card">
             <div class="card-header-title" style="color: var(--accent-cyan);"><span class="ai-pulse-indicator"></span>pranav.ai Terminal Copilot</div>
             <div id="aiReportOutputArea" style="font-size: 0.95rem; line-height: 1.6; font-weight: 500; color: #E2E8F0;">Initializing network analytics... Type any asset ticker inside the search box to process Wall Street data models here.</div>
         </div>
         <div class="data-card">
-            <div
-              class="company-profile-banner"><div><h3 id="reportCompName" style="font-size: 1.4rem; font-weight:800;">Apple Inc.</h3><div id="reportCompTicker" style="font-size:0.85rem; color:var(--accent-cyan); font-weight:700;">AAPL</div></div><div class="live-ticker-mount-point" id="liveQuoteWidgetMount"></div></div>
+            <div class="company-profile-banner"><div><h3 id="reportCompName" style="font-size: 1.4rem; font-weight:800;">Apple Inc.</h3><div id="reportCompTicker" style="font-size:0.85rem; color:var(--accent-cyan); font-weight:700;">AAPL</div></div><div class="live-ticker-mount-point" id="liveQuoteWidgetMount"></div></div>
             <div class="card-header-title">Wall Street Analyst Sentiment Index</div>
             <div class="consensus-engine-mount">
                 <div class="speedo-gauge-canvas-wrapper"><canvas id="speedometerGaugeObject" width="260" height="140"></canvas></div>
                 <div class="gauge-label-track"><span style="color:var(--accent-red);">Sell</span><span style="color:var(--accent-gold);">Hold</span><span style="color:var(--accent-green);">Buy</span></div>
                 <div id="speedoRatingTextBadge" style="margin-top:10px; font-weight:800; font-size:1.1rem; letter-spacing:0.5px;">HOLD</div>
             </div>
-            <div class="internal-tab-bar">
-                <button class="internal-tab active-sub-tab">Consensus Dispatch Grid</button>
-            </div>
+            <div class="internal-tab-bar"><button class="internal-tab active-sub-tab">Consensus Dispatch Grid</button></div>
             <div id="sub-brokers" class="sub-panel-view active-sub-panel"><div style="padding:15px; color:#FFF;" id="brokerTargetGridContainer"></div></div>
         </div>
     </div>
-
-    <div id="account-panel" class="app-panel">
+        <div id="account-panel" class="app-panel">
         <div class="data-card">
             <div class="card-header-title">Platform Financial Health Metric Index</div>
             <div class="consensus-engine-mount" style="height: 190px; margin-bottom:20px; background:rgba(34,211,238,0.01); border-color:rgba(34,211,238,0.15);">
@@ -612,7 +172,6 @@
                 <div class="calc-input-group"><span class="calc-input-label">Emergency Cash Runway (Max 25)</span><input type="number" class="calc-input-box" id="scoreEmerg" value="20" oninput="calculateHealthMatrixScore()"></div>
             </div>
         </div>
-
         <div class="data-card">
             <div class="card-header-title">Terminal Computational Calculation Modules</div>
             <div class="internal-tab-bar">
@@ -621,7 +180,6 @@
                 <button class="internal-tab" onclick="switchCalcView(event, 'calc-fire')">FIRE Blueprint</button>
                 <button class="internal-tab" onclick="switchCalcView(event, 'calc-inflation')">Inflation Impact</button>
             </div>
-
             <div id="calc-sip" class="sub-panel-view active-sub-panel" style="height:auto; padding:15px; border:none;">
                 <div class="calc-input-group"><span class="calc-input-label">Monthly Investment Installment ($)</span><input type="number" class="calc-input-box" id="sipAmount" value="400" oninput="runSipCalculationMatrix()"></div>
                 <div class="calc-input-group"><span class="calc-input-label">Target Annual Return Rate (%)</span><input type="number" class="calc-input-box" id="sipRate" value="12" oninput="runSipCalculationMatrix()"></div>
@@ -631,7 +189,6 @@
                     <div class="calc-output-card" style="border-left:3px solid var(--accent-green); background:rgba(52,211,153,0.01);"><span class="calc-input-label">Estimated Future Yield</span><h4 id="outSipTotal" style="color:var(--accent-green); font-size:1.2rem; font-weight:800; margin-top:4px;">$0</h4></div>
                 </div>
             </div>
-
             <div id="calc-emi" class="sub-panel-view" style="height:auto; padding:15px; border:none;">
                 <div class="calc-input-group"><span class="calc-input-label">Principal Loan Amount ($)</span><input type="number" class="calc-input-box" id="emiPrincipal" value="35000" oninput="runEmiCalculationMatrix()"></div>
                 <div class="calc-input-group"><span class="calc-input-label">Annual Borrowing Interest Rate (%)</span><input type="number" class="calc-input-box" id="emiRate" value="7.9" oninput="runEmiCalculationMatrix()"></div>
@@ -641,7 +198,6 @@
                     <div class="calc-output-card"><span class="calc-input-label">Aggregate Payments Cost</span><h4 id="outEmiTotal" style="font-size:1.2rem; font-weight:700; margin-top:4px;">$0</h4></div>
                 </div>
             </div>
-
             <div id="calc-fire" class="sub-panel-view" style="height:auto; padding:15px; border:none;">
                 <div class="calc-input-group"><span class="calc-input-label">Anticipated Annual Maintenance Budget ($)</span><input type="number" class="calc-input-box" id="fireExpenses" value="45000" oninput="runFireCalculationMatrix()"></div>
                 <div class="calc-input-group"><span class="calc-input-label">Conservative Safe Withdrawal Rate (%)</span><input type="number" class="calc-input-box" id="fireSWR" value="4" oninput="runFireCalculationMatrix()"></div>
@@ -649,7 +205,6 @@
                     <div class="calc-output-card" style="grid-column: span 2; border-left:3px solid var(--accent-purple); background:rgba(192,132,252,0.01);"><span class="calc-input-label">Absolute Capital Corpus Freedom Target Number</span><h3 id="outFireNumber" style="color:var(--accent-purple); font-size:1.5rem; font-weight:800; margin-top:4px;">$0</h3></div>
                 </div>
             </div>
-
             <div id="calc-inflation" class="sub-panel-view" style="height:auto; padding:15px; border:none;">
                 <div class="calc-input-group"><span class="calc-input-label">Present Cost Valuation Scale ($)</span><input type="number" class="calc-input-box" id="infAmount" value="2000" oninput="runInflationCalculationMatrix()"></div>
                 <div class="calc-input-group"><span class="calc-input-label">Average Annualized Inflation Rate (%)</span><input type="number" class="calc-input-box" id="infRate" value="3.4" oninput="runInflationCalculationMatrix()"></div>
@@ -660,213 +215,87 @@
             </div>
         </div>
     </div>
-
     <div class="bottom-nav-bar">
         <button class="nav-item-button active-feed" id="btn-feed" onclick="appRoute('feed-panel', 'btn-feed', 'purple')"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>Wire</button>
         <button class="nav-item-button" id="btn-screens" onclick="appRoute('screens-panel', 'btn-screens', 'cyan')"><svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>Screener</button>
         <button class="nav-item-button" id="btn-brokerage" onclick="appRoute('brokerage-panel', 'btn-brokerage', 'green')"><svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>Equity Desk</button>
-            <script>
-        // CLIENT INTERFACE PANEL ROUTER
-        function appRoute(panelId, buttonId, activeThemeGlowName) {
+        <button class="nav-item-button" id="btn-account" onclick="appRoute('account-panel', 'btn-account', 'gold')"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>Quant Suite</button>
+    </div>
+    <script>
+        function appRoute(pId, bId, activeThemeGlowName) {
             const rootNode = document.documentElement;
             if (activeThemeGlowName === 'purple') rootNode.style.setProperty('--active-glow', '#C084FC');
             if (activeThemeGlowName === 'cyan') rootNode.style.setProperty('--active-glow', '#22D3EE');
             if (activeThemeGlowName === 'green') rootNode.style.setProperty('--active-glow', '#34D399');
             if (activeThemeGlowName === 'gold') rootNode.style.setProperty('--active-glow', '#FBBF24');
-
-            const panels = document.getElementsByClassName('app-panel');
-            for (let i = 0; i < panels.length; i++) panels[i].style.display = 'none';
-
-            const buttons = document.getElementsByClassName('nav-item-button');
-            for (let i = 0; i < buttons.length; i++) buttons[i].className = "nav-item-button";
-
-            document.getElementById(panelId).style.display = 'block';
-            document.getElementById(buttonId).classList.add('active-' + activeThemeGlowName);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const panels = document.getElementsByClassName('app-panel'); for (let i = 0; i < panels.length; i++) panels[i].style.display = 'none';
+            const buttons = document.getElementsByClassName('nav-item-button'); for (let i = 0; i < buttons.length; i++) buttons[i].className = "nav-item-button";
+            document.getElementById(pId).style.display = 'block'; document.getElementById(bId).classList.add('active-' + activeThemeGlowName); window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        function toggleChatbotConsole(shouldShow) {
-            document.getElementById('aiChatbotConsoleWindow').style.display = shouldShow ? 'flex' : 'none';
-            document.getElementById('chatBubbleNode').style.display = shouldShow ? 'none' : 'flex';
-        }
-
-        function handleChatEnterKey(event) { if (event.key === 'Enter') executeChatbotLogic(); }
-
+        function toggleChatbotConsole(show) { document.getElementById('aiChatbotConsoleWindow').style.display = show ? 'flex' : 'none'; document.getElementById('chatBubbleNode').style.display = show ? 'none' : 'flex'; }
+        function handleChatEnterKey(e) { if (e.key === 'Enter') executeChatbotLogic(); }
         function executeChatbotLogic() {
-            const field = document.getElementById('chatbotUserTextInput'), textVal = field.value.trim(); if (!textVal) return;
-            const flowContainer = document.getElementById('chatMessageFlowBox'), userBubble = document.createElement('div');
-            userBubble.className = "chat-bubble user-bubble"; userBubble.innerText = textVal;
-            flowContainer.appendChild(userBubble); field.value = ""; flowContainer.scrollTop = flowContainer.scrollHeight;
-
+            const f = document.getElementById('chatbotUserTextInput'), txt = f.value.trim(); if (!txt) return;
+            const flow = document.getElementById('chatMessageFlowBox'), u = document.createElement('div'); u.className = "chat-bubble user-bubble"; u.innerText = txt; flow.appendChild(u); f.value = ""; flow.scrollTop = flow.scrollHeight;
             setTimeout(() => {
-                const aiBubble = document.createElement('div'); aiBubble.className = "chat-bubble ai-bubble";
-                const query = textVal.toLowerCase(); 
-                let responseText = "Neural computing modules running array calibrations... Scan an explicit ticker inside the main search workspace to trigger technical alerts.";
-                
-                if (query.includes("nvidia") || query.includes("nvda")) {
-                    responseText = "<strong>pranav.ai Matrix Report: NVDA</strong><br>Hardware allocation backlogs cushion short-term consolidation risk. Institutional order book profile confirms robust asset support layers.";
-                } else if (query.includes("apple") || query.includes("aapl")) {
-                    responseText = "<strong>pranav.ai Matrix Report: AAPL</strong><br>Ecosystem retention targets capture historical moving-average boundaries cleanly. Services margin expansion offsets hardware delays.";
-                } else if (query.includes("pranav")) {
-                    responseText = "Pranav is the Chief Technical Architect and Founder who engineered and compiled this full modular FinanceSight terminal execution interface in 2026.";
-                }
-                
-                aiBubble.innerHTML = responseText; flowContainer.appendChild(aiBubble); flowContainer.scrollTop = flowContainer.scrollHeight;
+                const ai = document.createElement('div'); ai.className = "chat-bubble ai-bubble"; const q = txt.toLowerCase(); let r = "Processing data loops... Switch parameters inside the Quant Suite tab.";
+                if (q.includes("nvidia") || q.includes("nvda")) r = "<strong>pranav.ai Matrix Report: NVDA</strong><br>Hardware backlogs shield near-term correction vectors. Core order profiles confirm massive target stability support layers.";
+                else if (q.includes("apple") || q.includes("aapl")) r = "<strong>pranav.ai Matrix Report: AAPL</strong><br>Ecosystem retention targets align beautifully with key support parameters. Service expansion offsets near-term constraints.";
+                else if (q.includes("pranav")) r = "Pranav is the Chief Architect and Systems Engineer who deployed this unified obsidian web terminal interface framework in 2026.";
+                ai.innerHTML = r; flow.appendChild(ai); flow.scrollTop = flow.scrollHeight;
             }, 450);
         }
-
-        // VECTOR HARDWARE ACCELERATED GAUGES MATHEMATICAL GRAPH COMPILER
-        function renderSpeedoGaugeDial(canvasElementId, evaluationScoreValue, colorHexThemeValue) {
-            const canvasElement = document.getElementById(canvasElementId); if (!canvasElement) return;
-            const graphicContext = canvasElement.getContext('2d'); graphicContext.clearRect(0, 0, canvasElement.width, canvasElement.height);
-            const cx = canvasElement.width / 2, cy = canvasElement.height - 10, radiusRadius = 90;
-
-            // Base Background Structural Track Arc
-            graphicContext.beginPath(); graphicContext.arc(cx, cy, radiusRadius, Math.PI, 2 * Math.PI, false);
-            graphicContext.lineWidth = 14; graphicContext.strokeStyle = '#161b22'; graphicContext.stroke();
-
-            // Active Colored Filled Target Arc Segment
-            graphicContext.beginPath(); graphicContext.arc(cx, cy, radiusRadius, Math.PI, Math.PI + (Math.PI * (evaluationScoreValue / 100)), false);
-            graphicContext.strokeStyle = colorHexThemeValue; graphicContext.stroke();
-
-            // Precision Vector Indicator Point Needle Line
-            const pointerAngleRadians = Math.PI + (Math.PI * (evaluationScoreValue / 100));
-            graphicContext.save(); graphicContext.translate(cx, cy); graphicContext.rotate(pointerAngleRadians - Math.PI);
-            graphicContext.beginPath(); graphicContext.moveTo(0, 4); graphicContext.lineTo(-radiusRadius + 15, 0); graphicContext.lineTo(0, -4); graphicContext.fillStyle = '#FFFFFF'; graphicContext.fill();
-            graphicContext.restore();
-
-            // Center Cap Node Anchor
-            graphicContext.beginPath(); graphicContext.arc(cx, cy, 8, 0, 2 * Math.PI); graphicContext.fillStyle = '#FFFFFF'; graphicContext.fill();
+        function renderSpeedoGaugeDial(cId, val, hex) {
+            const canvas = document.getElementById(cId); if (!canvas) return; const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.width, canvas.height); const cx = canvas.width / 2, cy = canvas.height - 10, r = 90;
+            ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI, 2 * Math.PI, false); ctx.lineWidth = 14; ctx.strokeStyle = '#161b22'; ctx.stroke();
+            ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI, Math.PI + (Math.PI * (val / 100)), false); ctx.lineWidth = 14; ctx.strokeStyle = hex; ctx.stroke();
+            const pointer = Math.PI + (Math.PI * (val / 100)); ctx.save(); ctx.translate(cx, cy); ctx.rotate(pointer - Math.PI); ctx.beginPath(); ctx.moveTo(0, 4); ctx.lineTo(-r + 15, 0); ctx.lineTo(0, -4); ctx.fillStyle = '#FFF'; ctx.fill(); ctx.restore();
+            ctx.beginPath(); ctx.arc(cx, cy, 8, 0, 2 * Math.PI); ctx.fillStyle = '#FFF'; ctx.fill();
         }
-
-        // REAL TIME INTERACTIVE FINANCIAL HEALTH GAUGE CALCULATION LOOP
         function calculateHealthMatrixScore() {
-            const savingsParam = parseFloat(document.getElementById('scoreSavings').value) || 0;
-            const debtParam = parseFloat(document.getElementById('scoreDebt').value) || 0;
-            const divParam = parseFloat(document.getElementById('scoreDiv').value) || 0;
-            const emergParam = parseFloat(document.getElementById('scoreEmerg').value) || 0;
-
-            let compoundScoreSum = savingsParam + debtParam + divParam + emergParam; if (compoundScoreSum > 100) compoundScoreSum = 100;
-            document.getElementById('healthScoreNumberDisplay').innerText = Math.round(compoundScoreSum) + " / 100";
-
-            let dynamicHexGlowAccent = '#F87171';
-            if (compoundScoreSum > 75) dynamicHexGlowAccent = '#34D399';
-            else if (compoundScoreSum > 45) dynamicHexGlowAccent = '#FBBF24';
-
-            renderSpeedoGaugeDial('healthScoreGaugeObject', compoundScoreSum, dynamicHexGlowAccent);
+            const s = parseFloat(document.getElementById('scoreSavings').value) || 0, d = parseFloat(document.getElementById('scoreDebt').value) || 0, v = parseFloat(document.getElementById('scoreDiv').value) || 0, e = parseFloat(document.getElementById('scoreEmerg').value) || 0;
+            let total = s + d + v + e; if (total > 100) total = 100; document.getElementById('healthScoreNumberDisplay').innerText = Math.round(total) + " / 100";
+            let hex = '#F87171'; if (total > 75) hex = '#34D399'; else if (total > 45) hex = '#FBBF24'; renderSpeedoGaugeDial('healthScoreGaugeObject', total, hex);
         }
-
-        // CLIENT SIDE MATH MATRIX FOR CALCULATORS
         function runSipCalculationMatrix() {
-            const p = parseFloat(document.getElementById('sipAmount').value) || 0;
-            const r = (parseFloat(document.getElementById('sipRate').value) || 0) / 12 / 100;
-            const n = (parseFloat(document.getElementById('sipYears').value) || 0) * 12;
-            if (p <= 0 || r <= 0 || n <= 0) return;
-            const compoundingYieldValue = p * [ (Math.pow(1 + r, n) - 1) / r ] * (1 + r);
-            document.getElementById('outSipPrincipal').innerText = "$" + Math.round(p * n).toLocaleString();
-            document.getElementById('outSipTotal').innerText = "$" + Math.round(compoundingYieldValue).toLocaleString();
+            const p = parseFloat(document.getElementById('sipAmount').value) || 0, r = (parseFloat(document.getElementById('sipRate').value) || 0) / 12 / 100, n = (parseFloat(document.getElementById('sipYears').value) || 0) * 12; if (p <= 0 || r <= 0 || n <= 0) return;
+            const fv = p * [ (Math.pow(1 + r, n) - 1) / r ] * (1 + r); document.getElementById('outSipPrincipal').innerText = "$" + Math.round(p * n).toLocaleString(); document.getElementById('outSipTotal').innerText = "$" + Math.round(fv).toLocaleString();
         }
-
         function runEmiCalculationMatrix() {
-            const p = parseFloat(document.getElementById('emiPrincipal').value) || 0;
-            const r = (parseFloat(document.getElementById('emiRate').value) || 0) / 12 / 100;
-            const n = (parseFloat(document.getElementById('emiYears').value) || 0) * 12;
-            if (p <= 0 || r <= 0 || n <= 0) return;
-            const monthlyPremiumCalculated = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-            document.getElementById('outEmiMonthly').innerText = "$" + Math.round(monthlyPremiumCalculated).toLocaleString();
-            document.getElementById('outEmiTotal').innerText = "$" + Math.round(monthlyPremiumCalculated * n).toLocaleString();
+            const p = parseFloat(document.getElementById('emiPrincipal').value) || 0, r = (parseFloat(document.getElementById('emiRate').value) || 0) / 12 / 100, n = (parseFloat(document.getElementById('emiYears').value) || 0) * 12; if (p <= 0 || r <= 0 || n <= 0) return;
+            const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1); document.getElementById('outEmiMonthly').innerText = "$" + Math.round(emi).toLocaleString(); document.getElementById('outEmiTotal').innerText = "$" + Math.round(emi * n).toLocaleString();
         }
-
-        function runFireCalculationMatrix() {
-            const expenditures = parseFloat(document.getElementById('fireExpenses').value) || 0;
-            const withdrawalRate = parseFloat(document.getElementById('fireSWR').value) || 4;
-            if (expenditures <= 0 || withdrawalRate <= 0) return;
-            const corpusTargetFreedomResult = expenditures / (withdrawalRate / 100);
-            document.getElementById('outFireNumber').innerText = "$" + Math.round(corpusTargetFreedomResult).toLocaleString();
+        function runFireCalculationMatrix() { const exp = parseFloat(document.getElementById('fireExpenses').value) || 0, swr = parseFloat(document.getElementById('fireSWR').value) || 4; if (exp <= 0 || swr <= 0) return; document.getElementById('outFireNumber').innerText = "$" + Math.round(exp / (swr / 100)).toLocaleString(); }
+        function runInflationCalculationMatrix() { const amt = parseFloat(document.getElementById('infAmount').value) || 0, rate = parseFloat(document.getElementById('infRate').value) || 0, yrs = parseFloat(document.getElementById('infYears').value) || 0; if (amt <= 0 || yrs <= 0) return; document.getElementById('outInflationTotal').innerText = "$" + Math.round(amt * Math.pow(1 + (rate / 100), yrs)).toLocaleString(); }
+        function triggerAIAnalyticalBrief(t) {
+            const o = document.getElementById('aiReportOutputArea'); o.innerHTML = "🤖 <em>pranav.ai structural analytics pending...</em>";
+            const k = { "AAPL": "<strong>pranav.ai Target: AAPL</strong><br>Institutional capital profiles show steady accumulation parameters. Quantitative models register heavy support near post-earnings trendlines.", "NVDA": "<strong>pranav.ai Target: NVDA</strong><br>Generational computation layer dominance confirmed. Capital backlogs continue cleanly outstripping hyper-scaler deployment constraints." };
+            setTimeout(() => { o.innerHTML = k[t.toUpperCase()] || `<strong>pranav.ai Target: ${t.toUpperCase()}</strong><br>Data matrix structural analysis active. Ratios match baseline parameters. Navigate over to your calculation tools section to test custom allocations lines.`; }, 400);
         }
-
-        function runInflationCalculationMatrix() {
-            const balanceVal = parseFloat(document.getElementById('infAmount').value) || 0;
-            const trackingRate = parseFloat(document.getElementById('infRate').value) || 0;
-            const yearsHorizon = parseFloat(document.getElementById('infYears').value) || 0;
-            if (balanceVal <= 0 || yearsHorizon <= 0) return;
-            const absoluteValueFutureOutput = balanceVal * Math.pow(1 + (trackingRate / 100), yearsHorizon);
-            document.getElementById('outInflationTotal').innerText = "$" + Math.round(absoluteValueFutureOutput).toLocaleString();
-        }
-
-        function triggerAIAnalyticalBrief(tickerStringKey) {
-            const outputElement = document.getElementById('aiReportOutputArea'); outputElement.innerHTML = "🤖 <em>pranav.ai parsing analytical structures...</em>";
-            const briefKnowledgeDatabase = {
-                "AAPL": "<strong>pranav.ai Operational Analytics Target: AAPL</strong><br>Institutional buy side allocation patterns scale efficiently near trendlines. Premium target expectations track high support boundaries.",
-                "NVDA": "<strong>pranav.ai Operational Analytics Target: NVDA</strong><br>Generational silicon node monopoly confirmed. Advanced AI structural spend loops cleanly track beyond hyper-scaler supply ceilings."
+        function generateQuantMatrix(t) {
+            const sym = t.toUpperCase().trim();
+            const db = {
+                "AAPL": { score: 78, text: "Buy", brokers: [ { name: "Bank of America", call: "Buy", target: "$225" }, { name: "Morgan Stanley", call: "Overweight", target: "$220" }, { name: "Goldman Sachs", call: "Buy", target: "$230" } ] },
+                "NVDA": { score: 94, text: "Strong Buy", brokers: [ { name: "Bank of America", call: "Buy", target: "$1200" }, { name: "Morgan Stanley", call: "Overweight", target: "$1160" }, { name: "Goldman Sachs", call: "Conviction Buy", target: "$1250" } ] },
+                "TSLA": { score: 42, text: "Hold", brokers: [ { name: "Bank of America", call: "Hold", target: "$220" }, { name: "Jefferies", call: "Underperform", target: "$165" }, { name: "JPMorgan Chase", call: "Sell", target: "$130" } ] }
             };
-            setTimeout(() => { outputElement.innerHTML = briefKnowledgeDatabase[tickerStringKey.toUpperCase()] || `<strong>pranav.ai Operational Analytics Target: ${tickerStringKey.toUpperCase()}</strong><br>Data matrix initialized. Quantitative profiles indicate standard variance parameters. Review your diagnostic calculators panel to map capital allocations lines.`; }, 400);
-        }
-
-        // ASSET ANALYSIS DISPATCH CONSOLE DISPATCHER
-        function generateQuantMatrix(tickerStringKey) {
-            const sym = tickerStringKey.toUpperCase().trim();
-            const localBriefDatabase = {
-                "AAPL": { score: 78, callText: "Buy", brokers: [ { name: "Bank of America", call: "Buy", target: "$225" }, { name: "Morgan Stanley", call: "Overweight", target: "$220" }, { name: "Goldman Sachs", call: "Buy", target: "$230" } ] },
-                "NVDA": { score: 94, callText: "Strong Buy", brokers: [ { name: "Bank of America", call: "Buy", target: "$1200" }, { name: "Morgan Stanley", call: "Overweight", target: "$1160" }, { name: "Goldman Sachs", call: "Conviction Buy", target: "$1250" } ] },
-                "TSLA": { score: 42, callText: "Hold", brokers: [ { name: "Bank of America", call: "Hold", target: "$220" }, { name: "Jefferies", call: "Underperform", target: "$165" }, { name: "JPMorgan Chase", call: "Sell", target: "$130" } ] }
-            };
-
-            const dataObject = localBriefDatabase[sym] || { score: 55, callText: "Hold", brokers: [ { name: "Morgan Stanley", call: "Hold", target: "$145" }, { name: "Goldman Sachs", call: "Hold", target: "$150" } ] };
-
-            renderSpeedoGaugeDial('speedometerGaugeObject', dataObject.score, '#34D399');
-            const statusBadgeNode = document.getElementById('speedoRatingTextBadge'); statusBadgeNode.innerText = dataObject.callText;
-            
-            if (dataObject.score > 65) statusBadgeNode.style.color = 'var(--accent-green)';
-            else if (dataObject.score > 35) statusBadgeNode.style.color = 'var(--accent-gold)';
-            else statusBadgeNode.style.color = 'var(--accent-red)';
-
-            let layoutGridHTML = `<table style="width:100%; border-collapse:collapse; font-size:0.85rem;"><tr style="border-bottom:2px solid var(--border-line); height:35px; color:var(--text-muted); font-weight:700;"><td>Institution</td><td>Rating Call</td><td style="text-align:right;">Target</td></tr>`;
-            dataObject.brokers.forEach(b => {
-                let textHighlightColor = 'var(--text-main)';
-                if (b.call.includes("Buy") || b.call.includes("Overweight")) textHighlightColor = 'var(--accent-green)';
-                else if (b.call.includes("Hold")) textHighlightColor = 'var(--accent-gold)';
-                else if (b.call.includes("Sell") || b.call.includes("Underperform")) textHighlightColor = 'var(--accent-red)';
-                
-                layoutGridHTML += `<tr style="border-bottom:1px solid var(--border-line); height:42px; font-weight:600;"><td style="color:#FFF;">${b.name}</td><td style="color:${textHighlightColor}; font-weight:700;">${b.call}</td><td style="text-align:right; color:var(--accent-cyan); font-weight:700;">${b.target}</td></tr>`;
+            const d = db[sym] || { score: 55, text: "Hold", brokers: [ { name: "Morgan Stanley", call: "Hold", target: "$145" }, { name: "Goldman Sachs", call: "Hold", target: "$150" } ] };
+            renderSpeedoGaugeDial('speedometerGaugeObject', d.score, '#34D399'); const badge = document.getElementById('speedoRatingTextBadge'); badge.innerText = d.text;
+            if (d.score > 65) badge.style.color = 'var(--accent-green)'; else if (d.score > 35) badge.style.color = 'var(--accent-gold)'; else badge.style.color = 'var(--accent-red)';
+            let grid = `<table style="width:100%; border-collapse:collapse; font-size:0.85rem;"><tr style="border-bottom:2px solid var(--border-line); height:35px; color:var(--text-muted); font-weight:700;"><td>Institution</td><td>Rating Call</td><td style="text-align:right;">Target</td></tr>`;
+            d.brokers.forEach(b => {
+                let hc = 'var(--text-main)'; if (b.call.includes("Buy") || b.call.includes("Overweight")) hc = 'var(--accent-green)'; else if (b.call.includes("Hold")) hc = 'var(--accent-gold)'; else if (b.call.includes("Sell") || b.call.includes("Underperform")) hc = 'var(--accent-red)';
+                grid += `<tr style="border-bottom:1px solid var(--border-line); height:42px; font-weight:600;"><td style="color:#FFF;">${b.name}</td><td style="color:${hc}; font-weight:700;">${b.call}</td><td style="text-align:right; color:var(--accent-cyan); font-weight:700;">${b.target}</td></tr>`;
             });
-            document.getElementById('brokerTargetGridContainer').innerHTML = layoutGridHTML + "</table>";
+            document.getElementById('brokerTargetGridContainer').innerHTML = grid + "</table>";
         }
-
-        function handleSearchInput(event) {
-            const rawSearchQueryString = document.getElementById('terminalCompanySearch').value.trim();
-            if (rawSearchQueryString.length >= 3) {
-                appRoute('brokerage-panel', 'btn-brokerage', 'green');
-                const cleanTickerKey = rawSearchQueryString.toUpperCase();
-                document.getElementById('reportCompName').innerText = cleanTickerKey + " Corporation";
-                document.getElementById('reportCompTicker').innerText = cleanTickerKey;
-                triggerAIAnalyticalBrief(cleanTickerKey);
-                generateQuantMatrix(cleanTickerKey);
-            }
+        function handleSearchInput(e) { const v = document.getElementById('terminalCompanySearch').value.trim(); if (v.length >= 3) { appRoute('brokerage-panel', 'btn-brokerage', 'green'); const tk = v.toUpperCase(); document.getElementById('reportCompName').innerText = tk + " Corporation"; document.getElementById('reportCompTicker').innerText = tk; triggerAIAnalyticalBrief(tk); generateQuantMatrix(tk); } }
+        function switchCalcView(e, id) {
+            const card = e.currentTarget.closest('.data-card'), tabs = card.getElementsByClassName('internal-tab'), views = card.getElementsByClassName('sub-panel-view');
+            for (let i = 0; i < tabs.length; i++) tabs[i].classList.remove('active-sub-tab'); for (let i = 0; i < views.length; i++) views[i].classList.remove('active-sub-panel');
+            e.currentTarget.classList.add('active-sub-tab'); document.getElementById(id).classList.add('active-sub-panel');
         }
-
-        function switchCalcView(event, selectedCalculatorContainerId) {
-            const targetedTabButton = event.currentTarget;
-            const dataCardContainerFrame = targetedTabButton.closest('.data-card');
-            const subTabSelectionLinks = dataCardContainerFrame.getElementsByClassName('internal-tab');
-            const internalCalculatorViews = dataCardContainerFrame.getElementsByClassName('sub-panel-view');
-
-            for (let i = 0; i < subTabSelectionLinks.length; i++) subTabSelectionLinks[i].classList.remove('active-sub-tab');
-            for (let i = 0; i < internalCalculatorViews.length; i++) internalCalculatorViews[i].classList.remove('active-sub-panel');
-
-            targetedTabButton.classList.add('active-sub-tab');
-            document.getElementById(selectedCalculatorContainerId).classList.add('active-sub-panel');
-        }
-
-        // BOOT & AUTO INTIALIZATION LOOPS HOOK
-        window.onload = function() {
-            generateQuantMatrix("AAPL");
-            calculateHealthMatrixScore();
-            runSipCalculationMatrix();
-            runEmiCalculationMatrix();
-            runFireCalculationMatrix();
-            runInflationCalculationMatrix();
-        }
+        window.onload = function() { generateQuantMatrix("AAPL"); calculateHealthMatrixScore(); runSipCalculationMatrix(); runEmiCalculationMatrix(); runFireCalculationMatrix(); runInflationCalculationMatrix(); }
     </script>
 </body>
 </html>
