@@ -3,169 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Financesight | Institutional US Equity Research Terminal</title>
-    <meta name="description" content="Financesight.online is an advanced, multi-page US equity research terminal tracking live Wall Street broker targets, automated financial screeners, and real-time market quotes.">
-    <meta name="keywords" content="Financesight, Financesight online, stock screener, US equity terminal, Wall Street targets, live market news, brokerage ratings, Pranav, AI stock chatbot, pranav.ai">
-    <meta name="author" content="Pranav">
-    <link rel="canonical" href="https://financesight.online" />
-
-    <meta property="og:title" content="Financesight | US Equity Research Terminal">
-    <meta property="og:description" content="Verify real-time institutional broker targets, upside metrics, and interactive charts across US Mega-Caps instantly.">
-    <meta property="og:url" content="https://financesight.online">
-    <meta property="og:type" content="website">
-
+    <meta name="description" content="Financesight.online is an advanced US equity research terminal tracking live Wall Street targets and automated financial screeners.">
+    <meta name="keywords" content="Financesight, stock screener, US equity terminal, Wall Street, Pranav, pranav.ai">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
         :root {
-            --bg-base-top: #0a0f1e; 
-            --bg-base-bottom: #020409; 
-            --bg-surface: #10192e; 
-            --bg-input: #1a2a47;
-            --accent-main: #22d3ee; 
-            --accent-glow: #10b981; 
-            --accent-secondary: #c084fc;
+            --bg-base: #010409; /* Deep Pure Black Obsidian Canvas */
+            --bg-surface: #0d1117; 
+            --bg-input: #161b22;
+            --accent-purple: #C084FC;
+            --accent-cyan: #22D3EE;
+            --accent-green: #34D399;
+            --accent-gold: #FBBF24;
             --text-main: #F3F4F6; 
-            --text-muted: #9CA3AF; 
-            --border-line: rgba(34, 211, 238, 0.1);
+            --text-muted: #8B949E; 
+            --border-line: rgba(255, 255, 255, 0.05);
+            --active-glow: #34D399;
         }
-        
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        body { 
-            background: linear-gradient(135deg, var(--bg-base-top), var(--bg-base-bottom));
-            background-attachment: fixed;
-            color: var(--text-main); 
-            line-height: 1.5; 
-            padding-bottom: 90px; 
-            overflow-x: hidden;
-            background-image: 
-                linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            background-position: center;
-        }
-        
-        @keyframes glitchEntrance {
-            0% { opacity: 0; transform: scale(1.1) translateY(-20px); filter: blur(10px) contrast(2); }
-            5% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0) contrast(1); }
-            7% { transform: skewX(15deg); }
-            10% { transform: skewX(-10deg); }
-            12% { transform: skewX(0); }
-            100% { opacity: 1; }
-        }
-
-        #feed-panel { animation: glitchEntrance 1s ease-out; }
-        .ticker-wrap { width: 100%; background: rgba(2, 4, 9, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-line); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(34, 211, 238, 0.15); }
-                header {
-            max-width: 800px; margin: 0 auto; padding: 30px 20px 10px 20px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .brand-logo { font-size: 1.5rem; font-weight: 800; color: white; text-decoration: none; letter-spacing: -1px; text-transform: uppercase; }
-        .brand-logo span { color: var(--accent-main); text-shadow: 0 0 15px var(--accent-main); }
-        .terminal-badge { background: rgba(34, 211, 238, 0.05); border: 1px solid var(--border-line); padding: 5px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; color: var(--accent-main); text-transform: uppercase; letter-spacing: 1px; }
-
+        body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.5; padding-bottom: 90px; }
+        .ticker-wrap { width: 100%; background: #010409; border-bottom: 1px solid var(--border-line); position: sticky; top: 0; z-index: 1000; }
+        header { max-width: 800px; margin: 0 auto; padding: 30px 20px 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo { font-size: 1.4rem; font-weight: 800; color: white; text-decoration: none; letter-spacing: -0.5px; }
+        .brand-logo span { color: var(--accent-green); text-shadow: 0 0 15px var(--accent-green); }
+        .terminal-badge { background: rgba(255,255,255,0.03); border: 1px solid var(--border-line); padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); }
         .search-box-container { max-width: 800px; margin: 15px auto; padding: 0 20px; position: relative; }
-        .screener-search { 
-            width: 100%; padding: 18px 22px 18px 55px; background: rgba(16, 25, 46, 0.8); backdrop-filter: blur(10px);
-            border: 1px solid var(--border-line); border-radius: 16px; color: white; font-size: 1rem; outline: none;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-        }
-        .screener-search:focus { border-color: var(--accent-main); box-shadow: 0 0 25px rgba(34, 211, 238, 0.3); }
-        .search-icon { position: absolute; left: 38px; top: 20px; color: var(--accent-main); font-size: 1.2rem; }
-        
-        .hero-visual-card {
-            width: 100%; height: 160px; border-radius: 16px; margin-bottom: 25px;
-            background-image: linear-gradient(to bottom, rgba(10, 15, 30, 0.1), rgba(2, 4, 9, 0.98)), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80');
-            background-size: cover; background-position: center; border: 1px solid var(--border-line);
-            display: flex; align-items: flex-end; padding: 20px; position: relative; overflow: hidden;
-        }
-        .hero-visual-card::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(34, 211, 238, 0.1), transparent);
-            transform: rotate(45deg); animation: networkPulse 4s infinite;
-        }
-        @keyframes networkPulse { 0% { transform: translate(-100%, -100%) rotate(45deg); } 100% { transform: translate(100%, 100%) rotate(45deg); } }
-        .hero-badge-overlay { background: rgba(34, 211, 238, 0.15); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(34, 211, 238, 0.3); padding: 6px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: #ccfbf1; text-transform: uppercase; letter-spacing: 2px; }
-
+        .screener-search { width: 100%; padding: 16px 20px 16px 50px; background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 12px; color: white; font-size: 1rem; outline: none; transition: all 0.3s ease; }
+        .screener-search:focus { border-color: var(--accent-green); box-shadow: 0 0 20px rgba(52, 211, 153, 0.2); }
+        .search-icon { position: absolute; left: 35px; top: 18px; color: var(--text-muted); }
+               .hero-visual-card { width: 100%; height: 140px; border-radius: 12px; margin-bottom: 20px; background-image: linear-gradient(to bottom, rgba(1,4,9,0.1), rgba(13,17,23,0.95)), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center; border: 1px solid var(--border-line); display: flex; align-items: flex-end; padding: 15px; }
+        .hero-badge-overlay { background: rgba(52, 211, 153, 0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(52, 211, 153, 0.4); padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: #A7F3D0; text-transform: uppercase; letter-spacing: 1px; }
         .app-panel { display: none; max-width: 800px; margin: 0 auto; padding: 15px 20px; }
-        .app-panel.active-panel { display: block; animation: panelEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes panelEntrance { 0% { opacity: 0; transform: translateY(30px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
-
-        .data-card { 
-            background: rgba(16, 25, 46, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-line); border-radius: 16px; padding: 25px; margin-bottom: 25px; 
-            box-shadow: 0 12px 40px rgba(0,0,0,0.5); position: relative; overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        @keyframes borderGlowPulse {
-            0% { border-color: rgba(34, 211, 238, 0.1); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
-            50% { border-color: rgba(16, 185, 129, 0.4); box-shadow: 0 0 25px rgba(16, 185, 129, 0.2); }
-            100% { border-color: rgba(34, 211, 238, 0.1); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
-        }
-        .data-card:hover { transform: translateY(-5px) scale(1.01); animation: borderGlowPulse 2s infinite alternate; }
-        .card-header-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 18px; font-weight: 800; border-bottom: 1px solid var(--border-line); padding-bottom: 10px; }
-        .company-profile-banner { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--border-line); margin-bottom: 25px; gap: 20px; }
-        .live-ticker-mount-point { width: 100%; max-width: 450px; height: 60px; overflow: hidden; border-radius: 8px; border: 1px solid var(--border-line); }
-        .consensus-engine-mount { width: 100%; height: 360px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-line); background: rgba(255,255,255,0.01); margin-bottom: 25px; }
-                .ai-assistant-card { background: linear-gradient(135deg, rgba(34, 211, 238, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%); border: 1px solid rgba(34, 211, 238, 0.3) !important; }
-        .ai-pulse-indicator { width: 10px; height: 10px; background: var(--accent-main); border-radius: 50%; display: inline-block; margin-right: 8px; box-shadow: 0 0 15px var(--accent-main); animation: pulseGlow 1.5s infinite alternate; }
-        @keyframes pulseGlow { 0% { opacity: 0.5; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1.1); } }
-
-        .internal-tab-bar { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 20px; border-bottom: 1px solid var(--border-line); }
-        .internal-tab { background: none; border: 1px solid transparent; color: var(--text-muted); font-size: 0.85rem; font-weight: 700; padding: 10px 20px; border-radius: 25px; cursor: pointer; white-space: nowrap; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); text-transform: uppercase; letter-spacing: 1px; }
-        .internal-tab.active-sub-tab { background: rgba(34, 211, 238, 0.1); color: var(--accent-main); border-color: rgba(34, 211, 238, 0.3); box-shadow: 0 0 15px rgba(34, 211, 238, 0.2); }
-
-        .sub-panel-view { display: none; height: 480px; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-line); }
-        .sub-panel-view.active-sub-panel { display: block; animation: subPanelEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes subPanelEntrance { 0% { opacity: 0; transform: scale(0.98) translateX(20px); filter: blur(5px); } 100% { opacity: 1; transform: scale(1) translateX(0); filter: blur(0); } }
-        
-        .ai-chat-trigger-bubble { position: fixed; bottom: 95px; right: 25px; width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-main), var(--accent-glow)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(34, 211, 238, 0.5); z-index: 3000; cursor: pointer; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; animation: floatBubble 3s ease-in-out infinite alternate; }
-        .ai-chat-trigger-bubble:hover { transform: scale(1.15) rotate(10deg); box-shadow: 0 0 40px rgba(34, 211, 238, 0.8), inset 0 0 15px rgba(255,255,255,0.5); }
-        @keyframes floatBubble { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
-        .ai-chat-trigger-bubble svg { width: 28px; height: 28px; fill: white; }
-
-        .ai-chatbot-window { position: fixed; bottom: 90px; right: 20px; width: calc(100% - 40px); max-width: 400px; height: 520px; background: rgba(10, 15, 30, 0.95); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(34, 211, 238, 0.2); border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.7); z-index: 3100; display: none; flex-direction: column; overflow: hidden; animation: chatBoxPhysics 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes chatBoxPhysics { 0% { opacity: 0; transform: translateY(40px) scale(0.95); filter: blur(10px); } 100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
-        
-        .chat-window-header { background: rgba(255, 255, 255, 0.03); padding: 16px 20px; border-bottom: 1px solid var(--border-line); display: flex; justify-content: space-between; align-items: center; }
-        .chat-window-title { font-size: 1rem; font-weight: 800; display: flex; align-items: center; gap: 10px; color: white; text-transform: uppercase; letter-spacing: 1px; }
-        .chat-close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; transition: color 0.3s; }
-        .chat-close-btn:hover { color: var(--accent-red); transform: rotate(90deg); }
-        
-        .chat-messages-container { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(2, 4, 9, 0.5); }
-        .chat-bubble { max-width: 85%; padding: 12px 18px; border-radius: 16px; font-size: 0.9rem; line-height: 1.6; word-wrap: break-word; animation: bubblePop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        @keyframes bubblePop { 0% { transform: scale(0.9) translateY(10px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
-        .chat-bubble.user-bubble { background: var(--accent-secondary); color: #10192e; font-weight: 700; align-self: flex-end; border-bottom-right-radius: 4px; box-shadow: 0 4px 15px rgba(192, 132, 252, 0.3); }
-        .chat-bubble.ai-bubble { background: var(--bg-input); color: #F3F4F6; align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid var(--border-line); }
-        
-        .chat-input-row { padding: 15px; background: rgba(16, 25, 46, 0.5); border-top: 1px solid var(--border-line); display: flex; gap: 10px; align-items: center; }
-        .chat-input-field { flex: 1; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 10px; padding: 14px; color: white; font-size: 0.95rem; outline: none; transition: border-color 0.3s; }
-        .chat-input-field:focus { border-color: var(--accent-main); }
-        .chat-send-btn { background: linear-gradient(135deg, var(--accent-main), var(--accent-glow)); border: none; width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3); transition: transform 0.2s; }
-
-        .bottom-nav-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 80px; background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-top: 1px solid var(--border-line); display: flex; justify-content: space-around; align-items: center; z-index: 2000; box-shadow: 0 -10px 40px rgba(0,0,0,0.6); }
-        .nav-item-button { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; width: 25%; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-        .nav-item-button svg { margin-bottom: 8px; width: 22px; height: 22px; fill: currentColor; opacity: 0.5; transition: all 0.3s; }
-        .nav-item-button.active-feed { color: var(--accent-secondary); filter: drop-shadow(0 0 10px rgba(192,132,252,0.5)); }
-        .nav-item-button.active-screens { color: var(--accent-main); filter: drop-shadow(0 0 10px rgba(34,211,238,0.5)); }
-        .nav-item-button.active-brokerage { color: var(--accent-glow); filter: drop-shadow(0 0 10px rgba(16,185,129,0.5)); }
-        .nav-item-button.active-account { color: var(--accent-gold); filter: drop-shadow(0 0 10px rgba(251,191,36,0.5)); }
-        .nav-item-button[class*="active-"] svg { opacity: 1; transform: translateY(-3px) scale(1.1); }
-
-        .terminal-field { width: 100%; padding: 16px; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 10px; color: white; margin-bottom: 15px; outline: none; font-size: 0.95rem; transition: border-color 0.3s; }
-        .terminal-field:focus { border-color: var(--accent-glow); }
-        .terminal-btn { background: linear-gradient(135deg, var(--accent-main), var(--accent-glow)); color: white; font-weight: 800; text-transform: uppercase; padding: 16px; border: none; border-radius: 10px; width: 100%; cursor: pointer; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3); transition: all 0.3s; letter-spacing: 1px; }
+        .app-panel.active-panel { display: block; animation: panelSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes panelSlide { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+        .data-card { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 14px; padding: 22px; margin-bottom: 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.6); position: relative; overflow: hidden; transition: transform 0.2s ease, border-color 0.2s ease; }
+        .data-card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-2px); }
+        .card-glow-indicator { position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--active-glow); }
+        .card-header-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 14px; font-weight: 700; }
+        .company-profile-banner { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--border-line); margin-bottom: 20px; gap: 15px; }
+        .live-ticker-mount-point { width: 100%; max-width: 450px; height: 50px; overflow: hidden; }
+        .consensus-engine-mount { width: 100%; height: 340px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-line); margin-bottom: 20px; }
+        .ai-assistant-card { background: linear-gradient(135deg, rgba(34, 211, 238, 0.03) 0%, rgba(52, 211, 153, 0.03) 100%); border: 1px solid rgba(52, 211, 153, 0.2) !important; }
+        .ai-pulse-indicator { width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; display: inline-block; margin-right: 6px; box-shadow: 0 0 10px var(--accent-cyan); animation: pulseGlow 1.5s infinite alternate; }
+        @keyframes pulseGlow { 0% { opacity: 0.4; } 100% { opacity: 1; } }
+        .internal-tab-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px; border-bottom: 1px solid var(--border-line); }
+        .internal-tab { background: none; border: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 700; padding: 8px 16px; border-radius: 20px; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+        .internal-tab.active-sub-tab { background: rgba(34, 211, 238, 0.1); color: var(--accent-cyan); border: 1px solid rgba(34, 211, 238, 0.2); }
+        .sub-panel-view { display: none; height: 450px; width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-line); }
+        .sub-panel-view.active-sub-panel { display: block; animation: subEntrance 0.3s ease-out; }
+        @keyframes subEntrance { from { opacity: 0; transform: scale(0.99); } to { opacity: 1; transform: scale(1); } }
+        .ai-chat-trigger-bubble { position: fixed; bottom: 95px; right: 20px; width: 55px; height: 55px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(52, 211, 153, 0.3); z-index: 3000; cursor: pointer; animation: floatBubble 3s ease-in-out infinite alternate; }
+        @keyframes floatBubble { 0% { transform: translateY(0); } 100% { transform: translateY(-5px); } }
+        .ai-chat-trigger-bubble svg { width: 24px; height: 24px; fill: white; }
+        .ai-chatbot-window { position: fixed; bottom: 90px; right: 20px; width: calc(100% - 40px); max-width: 400px; height: 480px; background: #0b0f17; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.7); z-index: 3100; display: none; flex-direction: column; overflow: hidden; animation: chatBoxPhysics 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        @keyframes chatBoxPhysics { 0% { opacity: 0; transform: translateY(40px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        .chat-window-header { background: var(--bg-surface); padding: 14px 18px; border-bottom: 1px solid var(--border-line); display: flex; justify-content: space-between; align-items: center; }
+        .chat-window-title { font-size: 0.95rem; font-weight: 700; display: flex; align-items: center; gap: 8px; color: white; }
+        .chat-close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; }
+        .chat-messages-container { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #070a0f; }
+        .chat-bubble { max-width: 82%; padding: 10px 14px; border-radius: 12px; font-size: 0.88rem; line-height: 1.45; word-wrap: break-word; }
+        .chat-bubble.user-bubble { background: var(--bg-input); color: white; align-self: flex-end; border-bottom-right-radius: 2px; border: 1px solid var(--border-line); }
+        .chat-bubble.ai-bubble { background: rgba(6, 182, 212, 0.05); color: #E2E8F0; align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid rgba(6, 182, 212, 0.15); }
+        .chat-input-row { padding: 12px; background: var(--bg-surface); border-top: 1px solid var(--border-line); display: flex; gap: 8px; align-items: center; }
+        .chat-input-field { flex: 1; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; padding: 12px; color: white; font-size: 0.88rem; outline: none; }
+        .chat-send-btn { background: var(--accent-green); border: none; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; }
+        .bottom-nav-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 75px; background: rgba(13, 17, 23, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--border-line); display: flex; justify-content: space-around; align-items: center; z-index: 2000; }
+        .nav-item-button { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; width: 25%; transition: all 0.2s; }
+        .nav-item-button svg { margin-bottom: 6px; width: 20px; height: 20px; fill: currentColor; opacity: 0.6; }
+        .nav-item-button.active-feed { color: var(--accent-purple); }
+        .nav-item-button.active-screens { color: var(--accent-cyan); }
+        .nav-item-button.active-brokerage { color: var(--accent-green); }
+        .nav-item-button.active-account { color: var(--accent-gold); }
+        .nav-item-button[class*="active-"] svg { opacity: 1; transform: translateY(-2px); }
+        .terminal-field { width: 100%; padding: 14px; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; color: white; margin-bottom: 12px; outline: none; }
+        .terminal-btn { background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green)); color: #020409; font-weight: 700; text-transform: uppercase; padding: 14px; border: none; border-radius: 8px; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body>
-      <div class="ticker-wrap">
+        <div class="ticker-wrap">
         <div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-            { "symbols": [ { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" }, { "proName": "FOREXCOM:NSXUSD", "title": "NASDAQ 100" } ], "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "en" }
+            { "symbols": [ { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" }, { "proName": "FOREXCOM:NSXUSD", "title": "NASDAQ 100" } ], "colorTheme": "dark", "isTransparent": true, "locale": "en" }
             </script>
         </div>
     </div>
@@ -177,7 +98,11 @@
 
     <div class="search-box-container">
         <span class="search-icon">🔍</span>
-        <input type="text" class="search-input screener-search" id="terminalCompanySearch" placeholder="Scan asset ticker (e.g., AAPL, NVDA, TSLA)..." onkeyup="handleSearchInput(event)">
+        <input type="text" class="search-input screener-search" id="terminalCompanySearch" placeholder="Type company ticker (e.g., AAPL, TSLA, NVDA)..." onkeyup="handleSearchInput(event)">
+    </div>
+
+    <div class="ai-chat-trigger-bubble" id="chatBubbleNode" onclick="toggleChatbotConsole(true)">
+        <svg viewBox="0 0 24 24"><path d="M12 2c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l2.79-2.79C9.93 18.78 10.93 19 12 19c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1-8h2v2h-2zm0 4h2v2h-2z"/></svg>
     </div>
 
     <div class="ai-chatbot-window" id="aiChatbotConsoleWindow">
@@ -186,40 +111,35 @@
             <button class="chat-close-btn" onclick="toggleChatbotConsole(false)">✕</button>
         </div>
         <div class="chat-messages-container" id="chatMessageFlowBox">
-            <div class="chat-bubble ai-bubble">Greetings. I am <strong>pranav.ai</strong>, your specialized neural market copilot. Input an equity ticker or financial query to execute live technical analysis scans.</div>
+            <div class="chat-bubble ai-bubble">Greetings. I am <strong>pranav.ai</strong>, your specialized market analyst. Enter any mega-cap ticker name or option question to begin scans.</div>
         </div>
         <div class="chat-input-row">
-            <input type="text" class="chat-input-field" id="chatbotUserTextInput" placeholder="Ask pranav.ai (e.g., NVDA setup, AAPL P/E)..." onkeypress="handleChatEnterKey(event)">
-            <button class="chat-send-btn" onclick="executeChatbotLogic()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
+            <input type="text" class="chat-input-field" id="chatbotUserTextInput" placeholder="Ask pranav.ai about valuations, charts..." onkeypress="handleChatEnterKey(event)">
+            <button class="chat-send-btn" onclick="executeChatbotLogic()">🚀</button>
         </div>
     </div>
 
     <div id="feed-panel" class="app-panel active-panel">
-        <div class="hero-visual-card"><div class="hero-badge-overlay">Institutional Workspace</div></div>
+        <div class="hero-visual-card"><div class="hero-badge-overlay">Live Institutional Workspace</div></div>
         <div class="data-card" style="padding: 0; overflow: hidden;">
             <div class="card-glow-indicator"></div>
-            <div class="card-header-title" style="padding: 25px 25px 0 25px; margin: 0;">Wall Street Live Media Wire</div>
-            <div style="height: 420px; width: 100%;">
+            <div class="card-header-title" style="padding: 20px 22px 0 22px; margin: 0;">Wall Street Live Media Wire</div>
+            <div style="height: 400px; width: 100%;">
                 <div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                    { "feedMode": "market", "market": "stock", "colorTheme": "dark", "isTransparent": true, "displayMode": "regular", "width": "100%", "height": "100%", "locale": "en" }
-                    </script>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>{ "feedMode": "market", "market": "stock", "colorTheme": "dark", "isTransparent": true, "displayMode": "regular", "width": "100%", "height": "100%", "locale": "en" }</script>
                 </div>
             </div>
         </div>
 
         <div class="data-card" style="padding: 0; overflow: hidden;">
-            <div class="card-glow-indicator" style="background: var(--accent-glow);"></div>
-            <div class="card-header-title" style="padding: 25px 25px 0 25px; margin: 0;">U.S. Equity Sectors Capital Matrix</div>
+            <div class="card-glow-indicator" style="background: var(--accent-purple);"></div>
+            <div class="card-header-title" style="padding: 20px 22px 0 22px; margin: 0;">U.S. Equity Sectors Capital Matrix</div>
             <div style="height: 380px; width: 100%;">
                 <div class="tradingview-widget-container" style="height:100%; width:100%;">
                     <div id="tv-sector-indices-patch" style="height:100%; width:100%;"></div>
                     <script type="text/javascript">
                         setTimeout(() => {
-                            const patchScript = document.createElement('script');
-                            patchScript.type = "text/javascript"; patchScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js"; patchScript.async = true;
+                            const patchScript = document.createElement('script'); patchScript.type = "text/javascript"; patchScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js"; patchScript.async = true;
                             patchScript.innerHTML = JSON.stringify({ "title": "Sectors", "symbols": [ { "name": "AMEX:XLK", "displayName": "Technology Sector" }, { "name": "AMEX:XLF", "displayName": "Financials Sector" }, { "name": "AMEX:XLY", "displayName": "Consumer Discretionary" }, { "name": "AMEX:XLE", "displayName": "Energy Infrastructure" } ], "colorTheme": "dark", "isTransparent": true, "locale": "en", "width": "100%", "height": "100%" });
                             document.getElementById('tv-sector-indices-patch').appendChild(patchScript);
                         }, 100);
@@ -229,81 +149,54 @@
         </div>
 
         <div class="data-card" style="padding: 0; overflow: hidden;">
-            <div class="card-glow-indicator" style="background: var(--accent-glow);"></div>
-            <div class="card-header-title" style="padding: 25px 25px 0 25px; margin: 0;">Global Economic Macro Calendar</div>
-            <div style="height: 360px; width: 100%;">
+            <div class="card-glow-indicator" style="background: var(--accent-purple);"></div>
+            <div class="card-header-title" style="padding: 20px 22px 0 22px; margin: 0;">Global Economic Macro Calendar</div>
+            <div style="height: 340px; width: 100%;">
                 <div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-                    { "colorTheme": "dark", "isTransparent": true, "width": "100%", "height": "100%", "locale": "en", "importanceFilter": "-1,0,1" }
-                    </script>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>{ "colorTheme": "dark", "isTransparent": true, "width": "100%", "height": "100%", "locale": "en", "importanceFilter": "-1,0,1" }</script>
                 </div>
             </div>
         </div>
-    </div>    <div id="screens-panel" class="app-panel">
+    </div>
+
+    <div id="screens-panel" class="app-panel">
         <div class="data-card" style="padding:0; overflow:hidden;">
             <div class="card-glow-indicator"></div>
-            <div class="card-header-title" style="padding: 25px 25px 0 25px; margin: 0;">Screener Core Filtering Database</div>
-            <div style="height: 680px; width: 100%;">
+            <div class="card-header-title" style="padding: 20px 22px 0 22px; margin: 0;">Screener Core Filtering Database</div>
+            <div style="height: 650px; width: 100%;">
                 <div class="tradingview-widget-container" style="height:100%;width:100%"><div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                    { "width": "100%", "height": "100%", "defaultColumn": "overview", "defaultScreen": "most_capitalized", "market": "america", "showToolbar": true, "colorTheme": "dark", "isTransparent": true, "locale": "en" }
-                    </script>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>{ "width": "100%", "height": "100%", "defaultColumn": "overview", "defaultScreen": "most_capitalized", "market": "america", "showToolbar": true, "colorTheme": "dark", "isTransparent": true, "locale": "en" }</script>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="brokerage-panel" class="app-panel">
-        <div class="data-card ai-assistant-card">
-            <div class="card-glow-indicator" style="background: var(--accent-main);"></div>
-            <div class="card-header-title" style="color: var(--accent-main); border-color: rgba(34, 211, 238, 0.2);"><span class="ai-pulse-indicator"></span>pranav.ai Terminal Copilot</div>
-            <div id="aiReportOutputArea" style="font-size: 1rem; line-height: 1.7; font-weight: 600; color: #E2E8F0;">Natural Language Market Models Active. Scan an asset ticker in the main search box to stream a localized quantitative brief here.</div>
-        </div>
-
+        <div class="data-card ai-assistant-card"><div class="card-glow-indicator" style="background: var(--accent-cyan);"></div><div class="card-header-title" style="color: var(--accent-cyan);"><span class="ai-pulse-indicator"></span>pranav.ai Terminal Copilot</div><div id="aiReportOutputArea" style="font-size: 0.95rem; line-height: 1.6; font-weight: 500; color: #E2E8F0;">Initializing natural language market models... Type an asset ticker inside the search box to stream our localized quantitative brief.</div></div>
         <div class="data-card">
             <div class="card-glow-indicator"></div>
-            <div class="company-profile-banner">
-                <div>
-                    <h3 id="reportCompName" style="font-size: 1.6rem; font-weight:800; color: white;">Apple Inc.</h3>
-                    <div class="stock-ticker-badge" id="reportCompTicker" style="margin-top: 5px;">AAPL</div>
-                </div>
-                <div class="live-ticker-mount-point" id="liveQuoteWidgetMount"></div>
-            </div>
-            <div class="card-header-title" style="margin-bottom: 15px;">Institutional Consensus & Targets</div>
+            <div class="company-profile-banner"><div><h3 id="reportCompName" style="font-size: 1.4rem; font-weight:700;">Apple Inc.</h3><div class="stock-ticker-badge" id="reportCompTicker">AAPL</div></div><div class="live-ticker-mount-point" id="liveQuoteWidgetMount"></div></div>
+            <div class="card-header-title" style="margin-bottom: 12px;">Wall Street Analyst Consensus & Targets</div>
             <div class="consensus-engine-mount" id="consensusAnalystMount"></div>
-
-            <div class="internal-tab-bar" style="margin-top: 30px;">
+            <div class="internal-tab-bar" style="margin-top: 25px;">
                 <button class="internal-tab active-sub-tab" onclick="switchSubPanel(event, 'sub-chart')">Live Chart</button>
                 <button class="internal-tab" onclick="switchSubPanel(event, 'sub-financials')">Quarterly & P&L</button>
                 <button class="internal-tab" onclick="switchSubPanel(event, 'sub-peers')">Peer Comparison</button>
                 <button class="internal-tab" onclick="switchSubPanel(event, 'sub-profile')">Profile Info</button>
             </div>
-
             <div id="sub-chart" class="sub-panel-view active-sub-panel"><div id="chart-mount" style="height:100%;"></div></div>
             <div id="sub-financials" class="sub-panel-view"><div id="financials-mount" style="height:100%;"></div></div>
             <div id="sub-peers" class="sub-panel-view"><div id="peers-mount" style="height:100%;"></div></div>
             <div id="sub-profile" class="sub-panel-view"><div id="profile-mount" style="height:100%;"></div></div>
         </div>
-
         <div class="data-card">
-            <div class="card-glow-indicator"></div>
-            <div class="card-header-title">Private Dispatch Hub</div>
-            <input type="text" class="terminal-field" id="nodeTag" placeholder="Scope Tag (e.g., Morgan Stanley)">
-            <input type="text" class="terminal-field" id="nodeTitle" placeholder="Company Headline">
-            <textarea class="terminal-field" id="nodeExcerpt" rows="4" placeholder="Input analytical target briefs..."></textarea>
-            <button class="terminal-btn" id="dispatchBtn" onclick="submitCustomNode()">Deploy Dispatch Node</button>
-            <div id="customDispatchTarget" style="margin-top: 20px;"></div>
+            <div class="card-glow-indicator"></div><div class="card-header-title">Private Dispatch Hub</div>
+            <input type="text" class="terminal-field" id="nodeTag" placeholder="Scope Tag"><input type="text" class="terminal-field" id="nodeTitle" placeholder="Company Headline"><textarea class="terminal-field" id="nodeExcerpt" rows="4" placeholder="Input briefs..."></textarea><button class="terminal-btn" id="dispatchBtn" onclick="submitCustomNode()">Deploy Dispatch Node</button><div id="customDispatchTarget" style="margin-top: 15px;"></div>
         </div>
     </div>
 
     <div id="account-panel" class="app-panel">
-        <div class="data-card">
-            <div class="card-glow-indicator"></div>
-            <h1 style="font-size: 1.6rem; margin-bottom: 15px; font-weight:800; color: white;">System Architecture</h1>
-            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 18px;">Financesight is an advanced quantitative analytics terminal platform tracking corporate configurations and macroeconomic asset indicators.</p>
-            <p style="color: var(--text-muted); font-size: 1rem;">Founded, configured, and optimized in 2026 by <strong>Pranav</strong>.</p>
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-line); font-size: 0.85rem; color: var(--accent-gold); font-weight: 700;">Operational Contact Desk: desk@financesight.online</div>
-        </div>
+        <div class="data-card"><div class="card-glow-indicator"></div><h1 style="font-size: 1.5rem; margin-bottom: 12px; font-weight:800;">System Architecture</h1><p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Financesight is an advanced quantitative analytics terminal platform engine tracking corporate configurations.</p><p style="color: var(--text-muted); font-size: 0.95rem;">Founded and optimized in 2026 by <strong>Pranav</strong>.</p><div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--border-line); font-size: 0.8rem; color: var(--accent-gold);">Operational Contact Desk: desk@financesight.online</div></div>
     </div>
 
     <div class="bottom-nav-bar">
@@ -312,7 +205,67 @@
         <button class="nav-item-button" id="btn-brokerage" onclick="appRoute('brokerage-panel', 'btn-brokerage', 'green')"><svg viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>Brokerages</button>
         <button class="nav-item-button" id="btn-account" onclick="appRoute('account-panel', 'btn-account', 'gold')"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>Account</button>
     </div>
-
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script>
+        function appRoute(pId, bId, themeColorName) {
+            const root = document.documentElement;
+            if (themeColorName === 'purple') root.style.setProperty('--active-glow', '#C084FC');
+            if (themeColorName === 'cyan') root.style.setProperty('--active-glow', '#22D3EE');
+            if (themeColorName === 'green') root.style.setProperty('--active-glow', '#34D399');
+            if (themeColorName === 'gold') root.style.setProperty('--active-glow', '#FBBF24');
+            for (let p of document.getElementsByClassName('app-panel')) p.classList.remove('active-panel');
+            for (let b of document.getElementsByClassName('nav-item-button')) b.className = "nav-item-button";
+            document.getElementById(pId).classList.add('active-panel');
+            document.getElementById(bId).classList.add('active-' + themeColorName);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function toggleChatbotConsole(show) { document.getElementById('aiChatbotConsoleWindow').style.display = show ? 'flex' : 'none'; document.getElementById('chatBubbleNode').style.display = show ? 'none' : 'flex'; }
+        function handleChatEnterKey(e) { if(e.key === 'Enter') executeChatbotLogic(); }
+        function executeChatbotLogic() {
+            const f = document.getElementById('chatbotUserTextInput'), txt = f.value.trim(); if(!txt) return;
+            const box = document.getElementById('chatMessageFlowBox'), u = document.createElement('div'); u.className = "chat-bubble user-bubble"; u.innerText = txt; box.appendChild(u); f.value = ""; box.scrollTop = box.scrollHeight;
+            setTimeout(() => {
+                const ai = document.createElement('div'); ai.className = "chat-bubble ai-bubble"; const q = txt.toLowerCase(); let r = "Processing query... Search an asset ticker above to run quantitative screens.";
+                if(q.includes("nvidia") || q.includes("nvda")) r = "<strong>pranav.ai structural analysis: NVDA</strong><br>Long-term momentum parameters verify generational AI hardware expansion scaling. Enterprise capital spend tracks highly stable support frameworks.";
+                else if(q.includes("apple") || q.includes("aapl")) r = "<strong>pranav.ai structural analysis: AAPL</strong><br>Massive ecosystem protection lines active. Services expansion targets balance short-term hardware lifecycle shifts perfectly.";
+                else if(q.includes("pranav")) r = "Pranav is the Chief Technical Architect and System Engineer behind this entire Financesight obsidian infrastructure deployment in 2026.";
+                ai.innerHTML = r; box.appendChild(ai); box.scrollTop = box.scrollHeight;
+            }, 500);
+        }
+        function triggerAIAnalyticalBrief(t) {
+            const o = document.getElementById('aiReportOutputArea'); o.innerHTML = "🤖 <em>pranav.ai running data array matching tracks...</em>";
+            const m = { "AAPL": "<strong>pranav.ai Option Brief: AAPL</strong><br>Heavy support observed near historical trendline parameters. Institutional flow registers steady accumulative accumulation lines.", "NVDA": "<strong>pranav.ai Option Brief: NVDA</strong><br>Compute stack hardware leadership confirms sustainable long-term data metrics. Hyper-scaler capex pipeline profiles protection parameters." };
+            setTimeout(() => { o.innerHTML = m[t.toUpperCase()] || `<strong>pranav.ai Option Brief: ${t.toUpperCase()}</strong><br>High-frequency data streaming is functional. Check the sub-charts and technical gauges below to map active volatility metrics.`; }, 500);
+        }
+        function renderFinancialWidgets(raw) {
+            let sym = raw.toUpperCase().trim(); if (!sym.includes(":")) sym = (["AAPL","TSLA","NVDA","MSFT","AMZN","GOOGL"].includes(sym)) ? "NASDAQ:" + sym : "NYSE:" + sym;
+            const tk = sym.split(":")[1] || sym; document.getElementById('reportCompName').innerText = tk + " Corp"; document.getElementById('reportCompTicker').innerText = tk;
+            triggerAIAnalyticalBrief(tk);
+            document.getElementById('liveQuoteWidgetMount').innerHTML = ""; const qSc = document.createElement('script'); qSc.type = "text/javascript"; qSc.src = "https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js"; qSc.async = true; qSc.innerHTML = JSON.stringify({ "symbol": sym, "width": "100%", "colorTheme": "dark", "isTransparent": true, "locale": "en" }); document.getElementById('liveQuoteWidgetMount').appendChild(qSc);
+            document.getElementById('consensusAnalystMount').innerHTML = ""; const aSc = document.createElement('script'); aSc.type = "text/javascript"; aSc.src = "https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js"; aSc.async = true; aSc.innerHTML = JSON.stringify({ "interval": "1M", "width": "100%", "isTransparent": true, "height": "100%", "symbol": sym, "showIntervalTabs": false, "displayMode": "single", "locale": "en", "colorTheme": "dark" }); document.getElementById('consensusAnalystMount').appendChild(aSc);
+            
+            // REMOUNT ALL INLINE WIDGET FILES NATIVELY TO FIX SUB-PANEL FREEZES
+            document.getElementById('chart-mount').innerHTML = `<iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_chart&symbol=${sym}&interval=D&theme=dark" style="width:100%;height:100%;border:none;"></iframe>`;
+            document.getElementById('financials-mount').innerHTML = ""; const fSc = document.createElement('script'); fSc.type = "text/javascript"; fSc.src = "https://s3.tradingview.com/external-embedding/embed-widget-financials.js"; fSc.async = true; fSc.innerHTML = JSON.stringify({ "symbol": sym, "colorTheme": "dark", "isTransparent": true, "displayMode": "regular", "width": "100%", "height": "100%", "locale": "en" }); document.getElementById('financials-mount').appendChild(fSc);
+            document.getElementById('peers-mount').innerHTML = ""; const pSc = document.createElement('script'); pSc.type = "text/javascript"; pSc.src = "https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js"; pSc.async = true; pSc.innerHTML = JSON.stringify({ "symbol": sym, "width": "100%", "height": "100%", "colorTheme": "dark", "isTransparent": true, "locale": "en" }); document.getElementById('peers-mount').appendChild(pSc);
+            document.getElementById('profile-mount').innerHTML = ""; const mSc = document.createElement('script'); mSc.type = "text/javascript"; mSc.src = "https://s3.tradingview.com/external-embedding/embed-widget-financials.js"; mSc.async = true; mSc.innerHTML = JSON.stringify({ "symbol": sym, "colorTheme": "dark", "isTransparent": true, "displayMode": "compact", "width": "100%", "height": "100%", "locale": "en" }); document.getElementById('profile-mount').appendChild(mSc);
+        }
+        function handleSearchInput(e) { const v = document.getElementById('terminalCompanySearch').value; if (v.length >= 3) { appRoute('brokerage-panel', 'btn-brokerage', 'green'); renderFinancialWidgets(v); } }
+        function switchSubPanel(e, id) {
+            const tabs = document.getElementsByClassName('internal-tab'); for(let i=0; i<tabs.length; i++) tabs[i].classList.remove('active-sub-tab');
+            const views = document.getElementsByClassName('sub-panel-view'); for(let i=0; i<views.length; i++) views[i].classList.remove('active-sub-panel');
+            e.currentTarget.classList.add('active-sub-tab'); document.getElementById(id).classList.add('active-sub-panel');
+        }
+        window.onload = function() { const s = localStorage.getItem('dispatchNodes'); if (s) document.getElementById('customDispatchTarget').innerHTML = s; }
+        function submitCustomNode() {
+            const tg = document.getElementById('nodeTag').value, tl = document.getElementById('nodeTitle').value, tx = document.getElementById('nodeExcerpt').value; if(!tl || !tx) return alert('Headline required.');
+            const c = document.getElementById('customDispatchTarget'), k = document.createElement('div'); k.style.cssText = "background:rgba(255,255,255,0.01); border:1px solid var(--border-line); padding:15px; border-radius:10px; margin-top:12px;";
+            k.innerHTML = `<span style="font-size:0.65rem; color:var(--accent-green); font-weight:700; display:block; margin-bottom:4px;">${tg || 'NOTE'}</span><h4 style="font-size:1rem; color:#FFF; margin-bottom:4px;">${tl}</h4><p style="color:#94A3B8; font-size:0.85rem; margin-bottom:6px;">${tx}</p><div style="font-size:0.65rem; color:rgba(255,255,255,0.25); font-weight:600;">PRANAV • REQ</div>`;
+            c.insertBefore(k, c.firstChild); localStorage.setItem('dispatchNodes', c.innerHTML); document.getElementById('nodeTag').value = ''; document.getElementById('nodeTitle').value = ''; document.getElementById('nodeExcerpt').value = '';
+        }
+    </script>
+</body>
+</html>
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
     <script>
         function appRoute(pId, bId, themeColorName) {
@@ -327,81 +280,50 @@
             document.getElementById(bId).classList.add('active-' + themeColorName);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        function toggleChatbotConsole(shouldShow) {
-            const win = document.getElementById('aiChatbotConsoleWindow');
-            const bubble = document.getElementById('chatBubbleNode');
-            if(shouldShow) { win.style.display = 'flex'; bubble.style.display = 'none'; } 
-            else { win.style.display = 'none'; bubble.style.display = 'flex'; }
-        }
-
+        function toggleChatbotConsole(show) { document.getElementById('aiChatbotConsoleWindow').style.display = show ? 'flex' : 'none'; document.getElementById('chatBubbleNode').style.display = show ? 'none' : 'flex'; }
         function handleChatEnterKey(e) { if(e.key === 'Enter') executeChatbotLogic(); }
-
         function executeChatbotLogic() {
-            const inputField = document.getElementById('chatbotUserTextInput');
-            const text = inputField.value.trim(); if(!text) return;
-            const msgBox = document.getElementById('chatMessageFlowBox');
-            const userBubble = document.createElement('div'); userBubble.className = "chat-bubble user-bubble"; userBubble.innerText = text;
-            msgBox.appendChild(userBubble); inputField.value = ""; msgBox.scrollTop = msgBox.scrollHeight;
+            const f = document.getElementById('chatbotUserTextInput'), txt = f.value.trim(); if(!txt) return;
+            const box = document.getElementById('chatMessageFlowBox'), u = document.createElement('div'); u.className = "chat-bubble user-bubble"; u.innerText = txt; box.appendChild(u); f.value = ""; box.scrollTop = box.scrollHeight;
             setTimeout(() => {
-                const aiBubble = document.createElement('div'); aiBubble.className = "chat-bubble ai-bubble"; const query = text.toLowerCase();
-                let reply = "Processing neural query variables... Scan a mega-cap stock ticker symbol (e.g., NVDA, AAPL) in the global search bar to stream a real-time quantitative brief.";
-                if(query.includes("nvidia") || query.includes("nvda")) { reply = "<strong>pranav.ai Analytics Brief: NVDA</strong><br>Neural models flag premium long-term momentum structures. Ecosystem liquidity remains stable post-split. Advanced compute monetization continues outperforming structural spending déficits."; } 
-                else if(query.includes("apple") || query.includes("aapl")) { reply = "<strong>pranav.ai Analytics Brief: AAPL</strong><br>Quantitative matrix registers immense ecosystem resilience. Services growth configuration continues cleanly absorbing hardware deficiencies."; } 
-                else if(query.includes("tesla") || query.includes("tsla")) { reply = "<strong>pranav.ai Analytics Brief: TSLA</strong><br>Warning: System flags elevated operational beta volatility. near-term margins face structural deflection logistics, though AI integration catalyst remains core vector."; } 
-                else if(query.includes("pranav")) { reply = "Pranav is the Lead Systems Engineer and Chief Architect who compiled and deployed this complete Financesight intelligence terminal ecosystem in 2026."; } 
-                else if(query.includes("hello") || query.includes("hi")) { reply = "Welcome back, Operator. Input an equity ticker to request real-time fundamental, P&L, or technical analyst summaries."; }
-                aiBubble.innerHTML = reply; msgBox.appendChild(aiBubble); msgBox.scrollTop = msgBox.scrollHeight;
-            }, 600);
+                const ai = document.createElement('div'); ai.className = "chat-bubble ai-bubble"; const q = txt.toLowerCase(); let r = "Processing query... Search an asset ticker above to run quantitative screens.";
+                if(q.includes("nvidia") || q.includes("nvda")) r = "<strong>pranav.ai structural analysis: NVDA</strong><br>Long-term momentum parameters verify generational AI hardware expansion scaling. Enterprise capital spend tracks highly stable support frameworks.";
+                else if(q.includes("apple") || q.includes("aapl")) r = "<strong>pranav.ai structural analysis: AAPL</strong><br>Massive ecosystem protection lines active. Services expansion targets balance short-term hardware lifecycle shifts perfectly.";
+                else if(q.includes("pranav")) r = "Pranav is the Chief Technical Architect and System Engineer behind this entire Financesight obsidian infrastructure deployment in 2026.";
+                ai.innerHTML = r; box.appendChild(ai); box.scrollTop = box.scrollHeight;
+            }, 500);
         }
-
-        function triggerAIAnalyticalBrief(tickerKey) {
-            const outputBox = document.getElementById('aiReportOutputArea'); outputBox.innerHTML = "🤖 <em>pranav.ai is processing high-frequency data structures...</em>";
-            const aiKnowledgeMatrix = {
-                "AAPL": "<strong>pranav.ai Report: AAPL</strong><br>Institutional capital profiles show steady accumulation parameters. Quantitative models register heavy support near post-earnings trendlines.",
-                "TSLA": "<strong>pranav.ai Report: TSLA</strong><br>Alert: High operational beta configurations. Autonomous data scaling remains primary matrix weight for upside projection parameters.",
-                "NVDA": "<strong>pranav.ai Report: NVDA</strong><br>Generational compute layer dominance confirmed. Demand loop configurations continue cleanly outpacing hyper-scaler supply deficits.",
-                "MSFT": "<strong>pranav.ai Report: MSFT</strong><br>Premium enterprise software lock-in. Cloud infrastructure scaling provides clean recurring revenue monetization pipelines."
-            };
-            setTimeout(() => { outputBox.innerHTML = aiKnowledgeMatrix[tickerKey.toUpperCase()] || `<strong>pranav.ai Report: ${tickerKey.toUpperCase()}</strong><br>Terminal index analysis active. Financial parameters indicate stable metrics. Review the core screens database to isolate secondary configurations lines.`; }, 700);
+        function triggerAIAnalyticalBrief(t) {
+            const o = document.getElementById('aiReportOutputArea'); o.innerHTML = "🤖 <em>pranav.ai running data array matching tracks...</em>";
+            const m = { "AAPL": "<strong>pranav.ai Option Brief: AAPL</strong><br>Heavy support observed near historical trendline parameters. Institutional flow registers steady accumulative accumulation lines.", "NVDA": "<strong>pranav.ai Option Brief: NVDA</strong><br>Compute stack hardware leadership confirms sustainable long-term data metrics. Hyper-scaler capex pipeline profiles protection parameters." };
+            setTimeout(() => { o.innerHTML = m[t.toUpperCase()] || `<strong>pranav.ai Option Brief: ${t.toUpperCase()}</strong><br>High-frequency data streaming is functional. Check the sub-charts and technical gauges below to map active volatility metrics.`; }, 500);
         }
-
-        function renderFinancialWidgets(rawTicker) {
-            let symbolString = rawTicker.toUpperCase().trim();
-            if (!symbolString.includes(":")) { if (symbolString === "AAPL" || symbolString === "TSLA" || symbolString === "NVDA" || symbolString === "MSFT" || symbolString === "AMZN" || symbolString === "GOOGL") { symbolString = "NASDAQ:" + symbolString; } else { symbolString = "NYSE:" + symbolString; } }
-            const activeTickerName = symbolString.split(":")[1] || symbolString;
-            document.getElementById('reportCompName').innerText = activeTickerName + " Corporation";
-            document.getElementById('reportCompTicker').innerText = activeTickerName;
-            triggerAIAnalyticalBrief(activeTickerName);
-            document.getElementById('liveQuoteWidgetMount').innerHTML = "";
-            const quoteScript = document.createElement('script'); quoteScript.type = "text/javascript"; quoteScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js"; quoteScript.async = true;
-            quoteScript.innerHTML = JSON.stringify({ "symbol": symbolString, "width": "100%", "colorTheme": "dark", "isTransparent": true, "locale": "en" });
-            document.getElementById('liveQuoteWidgetMount').appendChild(quoteScript);
-            document.getElementById('consensusAnalystMount').innerHTML = "";
-            const analysisScript = document.createElement('script'); analysisScript.type = "text/javascript"; analysisScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js"; analysisScript.async = true;
-            analysisScript.innerHTML = JSON.stringify({ "interval": "1M", "width": "100%", "isTransparent": true, "height": "100%", "symbol": symbolString, "showIntervalTabs": false, "displayMode": "single", "locale": "en", "colorTheme": "dark" });
-            document.getElementById('consensusAnalystMount').appendChild(analysisScript);
-            new TradingView.widget({ "width": "100%", "height": "100%", "symbol": symbolString, "interval": "D", "timezone": "Etc/UTC", "theme": "dark", "style": "1", "locale": "en", "enable_publishing": false, "hide_top_toolbar": true, "container_id": "chart-mount" });
-            document.getElementById('financials-mount').innerHTML = "";
-            const financialsScript = document.createElement('script'); financialsScript.type = "text/javascript"; financialsScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-financials.js"; financialsScript.async = true;
-            financialsScript.innerHTML = JSON.stringify({ "symbol": symbolString, "colorTheme": "dark", "isTransparent": true, "displayMode": "regular", "width": "100%", "height": "480", "locale": "en" });
-            document.getElementById('financials-mount').appendChild(financialsScript);
-            document.getElementById('peers-mount').innerHTML = "";
-            const profileScript = document.createElement('script'); profileScript.type = "text/javascript"; profileScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js"; profileScript.async = true;
-            profileScript.innerHTML = JSON.stringify({ "symbol": symbolString, "width": "100%", "height": "480", "colorTheme": "dark", "isTransparent": true, "locale": "en" });
-            document.getElementById('peers-mount').appendChild(profileScript);
-            document.getElementById('profile-mount').innerHTML = "";
-            const fundamentalScript = document.createElement('script'); fundamentalScript.type = "text/javascript"; fundamentalScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-financials.js"; fundamentalScript.async = true;
-            fundamentalScript.innerHTML = JSON.stringify({ "symbol": symbolString, "colorTheme": "dark", "isTransparent": true, "displayMode": "compact", "width": "100%", "height": "480", "locale": "en" });
-            document.getElementById('profile-mount').appendChild(fundamentalScript);
+        function renderFinancialWidgets(raw) {
+            let sym = raw.toUpperCase().trim(); if (!sym.includes(":")) sym = (["AAPL","TSLA","NVDA","MSFT","AMZN","GOOGL"].includes(sym)) ? "NASDAQ:" + sym : "NYSE:" + sym;
+            const tk = sym.split(":")[1] || sym; document.getElementById('reportCompName').innerText = tk + " Corp"; document.getElementById('reportCompTicker').innerText = tk;
+            triggerAIAnalyticalBrief(tk);
+            document.getElementById('liveQuoteWidgetMount').innerHTML = ""; const qSc = document.createElement('script'); qSc.type = "text/javascript"; qSc.src = "https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js"; qSc.async = true; qSc.innerHTML = JSON.stringify({ "symbol": sym, "width": "100%", "colorTheme": "dark", "isTransparent": true, "locale": "en" }); document.getElementById('liveQuoteWidgetMount').appendChild(qSc);
+            document.getElementById('consensusAnalystMount').innerHTML = ""; const aSc = document.createElement('script'); aSc.type = "text/javascript"; aSc.src = "https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js"; aSc.async = true; aSc.innerHTML = JSON.stringify({ "interval": "1M", "width": "100%", "isTransparent": true, "height": "100%", "symbol": sym, "showIntervalTabs": false, "displayMode": "single", "locale": "en", "colorTheme": "dark" }); document.getElementById('consensusAnalystMount').appendChild(aSc);
+            
+            // REMOUNT ALL INLINE WIDGET FILES NATIVELY TO FIX SUB-PANEL FREEZES
+            document.getElementById('chart-mount').innerHTML = `<iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_chart&symbol=${sym}&interval=D&theme=dark" style="width:100%;height:100%;border:none;"></iframe>`;
+            document.getElementById('financials-mount').innerHTML = ""; const fSc = document.createElement('script'); fSc.type = "text/javascript"; fSc.src = "https://s3.tradingview.com/external-embedding/embed-widget-financials.js"; fSc.async = true; fSc.innerHTML = JSON.stringify({ "symbol": sym, "colorTheme": "dark", "isTransparent": true, "displayMode": "regular", "width": "100%", "height": "100%", "locale": "en" }); document.getElementById('financials-mount').appendChild(fSc);
+            document.getElementById('peers-mount').innerHTML = ""; const pSc = document.createElement('script'); pSc.type = "text/javascript"; pSc.src = "https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js"; pSc.async = true; pSc.innerHTML = JSON.stringify({ "symbol": sym, "width": "100%", "height": "100%", "colorTheme": "dark", "isTransparent": true, "locale": "en" }); document.getElementById('peers-mount').appendChild(pSc);
+            document.getElementById('profile-mount').innerHTML = ""; const mSc = document.createElement('script'); mSc.type = "text/javascript"; mSc.src = "https://s3.tradingview.com/external-embedding/embed-widget-financials.js"; mSc.async = true; mSc.innerHTML = JSON.stringify({ "symbol": sym, "colorTheme": "dark", "isTransparent": true, "displayMode": "compact", "width": "100%", "height": "100%", "locale": "en" }); document.getElementById('profile-mount').appendChild(mSc);
         }
-
-        function handleSearchInput(event) { const rawValue = document.getElementById('terminalCompanySearch').value; if (rawValue.length >= 3) { appRoute('brokerage-panel', 'btn-brokerage', 'green'); renderFinancialWidgets(rawValue); } }
-        function switchSubPanel(e, id) { for(let t of document.getElementsByClassName('internal-tab')) t.classList.remove('active-sub-tab'); for(let p of document.getElementsByClassName('sub-panel-view')) p.classList.remove('active-sub-panel'); e.currentTarget.classList.add('active-sub-tab'); document.getElementById(id).classList.add('active-sub-panel'); }
-        window.onload = function() { const saved = localStorage.getItem('dispatchNodes'); if (saved) document.getElementById('customDispatchTarget').innerHTML = saved; }
-        function submitCustomNode() { const tg = document.getElementById('nodeTag').value, tl = document.getElementById('nodeTitle').value, tx = document.getElementById('nodeExcerpt').value; if(!tl || !tx) return alert('Headline required.'); const container = document.getElementById('customDispatchTarget'), card = document.createElement('div'); card.style.cssText = "background:rgba(255,255,255,0.01); border:1px solid var(--border-line); padding:15px; border-radius:10px; margin-top:12px;"; card.innerHTML = `<span style="font-size:0.65rem; color:var(--accent-glow); font-weight:700; display:block; margin-bottom:4px;">${tg || 'NOTE'}</span><h4 style="font-size:1rem; color:#FFF; margin-bottom:4px;">${tl}</h4><p style="color:#94A3B8; font-size:0.85rem; margin-bottom:6px;">${tx}</p><div style="font-size:0.65rem; color:rgba(255,255,255,0.25); font-weight:600;">PRANAV • REQ</div>`; container.insertBefore(card, container.firstChild); localStorage.setItem('dispatchNodes', container.innerHTML); document.getElementById('nodeTag').value = ''; document.getElementById('nodeTitle').value = ''; document.getElementById('nodeExcerpt').value = ''; }
+        function handleSearchInput(e) { const v = document.getElementById('terminalCompanySearch').value; if (v.length >= 3) { appRoute('brokerage-panel', 'btn-brokerage', 'green'); renderFinancialWidgets(v); } }
+        function switchSubPanel(e, id) {
+            const tabs = document.getElementsByClassName('internal-tab'); for(let i=0; i<tabs.length; i++) tabs[i].classList.remove('active-sub-tab');
+            const views = document.getElementsByClassName('sub-panel-view'); for(let i=0; i<views.length; i++) views[i].classList.remove('active-sub-panel');
+            e.currentTarget.classList.add('active-sub-tab'); document.getElementById(id).classList.add('active-sub-panel');
+        }
+        window.onload = function() { const s = localStorage.getItem('dispatchNodes'); if (s) document.getElementById('customDispatchTarget').innerHTML = s; }
+        function submitCustomNode() {
+            const tg = document.getElementById('nodeTag').value, tl = document.getElementById('nodeTitle').value, tx = document.getElementById('nodeExcerpt').value; if(!tl || !tx) return alert('Headline required.');
+            const c = document.getElementById('customDispatchTarget'), k = document.createElement('div'); k.style.cssText = "background:rgba(255,255,255,0.01); border:1px solid var(--border-line); padding:15px; border-radius:10px; margin-top:12px;";
+            k.innerHTML = `<span style="font-size:0.65rem; color:var(--accent-green); font-weight:700; display:block; margin-bottom:4px;">${tg || 'NOTE'}</span><h4 style="font-size:1rem; color:#FFF; margin-bottom:4px;">${tl}</h4><p style="color:#94A3B8; font-size:0.85rem; margin-bottom:6px;">${tx}</p><div style="font-size:0.65rem; color:rgba(255,255,255,0.25); font-weight:600;">PRANAV • REQ</div>`;
+            c.insertBefore(k, c.firstChild); localStorage.setItem('dispatchNodes', c.innerHTML); document.getElementById('nodeTag').value = ''; document.getElementById('nodeTitle').value = ''; document.getElementById('nodeExcerpt').value = '';
+        }
     </script>
 </body>
 </html>
-
-    
