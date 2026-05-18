@@ -52,10 +52,10 @@
         .app-panel { display: none; max-width: 800px; margin: 0 auto; padding: 10px 20px; }
         .app-panel.active-panel { display: block; animation: panelEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         @keyframes panelEntrance { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
-
-        .data-card { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 14px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden; }
+                .data-card { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 14px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden; }
         .card-header-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-                /* Narrative Shifting Timeline Architecture */
+        
+        /* Narrative Shifting Timeline Architecture */
         .narrative-timeline-box { position: relative; border-left: 2px solid var(--bg-input); padding-left: 20px; margin: 15px 0 10px 10px; }
         .narrative-node { position: relative; margin-bottom: 20px; }
         .narrative-node::before { content: ''; position: absolute; left: -26px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); box-shadow: 0 0 10px var(--accent-purple); }
@@ -68,6 +68,12 @@
         .signal-card { background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 10px; padding: 16px; display: flex; align-items: flex-start; gap: 14px; transition: border-color 0.2s; }
         .signal-card:hover { border-color: rgba(255, 255, 255, 0.1); }
         .signal-indicator-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+
+        /* Premium SEO Text Formatting Elements */
+        .seo-article-title { font-size: 1.4rem; font-weight: 800; color: #FFF; line-height: 1.3; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .seo-article-meta { font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 14px; display: block; }
+        .seo-paragraph { color: #D1D5DB; font-size: 0.95rem; margin-bottom: 16px; text-align: justify; }
+        .seo-heading-h2 { font-size: 1.15rem; font-weight: 800; color: #FFF; margin: 25px 0 12px 0; border-left: 3px solid var(--accent-green); padding-left: 10px; }
 
         /* Explainable AI Verification Metrics CSS */
         .explain-container { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-line); }
@@ -114,11 +120,9 @@
         .chat-entry-row { padding: 12px; background: var(--bg-surface); border-top: 1px solid var(--border-line); display: flex; gap: 8px; align-items: center; }
         .chat-entry-box { flex: 1; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; padding: 12px; color: white; font-size: 0.88rem; outline: none; }
         .chat-dispatch-btn { background: var(--accent-green); border: none; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; }
-
-        /* Fixed Navigation Anchor Row */
         .bottom-nav-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 80px; background: rgba(13, 17, 23, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--border-line); display: flex; justify-content: space-around; align-items: center; z-index: 2000; }
         .nav-item-button { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; width: 25%; transition: all 0.2s ease; }
-        .nav-item-button svg { margin-bottom: 6px; width: 20px; height: 20px; fill: currentColor; opacity: 0.6; }
+        .nav-item-button svg { margin-bottom: 6px; width: 20px; height: 20px; fill: currentColor; opacity: 0.6; transition: transform 0.2s; }
         .nav-item-button.active-feed { color: var(--accent-purple); }
         .nav-item-button.active-screens { color: var(--accent-cyan); }
         .nav-item-button.active-brokerage { color: var(--accent-green); }
@@ -205,6 +209,10 @@
     </div>
 
     <div id="brokerage-panel" class="app-panel">
+        <div class="data-card ai-assistant-card">
+            <div class="card-header-title" style="color: var(--accent-cyan);"><span class="ai-pulse-indicator"></span>pranav.ai Terminal Copilot</div>
+            <div id="aiReportOutputArea" style="font-size: 0.95rem; line-height: 1.6; font-weight: 500; color: #E2E8F0;">Initializing network analytics... Type any asset ticker inside the search box to process Wall Street data models here.</div>
+        </div>
         <div class="data-card">
             <div class="company-profile-banner"><div><h3 id="reportCompName" style="font-size: 1.4rem; font-weight:800;">Apple Inc.</h3><div id="reportCompTicker" style="font-size:0.85rem; color:var(--accent-cyan); font-weight:700;">AAPL</div></div><div class="live-ticker-mount-point" id="liveQuoteWidgetMount"></div></div>
             
@@ -301,16 +309,38 @@
     </div>
 
     <script>
-        function appRoute(pId, bId, activeThemeGlowName) {
+        // STABILIZED TERMINAL PANEL ROUTER WITH EXPLICIT ID WINDOW BINDING
+        function appRoute(panelId, buttonId, activeThemeGlowName) {
             const rootNode = document.documentElement;
             if (activeThemeGlowName === 'purple') rootNode.style.setProperty('--active-glow', '#C084FC');
             if (activeThemeGlowName === 'cyan') rootNode.style.setProperty('--active-glow', '#22D3EE');
             if (activeThemeGlowName === 'green') rootNode.style.setProperty('--active-glow', '#34D399');
             if (activeThemeGlowName === 'gold') rootNode.style.setProperty('--active-glow', '#FBBF24');
-            const panels = document.getElementsByClassName('app-panel'); for (let i = 0; i < panels.length; i++) panels[i].style.display = 'none';
-            const buttons = document.getElementsByClassName('nav-item-button'); for (let i = 0; i < buttons.length; i++) buttons[i].className = "nav-item-button";
-            document.getElementById(pId).style.display = 'block'; document.getElementById(bId).classList.add('active-' + activeThemeGlowName); window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            const corePanelsArray = ['feed-panel', 'screens-panel', 'brokerage-panel', 'account-panel'];
+            corePanelsArray.forEach(id => {
+                const targetedDomNode = document.getElementById(id);
+                if (targetedDomNode) targetedDomNode.style.display = 'none';
+            });
+
+            const navigationButtons = document.getElementsByClassName('nav-item-button');
+            for (let i = 0; i < navigationButtons.length; i++) {
+                navigationButtons[i].className = "nav-item-button";
+            }
+
+            const requestedActiveView = document.getElementById(panelId);
+            if (requestedActiveView) {
+                requestedActiveView.style.display = 'block';
+                requestedActiveView.classList.add('active-panel');
+            }
+            
+            const targetedButtonNode = document.getElementById(buttonId);
+            if (targetedButtonNode) {
+                targetedButtonNode.classList.add('active-' + activeThemeGlowName);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
         function toggleChatbotConsole(show) { document.getElementById('aiChatbotConsoleWindow').style.display = show ? 'flex' : 'none'; document.getElementById('chatBubbleNode').style.display = show ? 'none' : 'flex'; }
         function handleChatEnterKey(e) { if (e.key === 'Enter') executeChatbotLogic(); }
         
@@ -363,7 +393,7 @@
             setTimeout(() => { o.innerHTML = k[t.toUpperCase()] || `<strong>pranav.ai Target Signal: ${t.toUpperCase()}</strong><br>Asset structure synchronized. Narrative trajectory loops trace normal baseline configurations. check parameters inside your Quant Suite to calibrate targets.`; }, 400);
         }
 
-        // DYNAMIC PRE RENDER MULTI PAGE SEO CONTENT ROUTER
+        // DYNAMIC PRE RENDER MULTI PAGE SEO CONTENT ROUTER ENGINE
         function loadIndexedSEORoute(routePathString) {
             const outputBox = document.getElementById('seoDynamicPrerenderTargetBox');
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -384,11 +414,7 @@
                     title: "NVIDIA (NVDA) Narrative Trajectory Shift & Valuation Analysis",
                     desc: "Track the evolution of public narratives surrounding NVIDIA stock from initial AI hype vectors to competitive valuation metrics.",
                     html: `
-                        <span class="seo-article-meta">Index Node: Research / Semiconductors / Stock Narrative</span>
-                        <h1 class="seo-article-title">NVIDIA Corporation (NVDA): Story Arc Evolution</h1>
-                        <p class="seo-paragraph">NVIDIA's public positioning has transitioned from a high-growth gaming hardware node into the absolute spine of enterprise computation layers. As supply constraints normalize, market attention is adjusting to factor in multi-year hyper-scaler contractual agreements.</p>
-                        <h2 class="seo-heading-h2">Explainable AI Insights Summary</h2>
-                        <p class="seo-paragraph">Valuation metrics hold a premium configuration. Forward data backlogs minimize localized market deficits, ensuring that operational metrics support current capital boundaries securely.</p>
+                        <imize localized market deficits, ensuring that operational metrics support current capital boundaries securely.</p>
                     `
                 }
             };
@@ -402,4 +428,83 @@
         }
 
         function generateQuantMatrix(t) {
-      
+            const sym = t.toUpperCase().trim();
+            const narrativeData = {
+                "AAPL": [
+                    { date: "Jan", head: "Hardware Cycle Deceleration", body: "Concerns rise over near-term consumer device replacement lags." },
+                    { date: "Mar", head: "Services Ecosystem Pivot", body: "Recurring subscription margins increase to record-high capital targets." },
+                    { date: "May", head: "AI Edge Integration", body: "Localized neural cores injected natively into device architectures." }
+                ],
+                "NVDA": [
+                    { date: "Feb", head: "AI Hype Inflow Acceleration", body: "Massive hardware backlog profiles fuel exponential upside runs." },
+                    { date: "Apr", head: "Valuation Multiple Debates", body: "Analysts test structural durability relative to forward revenue streams." },
+                    { date: "May", head: "Monopoly Validation", body: "Hyper-scaler capex commitments confirm unyielding compute dominance." }
+                ]
+            };
+
+            const timelineMount = document.getElementById('dynamicNarrativeTimelineMount');
+            const nodes = narrativeData[sym] || [ { date: "Current", head: "Standard Horizon Tracking", body: "Asset tracks baseline historical metrics within normal standard deviations." } ];
+            let timelineHTML = ""; nodes.forEach(n => { timelineHTML += `<div class="narrative-node"><div class="narrative-date">${n.date}</div><div class="narrative-headline">${n.head}</div><div class="narrative-detail">${n.body}</div></div>`; });
+            timelineMount.innerHTML = timelineHTML;
+
+            const signalsData = {
+                "AAPL": [
+                    { dot: "var(--accent-cyan)", text: "Ecosystem Rotation Inflow", details: "Institutional tracking flags capital migration into defensive mega-caps." },
+                    { dot: "var(--accent-gold)", text: "Margin Expansion Spike", details: "Services operating margins expand by 140 basis points." }
+                ],
+                "NVDA": [
+                    { dot: "var(--accent-green)", text: "Unusual Options Activity Surge", details: "Deep out-of-the-money call block purchases track aggressive institutional positioning." },
+                    { dot: "var(--accent-red)", text: "Volatility Vector Deflection", details: "Intense trading volume flags imminent price support testing." }
+                ]
+            };
+
+            const signalMount = document.getElementById('alphaSignalDeskContainer');
+            const signals = signalsData[sym] || [ { dot: "var(--text-muted)", text: "Stable Horizon Matrix", details: "No unusual volumetric activity or volatility vectors triggered." } ];
+            let signalsHTML = ""; signals.forEach(s => { signalsHTML += `<div class="signal-card"><span class="signal-indicator-dot" style="background:${s.dot}; box-shadow:0 0 10px ${s.dot};"></span><div><div style="font-weight:800; font-size:0.9rem; color:#FFF;">${s.text}</div><div style="font-size:0.8rem; color:var(--text-muted); margin-top:3px;">${s.details}</div></div></div>`; });
+            signalMount.innerHTML = signalsHTML;
+
+            const db = {
+                "AAPL": { score: 78, text: "Buy", brokers: [ { name: "Bank of America", call: "Buy", target: "$225" }, { name: "Morgan Stanley", call: "Overweight", target: "$220" }, { name: "Goldman Sachs", call: "Buy", target: "$230" } ] },
+                "NVDA": { score: 94, text: "Strong Buy", brokers: [ { name: "Bank of America", call: "Buy", target: "$1200" }, { name: "Morgan Stanley", call: "Overweight", target: "$1160" }, { name: "Goldman Sachs", call: "Conviction Buy", target: "$1250" } ] },
+                "TSLA": { score: 42, text: "Hold", brokers: [ { name: "Bank of America", call: "Hold", target: "$220" }, { name: "Jefferies", call: "Underperform", target: "$165" }, { name: "JPMorgan Chase", call: "Sell", target: "$130" } ] }
+            };
+            const d = db[sym] || { score: 55, text: "Hold", brokers: [ { name: "Morgan Stanley", call: "Hold", target: "$145" }, { name: "Goldman Sachs", call: "Hold", target: "$150" } ] };
+            renderSpeedoGaugeDial('speedometerGaugeObject', d.score, '#34D399'); const badge = document.getElementById('speedoRatingTextBadge'); badge.innerText = d.text;
+            if (d.score > 65) badge.style.color = 'var(--accent-green)'; else if (d.score > 35) badge.style.color = 'var(--accent-gold)'; else badge.style.color = 'var(--accent-red)';
+            
+            let grid = `<table style="width:100%; border-collapse:collapse; font-size:0.85rem;"><tr style="border-bottom:2px solid var(--border-line); height:35px; color:var(--text-muted); font-weight:700;"><td>Institution</td><td>Rating Call</td><td style="text-align:right;">Target</td></tr>`;
+            d.brokers.forEach(b => {
+                let hc = 'var(--text-main)'; if (b.call.includes("Buy") || b.call.includes("Overweight")) hc = 'var(--accent-green)'; else if (b.call.includes("Hold")) hc = 'var(--accent-gold)'; else if (b.call.includes("Sell") || b.call.includes("Underperform")) hc = 'var(--accent-red)';
+                grid += `<tr style="border-bottom:1px solid var(--border-line); height:42px; font-weight:600;"><td style="color:#FFF;">${b.name}</td><td style="color:${hc}; font-weight:700;">${b.call}</td><td style="text-align:right; color:var(--accent-cyan); font-weight:700;">${b.target}</td></tr>`;
+            });
+            document.getElementById('brokerTargetGridContainer').innerHTML = grid + "</table>";
+        }
+
+        function handleSearchInput(e) {
+            const v = document.getElementById('terminalCompanySearch').value.trim().toLowerCase();
+            if (v === "/market/ai" || v === "themes") { loadIndexedSEORoute('/market/ai-sector'); return; }
+            if (v === "/stocks/nvidia" || v === "nvidia stock analysis") { loadIndexedSEORoute('/stocks/nvidia'); return; }
+
+            if (v.length >= 3 && !v.startsWith("/")) {
+                appRoute('brokerage-panel', 'btn-brokerage', 'green');
+                const tk = v.toUpperCase();
+                document.getElementById('reportCompName').innerText = tk + " Corporation";
+                document.getElementById('reportCompTicker').innerText = tk;
+                triggerAIAnalyticalBrief(tk);
+                generateQuantMatrix(tk);
+            }
+        }
+        function switchSubPanel(e, id) {
+            const card = e.currentTarget.closest('.data-card'), tabs = card.getElementsByClassName('internal-tab'), views = card.getElementsByClassName('sub-panel-view');
+            for (let i = 0; i < tabs.length; i++) tabs[i].classList.remove('active-sub-tab'); for (let i = 0; i < views.length; i++) views[i].classList.remove('active-sub-panel');
+            e.currentTarget.classList.add('active-sub-tab'); document.getElementById(id).classList.add('active-sub-panel');
+        }
+        function switchCalcView(e, id) {
+            const card = e.currentTarget.closest('.data-card'), tabs = card.getElementsByClassName('internal-tab'), views = card.getElementsByClassName('sub-panel-view');
+            for (let i = 0; i < tabs.length; i++) tabs[i].classList.remove('active-sub-tab'); for (let i = 0; i < views.length; i++) views[i].classList.remove('active-sub-panel');
+            e.currentTarget.classList.add('active-sub-tab'); document.getElementById(id).classList.add('active-sub-panel');
+        }
+        window.onload = function() { generateQuantMatrix("AAPL"); calculateHealthMatrixScore(); runSipCalculationMatrix(); runEmiCalculationMatrix(); runFireCalculationMatrix(); runInflationCalculationMatrix(); }
+    </script>
+</body>
+</html>
