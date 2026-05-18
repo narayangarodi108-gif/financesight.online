@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title id="seo-title">FinanceSight | AI Financial Intelligence Platform & US Equity Terminal</title>
-    <meta id="seo-description" name="description" content="FinanceSight is an AI-powered financial intelligence platform providing real-time market insights, institutional stock analysis, and predictive investment tools for modern quantitative investors.">
-    <meta name="keywords" content="FinanceSight, stock screener, US equity terminal, Wall Street targets, SIP calculator, EMI calculator, FIRE planner, NVIDIA stock analysis, AI in finance, inflation impact, Pranav, pranav.ai">
+    <title id="seo-title">FinanceSight | AI Financial Intelligence & Narrative Tracking Terminal</title>
+    <meta id="seo-description" name="description" content="FinanceSight is an institutional-grade financial intelligence terminal driving narrative asset tracking, explainable AI investment logic, macro signals, and quantitative planning suites.">
+    <meta name="keywords" content="FinanceSight, narrative tracking, AI market brief, financial intelligence, stock terminal, explainable AI, premium stock screener, Pranav, pranav.ai">
     <meta name="author" content="Pranav">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://financesight.online" />
 
-    <meta property="og:title" content="FinanceSight | AI Financial Intelligence & Equity Research Terminal">
-    <meta property="og:description" content="Access live institutional broker signals, real-time market data wires, and advanced financial planning calculators on a secure terminal.">
+    <meta property="og:title" content="FinanceSight | AI Financial Intelligence Terminal">
+    <meta property="og:description" content="Track asset story arcs, decipher explainable AI stock vectors, and calculate fiscal health indicators inside an obsidian workspace.">
     <meta property="og:url" content="https://financesight.online">
     <meta property="og:type" content="website">
 
@@ -22,79 +22,103 @@
     
     <style>
         :root {
-            --bg-base: #010409;        /* Premium Pure Midnight Obsidian Black Canvas */
+            --bg-base: #010409;        /* Deep Obsidian Void Black Canvas */
             --bg-surface: #0d1117;     /* Solid Elevation Structural Gray */
             --bg-input: #161b22;       /* Premium Matte Input Fields */
-            --accent-purple: #C084FC;  /* Wire Tab Highlight */
-            --accent-cyan: #22D3EE;    /* Dynamic Diagnostic Accents */
-            --accent-green: #34D399;   /* High Upside Vector Signal */
-            --accent-gold: #FBBF24;    /* Warning Track Marker */
-            --accent-red: #F87171;     /* Downside Vector Signal */
-            --text-main: #F3F4F6;      /* Crisp Editorial Content Typography */
-            --text-muted: #8B949E;     /* Secondary Data Labeling Matrix */
+            --accent-purple: #C084FC;  /* Narrative Core Highlight Tint */
+            --accent-cyan: #22D3EE;    /* Explainable Metric Anchor */
+            --accent-green: #34D399;   /* Alpha Signal Surge Inflow Indicator */
+            --accent-gold: #FBBF24;    /* Macro Gauge Warning Track Color */
+            --accent-red: #F87171;     /* Defensive Capital Preservation Signal */
+            --text-main: #F3F4F6;      /* High-Contrast Editorial Typography */
+            --text-muted: #8B949E;     /* Secondary Explanatory Data Labeling */
             --border-line: rgba(255, 255, 255, 0.05);
             --active-glow: #34D399;
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
         body { background-color: var(--bg-base); color: var(--text-main); line-height: 1.6; padding-bottom: 95px; }
         .ticker-wrap { width: 100%; background: #010409; border-bottom: 1px solid var(--border-line); position: sticky; top: 0; z-index: 1000; }
-        header { max-width: 800px; margin: 0 auto; padding: 30px 20px 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        header { max-width: 800px; margin: 0 auto; padding: 25px 20px 10px 20px; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo { font-size: 1.4rem; font-weight: 800; color: white; text-decoration: none; letter-spacing: -0.5px; text-transform: lowercase; }
         .brand-logo span { color: var(--accent-green); text-shadow: 0 0 15px var(--accent-green); }
         .terminal-badge { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-line); padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        
         .search-box-container { max-width: 800px; margin: 15px auto; padding: 0 20px; position: relative; }
-        .screener-search { width: 100%; padding: 16px 20px 16px 50px; background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 12px; color: white; font-size: 1rem; outline: none; transition: all 0.3s ease; }
-        .screener-search:focus { border-color: var(--accent-green); box-shadow: 0 0 20px rgba(52, 211, 153, 0.15); }
+        .screener-search { width: 100%; padding: 16px 20px 16px 50px; background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 12px; color: white; font-size: 0.95rem; outline: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .screener-search:focus { border-color: var(--accent-green); box-shadow: 0 0 20px rgba(52, 211, 153, 0.12); }
         .search-icon { position: absolute; left: 35px; top: 18px; color: var(--text-muted); }
-        .app-panel { display: none; max-width: 800px; margin: 0 auto; padding: 15px 20px; }
-        .app-panel.active-panel { display: block; animation: panelEntrance 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes panelEntrance { 0% { opacity: 0; transform: translateY(12px); } 100% { opacity: 1; transform: translateY(0); } }
-                .data-card { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 14px; padding: 22px; margin-bottom: 20px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6); position: relative; overflow: hidden; }
-        .card-header-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 14px; font-weight: 700; }
         
-        /* Premium SEO Text Formatting Elements */
-        .seo-article-title { font-size: 1.6rem; font-weight: 800; color: #FFF; line-height: 1.3; margin-bottom: 12px; letter-spacing: -0.5px; }
-        .seo-article-meta { font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; margin-bottom: 18px; display: block; }
-        .seo-paragraph { color: #D1D5DB; font-size: 0.98rem; margin-bottom: 16px; text-align: justify; }
-        .seo-heading-h2 { font-size: 1.2rem; font-weight: 800; color: #FFF; margin: 25px 0 12px 0; border-left: 3px solid var(--accent-green); padding-left: 10px; }
-        
-        .company-profile-banner { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--border-line); margin-bottom: 20px; gap: 15px; }
-        .live-ticker-mount-point { width: 100%; max-width: 450px; height: 50px; overflow: hidden; }
-        .consensus-engine-mount { width: 100%; height: 220px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; background: rgba(255,255,255,0.01); border: 1px solid var(--border-line); margin-bottom: 20px; }
+        .app-panel { display: none; max-width: 800px; margin: 0 auto; padding: 10px 20px; }
+        .app-panel.active-panel { display: block; animation: panelEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes panelEntrance { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        .data-card { background: var(--bg-surface); border: 1px solid var(--border-line); border-radius: 14px; padding: 24px; margin-bottom: 20px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden; }
+        .card-header-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+                /* Narrative Shifting Timeline Architecture */
+        .narrative-timeline-box { position: relative; border-left: 2px solid var(--bg-input); padding-left: 20px; margin: 15px 0 10px 10px; }
+        .narrative-node { position: relative; margin-bottom: 20px; }
+        .narrative-node::before { content: ''; position: absolute; left: -26px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-purple); box-shadow: 0 0 10px var(--accent-purple); }
+        .narrative-date { font-size: 0.72rem; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; }
+        .narrative-headline { font-size: 0.95rem; font-weight: 700; color: #FFF; margin-top: 2px; }
+        .narrative-detail { font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; }
+
+        /* Intelligent Alpha Signal Badge Arrays */
+        .signal-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 15px; }
+        .signal-card { background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 10px; padding: 16px; display: flex; align-items: flex-start; gap: 14px; transition: border-color 0.2s; }
+        .signal-card:hover { border-color: rgba(255, 255, 255, 0.1); }
+        .signal-indicator-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+
+        /* Explainable AI Verification Metrics CSS */
+        .explain-container { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-line); }
+        .explain-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; margin-bottom: 6px; }
+        .explain-label { color: var(--text-muted); font-weight: 600; }
+        .explain-value { color: var(--accent-cyan); font-weight: 700; }
+
+        /* Institutional HTML5 Canvas Instrument Gauge Components */
+        .consensus-engine-mount { width: 100%; height: 210px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; background: rgba(255,255,255,0.01); border: 1px solid var(--border-line); margin-bottom: 20px; }
         .speedo-gauge-canvas-wrapper { width: 260px; height: 140px; position: relative; }
-        .gauge-label-track { position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 25px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
-        .ai-assistant-card { background: linear-gradient(135deg, rgba(34, 211, 238, 0.02) 0%, rgba(52, 211, 153, 0.02) 100%); border: 1px solid rgba(52, 211, 153, 0.15) !important; }
-        .ai-pulse-indicator { width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; display: inline-block; margin-right: 6px; box-shadow: 0 0 10px var(--accent-cyan); animation: pulseGlow 1.5s infinite alternate; }
-        @keyframes pulseGlow { 0% { opacity: 0.4; } 100% { opacity: 1; } }
-        .internal-tab-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px; border-bottom: 1px solid var(--border-line); -webkit-overflow-scrolling: touch; }
+        .gauge-label-track { position: absolute; bottom: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 25px; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Content Hub & Interactive Module Navigation Hub Tabs */
+        .internal-tab-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 16px; border-bottom: 1px solid var(--border-line); -webkit-overflow-scrolling: touch; }
         .internal-tab-bar::-webkit-scrollbar { display: none; }
         .internal-tab { background: none; border: none; color: var(--text-muted); font-size: 0.8rem; font-weight: 700; padding: 8px 16px; border-radius: 20px; cursor: pointer; white-space: nowrap; transition: all 0.2s ease; }
         .internal-tab.active-sub-tab { background: rgba(34, 211, 238, 0.08); color: var(--accent-cyan); border: 1px solid rgba(34, 211, 238, 0.15); }
-        .sub-panel-view { display: none; min-height: 250px; width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-line); background: rgba(255, 255, 255, 0.01); }
+        .sub-panel-view { display: none; min-height: 200px; width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-line); background: rgba(255, 255, 255, 0.01); }
         .sub-panel-view.active-sub-panel { display: block; animation: subPanelFade 0.3s ease-out; }
         @keyframes subPanelFade { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Calculators System Grid Parameters */
         .calc-input-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
         .calc-input-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-        .calc-input-box { width: 100%; padding: 14px; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; color: white; outline: none; font-size: 0.95rem; transition: border-color 0.2s; }
+        .calc-input-box { width: 100%; padding: 14px; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; color: white; outline: none; font-size: 0.95rem; }
         .calc-input-box:focus { border-color: var(--accent-cyan); }
         .calc-metric-output-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
         .calc-output-card { padding: 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.01); border: 1px solid var(--border-line); }
-        .ai-chat-trigger-bubble { position: fixed; bottom: 105px; right: 20px; width: 56px; height: 56px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(52, 211, 153, 0.3); z-index: 3000; cursor: pointer; }
-        .ai-chat-trigger-bubble svg { width: 24px; height: 24px; fill: white; }
-        .ai-chatbot-window { position: fixed; bottom: 100px; right: 20px; width: calc(100% - 40px); max-width: 400px; height: 460px; background: #0b0f17; border: 1px solid rgba(34, 211, 238, 0.15); border-radius: 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); z-index: 3100; display: none; flex-direction: column; overflow: hidden; }
-        .chat-window-header { background: var(--bg-surface); padding: 14px 18px; border-bottom: 1px solid var(--border-line); display: flex; justify-content: space-between; align-items: center; }
-        .chat-window-title { font-size: 0.95rem; font-weight: 700; display: flex; align-items: center; gap: 8px; color: white; }
-        .chat-close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; }
-        .chat-messages-container { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #070a0f; }
-        .chat-bubble { max-width: 82%; padding: 10px 14px; border-radius: 12px; font-size: 0.88rem; line-height: 1.45; word-wrap: break-word; }
-        .chat-bubble.user-bubble { background: var(--bg-input); color: white; align-self: flex-end; border-bottom-right-radius: 2px; border: 1px solid var(--border-line); }
-        .chat-bubble.ai-bubble { background: rgba(6, 182, 212, 0.03); color: #E2E8F0; align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid rgba(6, 182, 212, 0.12); }
-        .chat-input-row { padding: 12px; background: var(--bg-surface); border-top: 1px solid var(--border-line); display: flex; gap: 8px; align-items: center; }
-        .chat-input-field { flex: 1; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; padding: 12px; color: white; font-size: 0.88rem; outline: none; }
-        .chat-send-btn { background: var(--accent-green); border: none; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; }
+
+        /* Floating Modern Assistant Panel Elements */
+        .floating-pane-hud { position: fixed; bottom: 105px; right: 20px; width: 56px; height: 56px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green)); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(52, 211, 153, 0.3); z-index: 3000; cursor: pointer; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .floating-pane-hud:active { transform: scale(0.9); }
+        .floating-pane-hud svg { width: 24px; height: 24px; fill: white; }
+        .ai-terminal-window { position: fixed; bottom: 100px; right: 20px; width: calc(100% - 40px); max-width: 400px; height: 460px; background: #0b0f17; border: 1px solid rgba(34, 211, 238, 0.15); border-radius: 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); z-index: 3100; display: none; flex-direction: column; overflow: hidden; animation: hudPhysics 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        @keyframes hudPhysics { 0% { opacity: 0; transform: translateY(30px) scale(0.97); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        
+        .chat-container-header { background: var(--bg-surface); padding: 14px 18px; border-bottom: 1px solid var(--border-line); display: flex; justify-content: space-between; align-items: center; }
+        .chat-container-title { font-size: 0.95rem; font-weight: 700; display: flex; align-items: center; gap: 8px; color: white; }
+        .chat-close-trigger { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; }
+        .chat-message-stream-area { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #070a0f; }
+        .chat-row-bubble { max-width: 82%; padding: 11px 14px; border-radius: 12px; font-size: 0.88rem; line-height: 1.45; word-wrap: break-word; }
+        .chat-row-bubble.user { background: var(--bg-input); color: white; align-self: flex-end; border-bottom-right-radius: 2px; border: 1px solid var(--border-line); }
+        .chat-row-bubble.ai { background: rgba(6, 182, 212, 0.03); color: #E2E8F0; align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid rgba(6, 182, 212, 0.12); }
+        .chat-entry-row { padding: 12px; background: var(--bg-surface); border-top: 1px solid var(--border-line); display: flex; gap: 8px; align-items: center; }
+        .chat-entry-box { flex: 1; background: var(--bg-input); border: 1px solid var(--border-line); border-radius: 8px; padding: 12px; color: white; font-size: 0.88rem; outline: none; }
+        .chat-dispatch-btn { background: var(--accent-green); border: none; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; }
+
+        /* Fixed Navigation Anchor Row */
         .bottom-nav-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 80px; background: rgba(13, 17, 23, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--border-line); display: flex; justify-content: space-around; align-items: center; z-index: 2000; }
         .nav-item-button { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; width: 25%; transition: all 0.2s ease; }
-        .nav-item-button svg { margin-bottom: 6px; width: 20px; height: 20px; fill: currentColor; opacity: 0.6; transition: transform 0.2s; }
+        .nav-item-button svg { margin-bottom: 6px; width: 20px; height: 20px; fill: currentColor; opacity: 0.6; }
         .nav-item-button.active-feed { color: var(--accent-purple); }
         .nav-item-button.active-screens { color: var(--accent-cyan); }
         .nav-item-button.active-brokerage { color: var(--accent-green); }
@@ -116,36 +140,48 @@
 
     <div class="search-box-container">
         <span class="search-icon">🔍</span>
-        <input type="text" class="search-input screener-search" id="terminalCompanySearch" placeholder="Search index (e.g., AAPL, NVDA, /stocks/nvidia, /news/sip)..." onkeyup="handleSearchInput(event)">
+        <input type="text" class="search-input screener-search" id="terminalCompanySearch" placeholder="Query terminal (e.g., AAPL, NVDA, themes, /market/ai)..." onkeyup="handleSearchInput(event)">
     </div>
 
-    <div class="ai-chat-trigger-bubble" id="chatBubbleNode" onclick="toggleChatbotConsole(true)">
+    <div class="floating-pane-hud" id="chatBubbleNode" onclick="toggleChatbotConsole(true)">
         <svg viewBox="0 0 24 24"><path d="M12 2c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l2.79-2.79C9.93 18.78 10.93 19 12 19c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1-8h2v2h-2zm0 4h2v2h-2z"/></svg>
     </div>
 
-    <div class="ai-chatbot-window" id="aiChatbotConsoleWindow">
-        <div class="chat-window-header"><div class="chat-window-title">pranav.ai Terminal</div><button class="chat-close-btn" onclick="toggleChatbotConsole(false)">✕</button></div>
-        <div class="chat-messages-container" id="chatMessageFlowBox">
-            <div class="chat-bubble ai-bubble">Greetings. I am <strong>pranav.ai</strong>. Search stock tags or use computational modules to query institutional data loops.</div>
+    <div class="ai-terminal-window" id="aiChatbotConsoleWindow">
+        <div class="chat-container-header"><div class="chat-container-title">⚡ Ask FinanceSight</div><button class="chat-close-trigger" onclick="toggleChatbotConsole(false)">✕</button></div>
+        <div class="chat-message-stream-area" id="chatMessageFlowBox">
+            <div class="chat-row-bubble ai">Terminal online. Try queries like: <em>&ldquo;Explain macro inflation impact&rdquo;</em> or request deep asset narrative logs.</div>
         </div>
-        <div class="chat-input-row">
-            <input type="text" class="chat-input-field" id="chatbotUserTextInput" placeholder="Ask pranav.ai..." onkeypress="handleChatEnterKey(event)">
-            <button class="chat-send-btn" onclick="executeChatbotLogic()">🚀</button>
+        <div class="chat-entry-row">
+            <input type="text" class="chat-entry-box" id="chatbotUserTextInput" placeholder="Ask FinanceSight..." onkeypress="handleChatEnterKey(event)">
+            <button class="chat-dispatch-btn" onclick="executeChatbotLogic()">🚀</button>
         </div>
     </div>
 
     <div id="feed-panel" class="app-panel active-panel">
-        <div class="data-card">
-            <div class="card-header-title">Topical Authority Content Hub</div>
-            <h2 class="seo-article-title">FinanceSight Knowledge Center Matrix</h2>
-            <p class="seo-paragraph">To assist search crawlers, our core asset analysis pages are fully prerendered and mapped directly beneath these gateways. Select any research file node to stream complete editorial deep-dives instantly.</p>
-            <div style="display:grid; grid-template-columns:1fr; gap:10px; margin-top:15px;">
-                <button class="terminal-btn" style="text-align:left; padding-left:20px; background:var(--bg-input); color:#FFF; border:1px solid var(--border-line);" onclick="loadIndexedSEORoute('/stocks/nvidia')">📁 File Node: NVIDIA Equity Capital Analysis</button>
-                <button class="terminal-btn" style="text-align:left; padding-left:20px; background:var(--bg-input); color:#FFF; border:1px solid var(--border-line);" onclick="loadIndexedSEORoute('/news/sip-investing')">📁 File Node: Systematic Investment Plans (SIP) Framework</button>
-                <button class="terminal-btn" style="text-align:left; padding-left:20px; background:var(--bg-input); color:#FFF; border:1px solid var(--border-line);" onclick="loadIndexedSEORoute('/news/inflation-markets')">📁 File Node: How Macro Inflation Affects Market Volatility</button>
+        <div class="data-card" style="background: linear-gradient(180deg, rgba(192, 132, 252, 0.02) 0%, var(--bg-surface) 100%); border-color: rgba(192, 132, 252, 0.2);">
+            <div class="card-header-title"><span style="width:6px; height:6px; background:var(--accent-purple); border-radius:50%; display:inline-block; box-shadow:0 0 8px var(--accent-purple);"></span>Today's AI Market Brief</div>
+            <h2 style="font-size:1.3rem; font-weight:800; color:#FFF; margin-bottom:12px; letter-spacing:-0.5px;">Ecosystem Structural Expansion Cycle</h2>
+            
+            <div style="display:flex; gap:10px; margin-bottom:14px;">
+                <span style="background:rgba(52,211,153,0.1); color:var(--accent-green); font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:4px;">Bullish Narratives Core</span>
+                <span style="background:rgba(34,211,238,0.1); color:var(--accent-cyan); font-size:0.75rem; font-weight:700; padding:4px 10px; border-radius:4px;">AI Confidence: 94%</span>
+            </div>
+            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:14px;">Enterprise data center compute demand structures continue cleanly absorbing short-term monetary policy corrections. Long-term accumulation profiles track structural infrastructure allocations.</p>
+            <div class="explain-container">
+                <div class="explain-row"><span class="explain-label">Key Catalyst Vector</span><span class="explain-value" style="color:var(--accent-purple);">Post-Split Liquidity Guardrails</span></div>
+                <div class="explain-row"><span class="explain-label">System Threat Matrix</span><span class="explain-value" style="color:var(--accent-red);">Yield Horizon Deflections</span></div>
             </div>
         </div>
-        
+
+        <div class="data-card">
+            <div class="card-header-title">Index Directory Gateways</div>
+            <div style="display:grid; grid-template-columns:1fr; gap:10px;">
+                <button class="calc-input-box" style="text-align:left; cursor:pointer;" onclick="loadIndexedSEORoute('/market/ai-sector')">🌐 Theme: Generative AI Infrastructure Buildout</button>
+                <button class="calc-input-box" style="text-align:left; cursor:pointer;" onclick="loadIndexedSEORoute('/stocks/nvidia')">🌐 Analysis: NVIDIA Narrative Shift Lifecycle</button>
+            </div>
+        </div>
+
         <div id="seoDynamicPrerenderTargetBox"></div>
 
         <div class="data-card" style="padding: 0; overflow: hidden;">
@@ -169,20 +205,34 @@
     </div>
 
     <div id="brokerage-panel" class="app-panel">
-        <div class="data-card ai-assistant-card">
-            <div class="card-header-title" style="color: var(--accent-cyan);"><span class="ai-pulse-indicator"></span>pranav.ai Terminal Copilot</div>
-            <div id="aiReportOutputArea" style="font-size: 0.95rem; line-height: 1.6; font-weight: 500; color: #E2E8F0;">Initializing network models... Scan an asset ticker in the search bar above to process financial matrices.</div>
-        </div>
         <div class="data-card">
             <div class="company-profile-banner"><div><h3 id="reportCompName" style="font-size: 1.4rem; font-weight:800;">Apple Inc.</h3><div id="reportCompTicker" style="font-size:0.85rem; color:var(--accent-cyan); font-weight:700;">AAPL</div></div><div class="live-ticker-mount-point" id="liveQuoteWidgetMount"></div></div>
+            
             <div class="card-header-title">Wall Street Analyst Sentiment Index</div>
             <div class="consensus-engine-mount">
                 <div class="speedo-gauge-canvas-wrapper"><canvas id="speedometerGaugeObject" width="260" height="140"></canvas></div>
                 <div class="gauge-label-track"><span style="color:var(--accent-red);">Sell</span><span style="color:var(--accent-gold);">Hold</span><span style="color:var(--accent-green);">Buy</span></div>
-                <div id="speedoRatingTextBadge" style="margin-top:10px; font-weight:800; font-size:1.1rem; letter-spacing:0.5px;">HOLD</div>
+                <div id="speedoRatingTextBadge" style="margin-top:10px; font-weight:800; font-size:1.1rem;">HOLD</div>
             </div>
-            <div class="internal-tab-bar"><button class="internal-tab active-sub-tab">Consensus Dispatch Grid</button></div>
+
+            <div class="internal-tab-bar">
+                <button class="internal-tab active-sub-tab" onclick="switchSubPanel(event, 'sub-brokers')">Consensus Dispatch</button>
+                <button class="internal-tab" onclick="switchSubPanel(event, 'sub-narrative')">Narrative Trajectory Timeline</button>
+            </div>
+            
             <div id="sub-brokers" class="sub-panel-view active-sub-panel"><div style="padding:15px; color:#FFF;" id="brokerTargetGridContainer"></div></div>
+            
+            <div id="sub-narrative" class="sub-panel-view">
+                <div style="padding:20px;">
+                    <div class="card-header-title">Historical Structural Story Arc Trajectory</div>
+                    <div class="narrative-timeline-box" id="dynamicNarrativeTimelineMount"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-card">
+            <div class="card-header-title">Neural Momentum Alpha Signals Desk</div>
+            <div class="signal-grid" id="alphaSignalDeskContainer"></div>
         </div>
     </div>
         <div id="account-panel" class="app-panel">
@@ -263,17 +313,20 @@
         }
         function toggleChatbotConsole(show) { document.getElementById('aiChatbotConsoleWindow').style.display = show ? 'flex' : 'none'; document.getElementById('chatBubbleNode').style.display = show ? 'none' : 'flex'; }
         function handleChatEnterKey(e) { if (e.key === 'Enter') executeChatbotLogic(); }
+        
         function executeChatbotLogic() {
             const f = document.getElementById('chatbotUserTextInput'), txt = f.value.trim(); if (!txt) return;
             const flow = document.getElementById('chatMessageFlowBox'), u = document.createElement('div'); u.className = "chat-bubble user-bubble"; u.innerText = txt; flow.appendChild(u); f.value = ""; flow.scrollTop = flow.scrollHeight;
             setTimeout(() => {
-                const ai = document.createElement('div'); ai.className = "chat-bubble ai-bubble"; const q = txt.toLowerCase(); let r = "Processing calculations loop models... Modify variables inside the Quant Suite tab dashboard.";
-                if (q.includes("nvidia") || q.includes("nvda")) r = "<strong>pranav.ai Matrix Report: NVDA</strong><br>Hardware allocation backlogs cushion short-term consolidation risk. Institutional order book profile confirms robust asset support layers.";
-                else if (q.includes("apple") || q.includes("aapl")) r = "<strong>pranav.ai Matrix Report: AAPL</strong><br>Ecosystem retention targets capture historical moving-average boundaries cleanly. Services margin expansion offsets hardware delays.";
-                else if (q.includes("pranav")) r = "Pranav is the Chief Technical Architect and Founder who engineered and compiled this full modular FinanceSight terminal execution interface in 2026.";
+                const ai = document.createElement('div'); ai.className = "chat-bubble ai-bubble"; const q = txt.toLowerCase(); 
+                let r = "Processing narrative reasoning metrics... Query stock symbols directly to view structural timelines.";
+                if (q.includes("nvidia") || q.includes("nvda")) r = "<strong>pranav.ai Context: NVDA</strong><br>Valuation metrics identify structural upside momentum. Compute supply limits confirm long-term support guardrails.";
+                else if (q.includes("apple") || q.includes("aapl")) r = "<strong>pranav.ai Context: AAPL</strong><br>Ecosystem retention paths offset brief hardware cycles. Services margin growth remains exceptionally stable.";
+                else if (q.includes("inflation")) r = "<strong>pranav.ai Macro Insights: Inflation</strong><br>Inflationary pressures cause contraction across growth multiples, while shifting liquid capital frames toward heavy cash-producing enterprise equities.";
                 ai.innerHTML = r; flow.appendChild(ai); flow.scrollTop = flow.scrollHeight;
             }, 450);
         }
+
         function renderSpeedoGaugeDial(cId, val, hex) {
             const canvas = document.getElementById(cId); if (!canvas) return; const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.width, canvas.height); const cx = canvas.width / 2, cy = canvas.height - 10, r = 90;
             ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI, 2 * Math.PI, false); ctx.lineWidth = 14; ctx.strokeStyle = '#161b22'; ctx.stroke();
@@ -281,115 +334,72 @@
             const pointer = Math.PI + (Math.PI * (val / 100)); ctx.save(); ctx.translate(cx, cy); ctx.rotate(pointer - Math.PI); ctx.beginPath(); ctx.moveTo(0, 4); ctx.lineTo(-r + 15, 0); ctx.lineTo(0, -4); ctx.fillStyle = '#FFF'; ctx.fill(); ctx.restore();
             ctx.beginPath(); ctx.arc(cx, cy, 8, 0, 2 * Math.PI); ctx.fillStyle = '#FFF'; ctx.fill();
         }
+
         function calculateHealthMatrixScore() {
             const s = parseFloat(document.getElementById('scoreSavings').value) || 0, d = parseFloat(document.getElementById('scoreDebt').value) || 0, v = parseFloat(document.getElementById('scoreDiv').value) || 0, e = parseFloat(document.getElementById('scoreEmerg').value) || 0;
             let total = s + d + v + e; if (total > 100) total = 100; document.getElementById('healthScoreNumberDisplay').innerText = Math.round(total) + " / 100";
             let hex = '#F87171'; if (total > 75) hex = '#34D399'; else if (total > 45) hex = '#FBBF24'; renderSpeedoGaugeDial('healthScoreGaugeObject', total, hex);
         }
+
         function runSipCalculationMatrix() {
             const p = parseFloat(document.getElementById('sipAmount').value) || 0, r = (parseFloat(document.getElementById('sipRate').value) || 0) / 12 / 100, n = (parseFloat(document.getElementById('sipYears').value) || 0) * 12; if (p <= 0 || r <= 0 || n <= 0) return;
             const fv = p * [ (Math.pow(1 + r, n) - 1) / r ] * (1 + r); document.getElementById('outSipPrincipal').innerText = "$" + Math.round(p * n).toLocaleString(); document.getElementById('outSipTotal').innerText = "$" + Math.round(fv).toLocaleString();
         }
+
         function runEmiCalculationMatrix() {
             const p = parseFloat(document.getElementById('emiPrincipal').value) || 0, r = (parseFloat(document.getElementById('emiRate').value) || 0) / 12 / 100, n = (parseFloat(document.getElementById('emiYears').value) || 0) * 12; if (p <= 0 || r <= 0 || n <= 0) return;
             const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1); document.getElementById('outEmiMonthly').innerText = "$" + Math.round(emi).toLocaleString(); document.getElementById('outEmiTotal').innerText = "$" + Math.round(emi * n).toLocaleString();
         }
+
         function runFireCalculationMatrix() { const exp = parseFloat(document.getElementById('fireExpenses').value) || 0, swr = parseFloat(document.getElementById('fireSWR').value) || 4; if (exp <= 0 || swr <= 0) return; document.getElementById('outFireNumber').innerText = "$" + Math.round(exp / (swr / 100)).toLocaleString(); }
         function runInflationCalculationMatrix() { const amt = parseFloat(document.getElementById('infAmount').value) || 0, rate = parseFloat(document.getElementById('infRate').value) || 0, yrs = parseFloat(document.getElementById('infYears').value) || 0; if (amt <= 0 || yrs <= 0) return; document.getElementById('outInflationTotal').innerText = "$" + Math.round(amt * Math.pow(1 + (rate / 100), yrs)).toLocaleString(); }
+
         function triggerAIAnalyticalBrief(t) {
-            const o = document.getElementById('aiReportOutputArea'); o.innerHTML = "🤖 <em>pranav.ai structural analytics pending...</em>";
-            const k = { "AAPL": "<strong>pranav.ai Target: AAPL</strong><br>Institutional capital profiles show steady accumulation parameters. Quantitative models register heavy support near post-earnings trendlines.", "NVDA": "<strong>pranav.ai Target: NVDA</strong><br>Generational computation layer dominance confirmed. Capital backlogs continue cleanly outstripping hyper-scaler deployment constraints." };
-            setTimeout(() => { o.innerHTML = k[t.toUpperCase()] || `<strong>pranav.ai Target: ${t.toUpperCase()}</strong><br>Data matrix structural analysis active. Ratios match baseline parameters. Navigate over to your calculation tools section to test custom allocations lines.`; }, 400);
-        }
-        function generateQuantMatrix(t) {
-            const sym = t.toUpperCase().trim();
-            const db = {
-                "AAPL": { score: 78, text: "Buy", brokers: [ { name: "Bank of America", call: "Buy", target: "$225" }, { name: "Morgan Stanley", call: "Overweight", target: "$220" }, { name: "Goldman Sachs", call: "Buy", target: "$230" } ] },
-                "NVDA": { score: 94, text: "Strong Buy", brokers: [ { name: "Bank of America", call: "Buy", target: "$1200" }, { name: "Morgan Stanley", call: "Overweight", target: "$1160" }, { name: "Goldman Sachs", call: "Conviction Buy", target: "$1250" } ] },
-                "TSLA": { score: 42, text: "Hold", brokers: [ { name: "Bank of America", call: "Hold", target: "$220" }, { name: "Jefferies", call: "Underperform", target: "$165" }, { name: "JPMorgan Chase", call: "Sell", target: "$130" } ] }
+            const o = document.getElementById('aiReportOutputArea'); o.innerHTML = "🤖 <em>pranav.ai tracing explainable matrices...</em>";
+            const k = {
+                "AAPL": "<strong>pranav.ai Target Signal: AAPL</strong><br>Ecosystem lock-in parameters remain ironclad. Services expansion targets cleanly mitigate hardware cyclic compression loops.<br><span style='color:var(--accent-cyan);font-size:0.75rem;'>Sources: Wall St Call Filings &bull; Confidence: 89%</span>",
+                "NVDA": "<strong>pranav.ai Target Signal: NVDA</strong><br>Hardware compute backlogs remain intense. Hyperscaler capital spending configurations indicate zero structural deceleration points.<br><span style='color:var(--accent-cyan);font-size:0.75rem;'>Sources: Earnings Transcripts &bull; Confidence: 94%</span>"
             };
-            const d = db[sym] || { score: 55, text: "Hold", brokers: [ { name: "Morgan Stanley", call: "Hold", target: "$145" }, { name: "Goldman Sachs", call: "Hold", target: "$150" } ] };
-            renderSpeedoGaugeDial('speedometerGaugeObject', d.score, '#34D399'); const badge = document.getElementById('speedoRatingTextBadge'); badge.innerText = d.text;
-            if (d.score > 65) badge.style.color = 'var(--accent-green)'; else if (d.score > 35) badge.style.color = 'var(--accent-gold)'; else badge.style.color = 'var(--accent-red)';
-            let grid = `<table style="width:100%; border-collapse:collapse; font-size:0.85rem;"><tr style="border-bottom:2px solid var(--border-line); height:35px; color:var(--text-muted); font-weight:700;"><td>Institution</td><td>Rating Call</td><td style="text-align:right;">Target</td></tr>`;
-            d.brokers.forEach(b => {
-                let hc = 'var(--text-main)'; if (b.call.includes("Buy") || b.call.includes("Overweight")) hc = 'var(--accent-green)'; else if (b.call.includes("Hold")) hc = 'var(--accent-gold)'; else if (b.call.includes("Sell") || b.call.includes("Underperform")) hc = 'var(--accent-red)';
-                grid += `<tr style="border-bottom:1px solid var(--border-line); height:42px; font-weight:600;"><td style="color:#FFF;">${b.name}</td><td style="color:${hc}; font-weight:700;">${b.call}</td><td style="text-align:right; color:var(--accent-cyan); font-weight:700;">${b.target}</td></tr>`;
-            });
-            document.getElementById('brokerTargetGridContainer').innerHTML = grid + "</table>";
+            setTimeout(() => { o.innerHTML = k[t.toUpperCase()] || `<strong>pranav.ai Target Signal: ${t.toUpperCase()}</strong><br>Asset structure synchronized. Narrative trajectory loops trace normal baseline configurations. check parameters inside your Quant Suite to calibrate targets.`; }, 400);
         }
 
-        // DYNAMIC QUANT MULTI-PAGE ROUTER ENGINE FOR SEARCH & FILE CLICKS
+        // DYNAMIC PRE RENDER MULTI PAGE SEO CONTENT ROUTER
         function loadIndexedSEORoute(routePathString) {
             const outputBox = document.getElementById('seoDynamicPrerenderTargetBox');
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             const articleKnowledgeBase = {
+                "/market/ai-sector": {
+                    title: "AI Infrastructure Sector Boom | Strategic Market Projections",
+                    desc: "An analytical fintech evaluation tracking generational capital expenditure loops across systemic AI semiconductor chip architectures.",
+                    html: `
+                        <span class="seo-article-meta">Index Node: Themes / AI Boom / Macro Trends</span>
+                        <h1 class="seo-article-title">The Generative AI Hardware Infrastructure Race</h1>
+                        <p class="seo-paragraph">The global technological landscape is undergoing a deep structural migration toward localized neural computing layers. Capital flow tracking reveals that cloud providers are scaling data center capex pipelines at unprecedented rates to accommodate compute demands.</p>
+                        <h2 class="seo-heading-h2">Why This Matters: Interpretation & Action</h2>
+                        <p class="seo-paragraph">This represents a massive sector rotation from legacy compute arrays to accelerated silicon stacks. Hardware infrastructure providers act as toll roads for this monetization wave, shielding them from near-term software application valuation adjustments.</p>
+                    `
+                },
                 "/stocks/nvidia": {
-                    title: "NVIDIA (NVDA) Valuation Framework & Generational Compute Monopoly Scans",
-                    desc: "An analytical institutional framework breakdown mapping out NVIDIA's computational data-center lifecycle multiples across corporate capital networks.",
+                    title: "NVIDIA (NVDA) Narrative Trajectory Shift & Valuation Analysis",
+                    desc: "Track the evolution of public narratives surrounding NVIDIA stock from initial AI hype vectors to competitive valuation metrics.",
                     html: `
-                        <span class="seo-article-meta">File Node: Research / Technology / Stock Analysis</span>
-                        <h1 class="seo-article-title">NVIDIA (NVDA) Equity Valuation Deep-Dive Summary</h1>
-                        <p class="seo-paragraph">NVIDIA Corporation continues to preserve an ironclad compute-layer monopoly across global institutional frameworks. As mega-cap hyper-scalers accelerate their infrastructure layouts, demand curves for advanced data-center nodes continue cleanly outstripping chip foundries production targets.</p>
-                        <h2 class="seo-heading-h2">Compute Monetization Loop Analysis</h2>
-                        <p class="seo-paragraph">Financial tracking metrics verify that post-split liquidity limits remain incredibly secure. Enterprise capital allocation models project that hardware margins will cushion macro volatility adjustments through 2026, making current support parameters highly resilient.</p>
-                    `
-                },
-                "/news/sip-investing": {
-                    title: "What is SIP Investing? Systematic Wealth Accumulation Engineering Parameters",
-                    desc: "Examine the mathematical advantages of automated systematic asset allocation using regular cost averaging frameworks.",
-                    html: `
-                        <span class="seo-article-meta">File Node: Education / Macro Wealth / Capital Accumulation</span>
-                        <h1 class="seo-article-title">The Quantitative Guide to Systematic Investment Plans (SIP)</h1>
-                        <p class="seo-paragraph">A Systematic Investment Plan (SIP) represents a mechanical programmatic process designed to accumulate financial assets over long duration timelines. By allocating consistent capital blocks at set cycles, retail portfolios cleanly bypass human market-timing biases.</p>
-                        <h2 class="seo-heading-h2">The Cost-Averaging Formula Advantage</h2>
-                        <p class="seo-paragraph">Portfolio engineering vectors verify that during down-cycle corrections, the fixed allotment model automatically purchases more asset units at discounted valuations. When standard macro cycles return upward, future yield values expand at a compounded rate.</p>
-                    `
-                },
-                "/news/inflation-markets": {
-                    title: "How Macro Inflation Affects Volatility and Corporate Balance Sheets",
-                    desc: "A structural asset evaluation mapping currency erosion vectors across macroeconomic infrastructure targets.",
-                    html: `
-                        <span class="seo-article-meta">File Node: Economics / Inflation Index / Market Structure</span>
-                        <h1 class="seo-article-title">Ecosystem Trajectory: Inflationary Compression Across US Equities</h1>
-                        <p class="seo-paragraph">Erosion arrays generated by persistent inflation force central banking nodes to tighten structural credit boundaries. This operational deflection compresses valuation multiples across speculative capital structures while steering liquid assets to cash-generating corporations.</p>
-                        <h2 class="seo-heading-h2">Balance Sheet Defenses</h2>
-                        <p class="seo-paragraph">Corporations maintaining massive total cash reservoirs and deep operational margin shields are uniquely positioned to navigate inflationary trends, preserving corporate structural growth velocity undisturbed.</p>
+                        <span class="seo-article-meta">Index Node: Research / Semiconductors / Stock Narrative</span>
+                        <h1 class="seo-article-title">NVIDIA Corporation (NVDA): Story Arc Evolution</h1>
+                        <p class="seo-paragraph">NVIDIA's public positioning has transitioned from a high-growth gaming hardware node into the absolute spine of enterprise computation layers. As supply constraints normalize, market attention is adjusting to factor in multi-year hyper-scaler contractual agreements.</p>
+                        <h2 class="seo-heading-h2">Explainable AI Insights Summary</h2>
+                        <p class="seo-paragraph">Valuation metrics hold a premium configuration. Forward data backlogs minimize localized market deficits, ensuring that operational metrics support current capital boundaries securely.</p>
                     `
                 }
             };
 
             const data = articleKnowledgeBase[routePathString];
             if (data) {
-                outputBox.innerHTML = `<div class="data-card" style="animation: panelEntrance 0.5s ease-out;">${data.html}</div>`;
+                outputBox.innerHTML = `<div class="data-card" style="animation: panelEntrance 0.5s ease-out; border-left:4px solid var(--accent-purple);">${data.html}</div>`;
                 document.getElementById('seo-title').innerText = data.title;
                 document.getElementById('seo-description').setAttribute('content', data.desc);
             }
         }
 
-        function handleSearchInput(e) {
-            const v = document.getElementById('terminalCompanySearch').value.trim().toLowerCase();
-            
-            if (v === "/stocks/nvidia" || v === "nvidia stock analysis") { loadIndexedSEORoute('/stocks/nvidia'); return; }
-            if (v === "/news/sip" || v === "what is sip investing?") { loadIndexedSEORoute('/news/sip-investing'); return; }
-            if (v === "/news/inflation" || v === "how inflation affects markets") { loadIndexedSEORoute('/news/inflation-markets'); return; }
-
-            if (v.length >= 3 && !v.startsWith("/")) {
-                appRoute('brokerage-panel', 'btn-brokerage', 'green');
-                const tk = v.toUpperCase();
-                document.getElementById('reportCompName').innerText = tk + " Corporation";
-                document.getElementById('reportCompTicker').innerText = tk;
-                triggerAIAnalyticalBrief(tk);
-                generateQuantMatrix(tk);
-            }
-        }
-        function switchCalcView(e, id) {
-            const card = e.currentTarget.closest('.data-card'), tabs = card.getElementsByClassName('internal-tab'), views = card.getElementsByClassName('sub-panel-view');
-            for (let i = 0; i < tabs.length; i++) tabs[i].classList.remove('active-sub-tab'); for (let i = 0; i < views.length; i++) views[i].classList.remove('active-sub-panel');
-            e.currentTarget.classList.add('active-sub-tab'); document.getElementById(id).classList.add('active-sub-panel');
-        }
-        window.onload = function() { generateQuantMatrix("AAPL"); calculateHealthMatrixScore(); runSipCalculationMatrix(); runEmiCalculationMatrix(); runFireCalculationMatrix(); runInflationCalculationMatrix(); }
-    </script>
-</body>
-</html>
+        function generateQuantMatrix(t) {
+      
